@@ -3,19 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <title>LECTIO | Biblioteca Digital</title>
-<link rel="stylesheet" href="estilo.css">
+
+<style>
+
+body{
+font-family: Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+margin:0;
+padding:0;
+}
+
+.hero{
+padding:80px 20px;
+}
+
+h1{
+font-size:60px;
+margin-bottom:10px;
+}
+
+h2{
+color:#cbd5f5;
+font-weight:normal;
+}
+
+.stats{
+margin-top:20px;
+font-size:20px;
+}
+
+.boton{
+display:inline-block;
+margin-top:40px;
+padding:18px 40px;
+background:#22c55e;
+color:white;
+font-size:20px;
+border-radius:10px;
+text-decoration:none;
+}
+
+.boton:hover{
+background:#16a34a;
+}
+
+.catalogo{
+margin-top:60px;
+padding:40px;
+background:#1e293b;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.libro{
+background:#334155;
+padding:20px;
+border-radius:10px;
+}
+
+.footer{
+margin-top:60px;
+padding:30px;
+background:#020617;
+color:#94a3b8;
+}
+
+</style>
 </head>
 
 <body>
 
+<div class="hero">
+
 <h1>LECTIO</h1>
 
-<h2>Biblioteca digital exclusiva</h2>
+<h2>La biblioteca digital secreta del conocimiento</h2>
 
-<p>+25.000 libros digitales</p>
-<p>+15.000 audiolibros</p>
+<div class="stats">
+📚 +25.000 libros digitales<br>
+🎧 +15.000 audiolibros
+</div>
 
-<a href="https://instagram.com">Comprar por Instagram</a>
+<a class="boton" href="https://instagram.com">
+Comprar Packs de Libros
+</a>
+
+</div>
+
+<div class="catalogo">
+
+<h2>Categorías disponibles</h2>
+
+<div class="grid">
+
+<div class="libro">Marketing</div>
+<div class="libro">Negocios</div>
+<div class="libro">Psicología</div>
+<div class="libro">Mentalidad</div>
+<div class="libro">Ventas</div>
+<div class="libro">Finanzas</div>
+<div class="libro">Emprendimiento</div>
+<div class="libro">Desarrollo personal</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+LECTIO — Biblioteca digital exclusiva
+
+</div>
 
 </body>
 </html>
