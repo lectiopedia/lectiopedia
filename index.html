@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Biblioteca Digital</title>
+<title>LECTIO - Biblioteca Digital</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -12,77 +12,140 @@
 
 body{
 margin:0;
-background:#0e0e0e;
+background:black;
 color:white;
 font-family:'Inter',sans-serif;
 }
 
-/* TITULO */
+/* HEADER */
 
 header{
 text-align:center;
-padding:40px;
+padding:80px 20px;
 }
 
-h1{
+/* TITULO LECTIO */
+
+.logo{
 font-family:'Cinzel',serif;
-font-size:48px;
-letter-spacing:4px;
-margin-bottom:10px;
+font-size:70px;
+color:#d4af37;
+letter-spacing:8px;
+animation:brillo 3s infinite;
 }
 
-/* BUSCADOR */
+@keyframes brillo{
 
-.buscador{
-text-align:center;
-margin-bottom:40px;
+0%{text-shadow:0 0 10px #d4af37;}
+
+50%{text-shadow:0 0 40px #ffd700;}
+
+100%{text-shadow:0 0 10px #d4af37;}
+
 }
 
-input{
-width:60%;
-padding:12px;
-font-size:16px;
-border:none;
-border-radius:6px;
+.subtitulo{
+margin-top:10px;
+opacity:0.7;
 }
 
-/* CATEGORIAS */
+/* SECCIONES */
 
-.categorias{
+section{
+padding:60px 40px;
+max-width:1200px;
+margin:auto;
+}
+
+h2{
+font-family:'Cinzel',serif;
+color:#d4af37;
+}
+
+/* CATALOGOS */
+
+.catalogos{
+
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-gap:20px;
-padding:40px;
+gap:30px;
+
 }
 
-.categoria{
-background:#1c1c1c;
-padding:20px;
+.catalogo{
+
+background:#111;
 border-radius:10px;
+overflow:hidden;
 cursor:pointer;
-transition:0.3s;
+transition:0.4s;
+
 }
 
-.categoria:hover{
-background:#292929;
+.catalogo:hover{
+
 transform:scale(1.05);
+
 }
 
-.categoria h2{
+.catalogo img{
+
+width:100%;
+height:160px;
+object-fit:cover;
+
+}
+
+.catalogo h3{
+
+padding:15px;
 font-family:'Cinzel',serif;
-font-size:20px;
-margin:0;
+
 }
 
 /* LIBROS */
 
 #libros{
-padding:40px;
+
+margin-top:40px;
+
 }
 
 .libro{
-padding:8px 0;
+
+padding:10px;
 border-bottom:1px solid #333;
+
+}
+
+/* FAQ */
+
+.faq{
+
+margin-top:40px;
+
+}
+
+.pregunta{
+
+margin-bottom:20px;
+
+}
+
+.pregunta h4{
+
+color:#d4af37;
+
+}
+
+/* FOOTER */
+
+footer{
+
+text-align:center;
+padding:40px;
+opacity:0.6;
+
 }
 
 </style>
@@ -93,81 +156,147 @@ border-bottom:1px solid #333;
 
 <header>
 
-<h1>BIBLIOTECA DIGITAL</h1>
+<div class="logo">LECTIO</div>
+
+<p class="subtitulo">Biblioteca Digital de Conocimiento</p>
 
 </header>
 
 
-<div class="buscador">
+<section>
 
-<input type="text" id="buscar" placeholder="Buscar libro...">
+<h2>Catálogos</h2>
 
-</div>
-
-
-<div class="categorias" id="categorias"></div>
-
+<div class="catalogos" id="catalogos"></div>
 
 <div id="libros"></div>
 
+</section>
+
+
+<section>
+
+<h2>Preguntas Frecuentes</h2>
+
+<div class="faq">
+
+<div class="pregunta">
+
+<h4>¿Qué es LECTIO?</h4>
+
+<p>LECTIO es una biblioteca digital que reúne cientos de libros de conocimiento, desarrollo personal, ciencia y literatura.</p>
+
+</div>
+
+<div class="pregunta">
+
+<h4>¿Cómo funciona el catálogo?</h4>
+
+<p>Selecciona una categoría para ver todos los libros disponibles dentro de ese catálogo.</p>
+
+</div>
+
+<div class="pregunta">
+
+<h4>¿Cómo acceder a los libros?</h4>
+
+<p>Una vez dentro del catálogo podrás explorar todos los títulos disponibles.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+LECTIO © Biblioteca Digital
+
+</footer>
 
 
 <script>
 
-/* LISTA DE CATEGORIAS */
+/* CATALOGOS */
 
-const categorias = [
+const catalogos=[
 
-"habitos_productividad",
-"autoayuda_liderazgo",
-"filosofia",
-"historia_griega_clasica",
-"brian_tracy",
-"libros_biblicos",
-"clasicos",
-"robert_kiyosaki",
-"trading_forex_mercado",
-"inteligencia_emocional",
-"anthony_robbins",
-"recetas_diabetes",
-"aprende_sobre_dinero",
-"crea_habitos_inquebrantables",
-"adolescentes",
-"best_sellers_modernos",
-"historia_america_latina",
-"ciencia",
-"cuentos_disney",
-"recetas_veganas",
-"divulgacion_cientifica",
-"dummies_domina_tu_materia",
-"esenciales_clasicos",
-"conviertete_en_el_mejor_fotografo",
-"grafologia"
+{
+nombre:"Habitos y Productividad",
+archivo:"habitos_productividad",
+imagen:"https://images.unsplash.com/photo-1455390582262-044cdead277a"
+},
+
+{
+nombre:"Filosofía",
+archivo:"filosofia",
+imagen:"https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
+},
+
+{
+nombre:"Trading y Finanzas",
+archivo:"trading_forex_mercado",
+imagen:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
+},
+
+{
+nombre:"Inteligencia Emocional",
+archivo:"inteligencia_emocional",
+imagen:"https://images.unsplash.com/photo-1506126613408-eca07ce68773"
+},
+
+{
+nombre:"Ciencia",
+archivo:"ciencia",
+imagen:"https://images.unsplash.com/photo-1532094349884-543bc11b234d"
+},
+
+{
+nombre:"Clásicos",
+archivo:"clasicos",
+imagen:"https://images.unsplash.com/photo-1528207776546-365bb710ee93"
+},
+
+{
+nombre:"Fotografía",
+archivo:"conviertete_en_el_mejor_fotografo",
+imagen:"https://images.unsplash.com/photo-1502920917128-1aa500764b6c"
+},
+
+{
+nombre:"Recetas",
+archivo:"recetas_veganas",
+imagen:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe"
+}
 
 ]
 
-/* MOSTRAR CATEGORIAS */
 
-const contenedor = document.getElementById("categorias")
+const cont=document.getElementById("catalogos")
 
-categorias.forEach(cat=>{
+catalogos.forEach(cat=>{
 
 let div=document.createElement("div")
 
-div.className="categoria"
+div.className="catalogo"
 
-div.innerHTML="<h2>"+cat.replaceAll("_"," ")+"</h2>"
+div.innerHTML=`
 
-div.onclick=()=>cargarCategoria(cat)
+<img src="${cat.imagen}">
 
-contenedor.appendChild(div)
+<h3>${cat.nombre}</h3>
+
+`
+
+div.onclick=()=>cargar(cat.archivo)
+
+cont.appendChild(div)
 
 })
 
 
-/* CARGAR LIBROS */
-
-async function cargarCategoria(nombre){
+async function cargar(nombre){
 
 let res=await fetch("categorias/"+nombre+".json")
 
@@ -191,24 +320,8 @@ cont.appendChild(div)
 
 }
 
-
-/* BUSCADOR */
-
-document.getElementById("buscar").addEventListener("keyup",function(){
-
-let texto=this.value.toLowerCase()
-
-let libros=document.querySelectorAll(".libro")
-
-libros.forEach(libro=>{
-
-libro.style.display=libro.textContent.toLowerCase().includes(texto) ? "block" : "none"
-
-})
-
-})
-
 </script>
 
 </body>
+
 </html>
