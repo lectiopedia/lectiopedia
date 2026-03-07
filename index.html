@@ -7,16 +7,16 @@
 <style>
 
 body{
-font-family: Arial;
+font-family:Arial;
+margin:0;
 background:#0f172a;
 color:white;
 text-align:center;
-margin:0;
-padding:0;
 }
 
 .hero{
 padding:80px 20px;
+background:linear-gradient(#0f172a,#020617);
 }
 
 h1{
@@ -24,9 +24,9 @@ font-size:60px;
 margin-bottom:10px;
 }
 
-h2{
+.sub{
 color:#cbd5f5;
-font-weight:normal;
+font-size:22px;
 }
 
 .stats{
@@ -34,7 +34,7 @@ margin-top:20px;
 font-size:20px;
 }
 
-.boton{
+.btn{
 display:inline-block;
 margin-top:40px;
 padding:18px 40px;
@@ -45,37 +45,41 @@ border-radius:10px;
 text-decoration:none;
 }
 
-.boton:hover{
-background:#16a34a;
-}
-
-.catalogo{
-margin-top:60px;
-padding:40px;
+.categorias{
+padding:60px 20px;
 background:#1e293b;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-margin-top:30px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+max-width:1000px;
+margin:auto;
+margin-top:40px;
 }
 
-.libro{
+.card{
 background:#334155;
-padding:20px;
+padding:30px;
 border-radius:10px;
+font-size:20px;
+cursor:pointer;
+}
+
+.card:hover{
+background:#475569;
 }
 
 .footer{
-margin-top:60px;
-padding:30px;
 background:#020617;
+padding:30px;
+margin-top:40px;
 color:#94a3b8;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -84,33 +88,35 @@ color:#94a3b8;
 
 <h1>LECTIO</h1>
 
-<h2>La biblioteca digital secreta del conocimiento</h2>
+<div class="sub">
+La biblioteca digital secreta del conocimiento
+</div>
 
 <div class="stats">
 📚 +25.000 libros digitales<br>
 🎧 +15.000 audiolibros
 </div>
 
-<a class="boton" href="https://instagram.com">
+<a class="btn" href="https://instagram.com">
 Comprar Packs de Libros
 </a>
 
 </div>
 
-<div class="catalogo">
+<div class="categorias">
 
-<h2>Categorías disponibles</h2>
+<h2>Categorías</h2>
 
 <div class="grid">
 
-<div class="libro">Marketing</div>
-<div class="libro">Negocios</div>
-<div class="libro">Psicología</div>
-<div class="libro">Mentalidad</div>
-<div class="libro">Ventas</div>
-<div class="libro">Finanzas</div>
-<div class="libro">Emprendimiento</div>
-<div class="libro">Desarrollo personal</div>
+<div class="card">Ventas y Marketing</div>
+<div class="card">Psicología</div>
+<div class="card">Negocios</div>
+<div class="card">Mentalidad</div>
+<div class="card">Finanzas</div>
+<div class="card">Emprendimiento</div>
+<div class="card">Desarrollo Personal</div>
+<div class="card">Inversiones</div>
 
 </div>
 
