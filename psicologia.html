@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>LECTIO | Psicología</title>
+
+<style>
+
+body{
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+h1{
+color:gold;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,200px);
+gap:20px;
+justify-content:center;
+margin-top:40px;
+}
+
+.libro{
+background:#111;
+padding:15px;
+border-radius:8px;
+}
+
+.boton{
+background:gold;
+color:black;
+padding:6px 10px;
+text-decoration:none;
+border-radius:5px;
+display:inline-block;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📚 Psicología</h1>
+
+<input id="buscar" placeholder="Buscar libro..." style="padding:10px;width:300px">
+
+<div class="grid" id="biblioteca"></div>
+
+<script>
+
+const libros=[
+
+"Psicologia Social",
+"Porque mentimos",
+"Psicologia del dinero",
+"Inteligencia emocional",
+"El poder del subconsciente",
+"Como ganar amigos",
+"La psicologia de las masas",
+"El cerebro humano",
+"La mente millonaria",
+"Neuroventas"
+
+];
+
+function cargarLibros(lista){
+
+const contenedor=document.getElementById("biblioteca");
+
+contenedor.innerHTML="";
+
+lista.forEach(libro=>{
+
+contenedor.innerHTML+=`
+
+<div class="libro">
+
+${libro}
+
+<br><br>
+
+$3900
+
+<br>
+
+<a class="boton" href="https://instagram.com/lectio.pedia">
+
+Comprar
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+cargarLibros(libros);
+
+document.getElementById("buscar").addEventListener("input",function(){
+
+let texto=this.value.toLowerCase();
+
+let filtrados=libros.filter(libro=>libro.toLowerCase().includes(texto));
+
+cargarLibros(filtrados);
+
+});
+
+</script>
+
+</body>
+
+</html>
