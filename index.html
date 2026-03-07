@@ -1,372 +1,212 @@
 <!DOCTYPE html>
 <html lang="es">
-<head><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+<head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LECTIO | Netflix del Conocimiento</title>
+<title>Biblioteca Digital</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>.titulo{
-font-family:'Cinzel', serif !important;
-font-size:48px;
-letter-spacing:3px;
-text-align:center;
-}
-  
-h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 42px;
-  letter-spacing: 2px;
-}
+<style>
+
 body{
 margin:0;
-background:#050505;
+background:#0e0e0e;
 color:white;
-font-family:Arial, sans-serif;
-overflow-x:hidden;
+font-family:'Inter',sans-serif;
 }
 
-/* fondo animado con "libros" */
-.fondo{
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-z-index:-1;
-overflow:hidden;
-}
-
-.libro-bg{
-position:absolute;
-width:30px;
-height:40px;
-background:#d4af37;
-opacity:0.1;
-animation:flotar 20s linear infinite;
-}
-
-@keyframes flotar{
-from{transform:translateY(100vh) rotate(0deg)}
-to{transform:translateY(-10vh) rotate(360deg)}
-}
-
-h1,h2{
-font-family:'Cinzel',serif;
-color:#d4af37;
-}
-
-/* header */
+/* TITULO */
 
 header{
 text-align:center;
-padding:120px 20px;
-}
-
-.logo span{
-opacity:0;
-display:inline-block;
-animation:aparecer 0.6s forwards;
-}
-
-.logo span:nth-child(1){animation-delay:0.1s}
-.logo span:nth-child(2){animation-delay:0.2s}
-.logo span:nth-child(3){animation-delay:0.3s}
-.logo span:nth-child(4){animation-delay:0.4s}
-.logo span:nth-child(5){animation-delay:0.5s}
-.logo span:nth-child(6){animation-delay:0.6s}
-
-@keyframes aparecer{
-to{opacity:1}
-}
-
-.logo{
-font-size:80px;
-letter-spacing:8px;
-}
-
-.sub{
-font-size:22px;
-color:#ccc;
-}
-
-.frase{
-color:#d4af37;
-margin-top:10px;
-}
-
-#buscar{
-margin-top:25px;
-padding:12px;
-width:300px;
-border-radius:6px;
-border:none;
-}
-
-/* carruseles tipo netflix */
-
-.section{
 padding:40px;
 }
 
-.carrusel{
-display:flex;
-gap:20px;
-overflow-x:auto;
-padding-top:20px;
+h1{
+font-family:'Cinzel',serif;
+font-size:48px;
+letter-spacing:4px;
+margin-bottom:10px;
 }
 
-.libro{
-background:#111;
+/* BUSCADOR */
+
+.buscador{
+text-align:center;
+margin-bottom:40px;
+}
+
+input{
+width:60%;
+padding:12px;
+font-size:16px;
+border:none;
+border-radius:6px;
+}
+
+/* CATEGORIAS */
+
+.categorias{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+gap:20px;
+padding:40px;
+}
+
+.categoria{
+background:#1c1c1c;
 padding:20px;
 border-radius:10px;
-min-width:200px;
-text-align:center;
-border:1px solid #333;
+cursor:pointer;
 transition:0.3s;
 }
 
-.libro:hover{
+.categoria:hover{
+background:#292929;
 transform:scale(1.05);
 }
 
-.precio{
-color:#d4af37;
-font-size:22px;
+.categoria h2{
+font-family:'Cinzel',serif;
+font-size:20px;
+margin:0;
 }
 
-.precio-viejo{
-text-decoration:line-through;
-color:#777;
-}
+/* LIBROS */
 
-.boton{
-background:#d4af37;
-color:black;
-padding:10px 20px;
-border-radius:6px;
-text-decoration:none;
-font-weight:bold;
-display:inline-block;
-margin-top:10px;
-}
-
-/* pack */
-
-.pack{
-background:#111;
-border:2px solid #d4af37;
-padding:40px;
-margin:40px;
-text-align:center;
-}
-
-.contador{
-font-size:40px;
-color:#d4af37;
-}
-
-/* faq */
-
-.faq{
+#libros{
 padding:40px;
 }
 
-.pregunta{
-background:#111;
-padding:20px;
-margin:10px 0;
-border-left:4px solid #d4af37;
-}
-
-footer{
-text-align:center;
-padding:40px;
-color:#777;
+.libro{
+padding:8px 0;
+border-bottom:1px solid #333;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="fondo" id="fondo"></div>
-
 <header>
 
-<div class="logo">
-<span>L</span>
-<span>E</span>
-<span>C</span>
-<span>T</span>
-<span>I</span>
-<span>O</span>
-</div>
-
-<div class="sub">La biblioteca secreta del conocimiento</div>
-
-<div class="frase">El conocimiento es poder, el poder eres tú</div>
-
-<input id="buscar" placeholder="Buscar libro...">
-
-<div id="resultados" class="carrusel"></div>
+<h1>BIBLIOTECA DIGITAL</h1>
 
 </header>
 
-<section class="section">
 
-<h2>🔥 Libros más vendidos</h2>
+<div class="buscador">
 
-<div class="carrusel" id="vendidos"></div>
+<input type="text" id="buscar" placeholder="Buscar libro...">
 
-</section>
+</div>
 
-<section class="section">
 
-<h2>📚 Biblioteca</h2>
+<div class="categorias" id="categorias"></div>
 
-<div class="carrusel" id="biblioteca"></div>
 
-</section>
+<div id="libros"></div>
 
-<section class="pack">
 
-<h2>ACCESO TOTAL A LECTIO</h2>
-
-<p>25.000 LIBROS<br>15.000 AUDIOLIBROS</p>
-
-<p class="precio-viejo">$120.000</p>
-<p class="precio">$20.000</p>
-
-<p>🎧 2 Audiolibros<br>🎬 Película El Lobo de Wall Street</p>
-
-<div class="contador" id="contador">02:00:00</div>
-
-<a class="boton" href="https://instagram.com/lectio.pedia">OBTENER ACCESO</a>
-
-</section>
-
-<section class="faq">
-
-<h2>Preguntas frecuentes</h2>
-
-<div class="pregunta"><b>¿Cómo recibo los libros?</b><br>Recibirás un enlace privado después de comprar.</div>
-
-<div class="pregunta"><b>¿Los libros son digitales?</b><br>Sí, todos los libros están en PDF.</div>
-
-<div class="pregunta"><b>¿Recibo audiolibros?</b><br>Sí, algunos packs incluyen audiolibros.</div>
-
-</section>
-
-<footer>
-
-LECTIO Biblioteca Digital
-
-</footer>
 
 <script>
 
-/* libros de ejemplo (aquí luego puedes pegar miles) */
+/* LISTA DE CATEGORIAS */
 
-const masVendidos=[
-"Padre Rico Padre Pobre",
-"Hábitos Atómicos",
-"Piense y Hágase Rico"
-];
+const categorias = [
 
-const biblioteca=[
-"El arte de cerrar la venta",
-"Ventas 101",
-"Las 22 leyes del marketing",
-"Psicología del dinero",
-"El poder del hábito"
-];
+"habitos_productividad",
+"autoayuda_liderazgo",
+"filosofia",
+"historia_griega_clasica",
+"brian_tracy",
+"libros_biblicos",
+"clasicos",
+"robert_kiyosaki",
+"trading_forex_mercado",
+"inteligencia_emocional",
+"anthony_robbins",
+"recetas_diabetes",
+"aprende_sobre_dinero",
+"crea_habitos_inquebrantables",
+"adolescentes",
+"best_sellers_modernos",
+"historia_america_latina",
+"ciencia",
+"cuentos_disney",
+"recetas_veganas",
+"divulgacion_cientifica",
+"dummies_domina_tu_materia",
+"esenciales_clasicos",
+"conviertete_en_el_mejor_fotografo",
+"grafologia"
 
-/* render libros */
+]
 
-function crearLibro(titulo,precio){
+/* MOSTRAR CATEGORIAS */
 
-return `
-<div class="libro">
-<p>${titulo}</p>
-<p class="precio-viejo">$15000</p>
-<p class="precio">$${precio}</p>
-<a class="boton" href="https://instagram.com/lectio.pedia">Comprar</a>
-</div>
-`;
+const contenedor = document.getElementById("categorias")
 
-}
+categorias.forEach(cat=>{
 
-masVendidos.forEach(l=>{
-document.getElementById("vendidos").innerHTML+=crearLibro(l,5000);
-});
+let div=document.createElement("div")
 
-biblioteca.forEach(l=>{
-document.getElementById("biblioteca").innerHTML+=crearLibro(l,3900);
-});
+div.className="categoria"
 
-/* buscador */
+div.innerHTML="<h2>"+cat.replaceAll("_"," ")+"</h2>"
 
-const input=document.getElementById("buscar");
-const resultados=document.getElementById("resultados");
+div.onclick=()=>cargarCategoria(cat)
 
-const todos=[...masVendidos,...biblioteca];
+contenedor.appendChild(div)
 
-input.addEventListener("input",function(){
+})
 
-let texto=input.value.toLowerCase();
 
-resultados.innerHTML="";
+/* CARGAR LIBROS */
 
-if(texto.length<2)return;
+async function cargarCategoria(nombre){
 
-todos.forEach(libro=>{
+let res=await fetch("categorias/"+nombre+".json")
 
-if(libro.toLowerCase().includes(texto)){
+let data=await res.json()
 
-resultados.innerHTML+=crearLibro(libro,3900);
+let cont=document.getElementById("libros")
 
-}
+cont.innerHTML="<h2>"+data.categoria+"</h2>"
 
-});
+data.libros.forEach(libro=>{
 
-});
+let div=document.createElement("div")
 
-/* contador */
+div.className="libro"
 
-let tiempo=7200;
+div.textContent=libro
 
-function actualizar(){
+cont.appendChild(div)
 
-let h=Math.floor(tiempo/3600);
-let m=Math.floor((tiempo%3600)/60);
-let s=tiempo%60;
-
-document.getElementById("contador").innerHTML=`${h}:${m}:${s}`;
-
-tiempo--;
+})
 
 }
 
-setInterval(actualizar,1000);
 
-/* fondo animado */
+/* BUSCADOR */
 
-for(let i=0;i<30;i++){
+document.getElementById("buscar").addEventListener("keyup",function(){
 
-let libro=document.createElement("div");
+let texto=this.value.toLowerCase()
 
-libro.className="libro-bg";
+let libros=document.querySelectorAll(".libro")
 
-libro.style.left=Math.random()*100+"%";
+libros.forEach(libro=>{
 
-libro.style.animationDuration=(10+Math.random()*20)+"s";
+libro.style.display=libro.textContent.toLowerCase().includes(texto) ? "block" : "none"
 
-document.getElementById("fondo").appendChild(libro);
+})
 
-}
+})
 
 </script>
 
