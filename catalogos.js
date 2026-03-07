@@ -1,27 +1,17 @@
-
-export function startCountdown(){
-
-let time = 7200
-
-setInterval(()=>{
-
-let h=Math.floor(time/3600)
-let m=Math.floor((time%3600)/60)
-let s=time%60
-
-const el=document.getElementById("countdown")
-
-if(el){
-el.innerText =
-String(h).padStart(2,'0')+":" +
-String(m).padStart(2,'0')+":" +
-String(s).padStart(2,'0')
-}
-
-time--
-
-if(time<0){time=7200}
-
-},1000)
-
-}
+[
+  {
+    "titulo": "Vendes o Vendes",
+    "autor": "Grant Cardone",
+    "categoria": "Ventas y Marketing"
+  },
+  {
+    "titulo": "El arte de cerrar la venta",
+    "autor": "Brian Tracy",
+    "categoria": "Ventas y Marketing"
+  },
+  {
+    "titulo": "Ventas 101",
+    "autor": "Zig Ziglar",
+    "categoria": "Ventas y Marketing"
+  }
+]
