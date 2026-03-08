@@ -3,7 +3,7 @@ async function cargarCatalogo(nombreCategoria){
 const respuesta = await fetch(`categorias/${nombreCategoria}.json`);
 const data = await respuesta.json();
 
-const contenedor = document.getElementById("catalogo");
+const contenedor = document.getElementById("catalogoLibros");
 contenedor.innerHTML = "";
 
 data.libros.forEach(libro => {
