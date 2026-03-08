@@ -54,3 +54,44 @@ cursor:pointer;
 background:#d4af37;
 color:black;
 }
+.botonMenu{
+position:fixed;
+top:20px;
+left:20px;
+font-size:30px;
+cursor:pointer;
+color:#d4af37;
+z-index:1000;
+}
+
+.menuLateral{
+position:fixed;
+left:-260px;
+top:0;
+width:250px;
+height:100%;
+background:#0a0a0a;
+padding:20px;
+transition:0.4s;
+overflow-y:auto;
+}
+
+.menuLateral button{
+display:block;
+width:100%;
+margin:6px 0;
+background:none;
+border:1px solid #d4af37;
+color:#d4af37;
+padding:8px;
+cursor:pointer;
+}
+
+.menuLateral button:hover{
+background:#d4af37;
+color:black;
+}
+
+.menuAbierto{
+left:0;
+}
