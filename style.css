@@ -205,3 +205,23 @@ transition:0.3s;
 transform:scale(1.1);
 box-shadow:0 0 10px #d4af37;
 }
+.libroCard{
+min-width:140px;
+background:#111;
+border:1px solid #d4af37;
+padding:10px;
+text-align:center;
+transition:0.3s;
+}
+
+.libroCard img{
+width:100%;
+height:180px;
+object-fit:cover;
+margin-bottom:5px;
+}
+
+.libroCard:hover{
+transform:scale(1.08);
+box-shadow:0 0 10px #d4af37;
+}
