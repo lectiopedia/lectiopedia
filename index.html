@@ -11,56 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-<script>
 
-let abierto=false;
-
-function abrirMenu(){
-
-const menu=document.getElementById("menuLateral");
-
-if(!abierto){
-
-menu.style.left="0";
-abierto=true;
-
-}else{
-
-menu.style.left="-320px";
-abierto=false;
-
-}
-
-}
-
-</script>
 body{
-  <div class="menu" onclick="abrirMenu()">☰</div>
-
-<div id="menuLateral" class="menu-lateral">
-
-<h2>CATÁLOGOS</h2>
-
-<a href="#">Psicología</a>
-<a href="#">Desarrollo Personal</a>
-<a href="#">Éxito y Negocios</a>
-<a href="#">Marketing</a>
-<a href="#">Redes Sociales</a>
-<a href="#">Lectura Rápida</a>
-<a href="#">Literatura</a>
-<a href="#">Poesía</a>
-<a href="#">Terror y Suspenso</a>
-<a href="#">Historietas</a>
-<a href="#">Recetas y Dietas</a>
-<a href="#">Nutrición y Deporte</a>
-<a href="#">Domina el Inglés</a>
-<a href="#">TDAH</a>
-<a href="#">Terapia de Pareja</a>
-<a href="#">Seducción</a>
-<a href="#">Yoga</a>
-<a href="#">Primeros Auxilios</a>
-
-</div>
 background:black;
 color:#d4af37;
 font-family:'Cinzel',serif;
@@ -68,18 +20,48 @@ margin:0;
 overflow-x:hidden;
 }
 
-/* LIBROS FLOTANDO */
+/* MENU */
 
-.book{
+.menu{
 position:fixed;
-font-size:28px;
-opacity:0.08;
-animation:flotar 20s linear infinite;
+top:25px;
+left:25px;
+font-size:35px;
+color:#d4af37;
+cursor:pointer;
+z-index:1000;
 }
 
-@keyframes flotar{
-0%{transform:translateY(100vh) rotate(0)}
-100%{transform:translateY(-100vh) rotate(360deg)}
+/* MENU LATERAL */
+
+.menu-lateral{
+position:fixed;
+left:-320px;
+top:0;
+width:300px;
+height:100%;
+background:#0a0a0a;
+padding:30px;
+transition:0.4s;
+z-index:999;
+overflow-y:auto;
+}
+
+.menu-lateral h2{
+margin-bottom:30px;
+}
+
+.menu-lateral a{
+display:block;
+color:#d4af37;
+text-decoration:none;
+margin:12px 0;
+font-size:18px;
+cursor:pointer;
+}
+
+.menu-lateral a:hover{
+color:#ffd700;
 }
 
 /* HERO */
@@ -128,164 +110,51 @@ border:none;
 margin-top:30px;
 }
 
-/* SECCIONES */
+/* CONTENEDOR LIBROS */
 
-section{
-padding:90px 30px;
-text-align:center;
-animation:movimiento 8s infinite alternate ease-in-out;
-}
-
-@keyframes movimiento{
-from{transform:translateY(0)}
-to{transform:translateY(-8px)}
-}
-
-/* PRECIOS */
-
-.precio-viejo{
-text-decoration:line-through;
-color:red;
-}
-
-.precio-nuevo{
-font-size:50px;
-color:#ffd700;
-}
-
-/* BOTONES */
-
-.boton{
-background:#d4af37;
-color:black;
-padding:15px 30px;
-text-decoration:none;
-display:inline-block;
-margin-top:20px;
-font-weight:bold;
-}
-
-/* IMAGENES */
-
-.oferta-img{
-width:250px;
-margin-top:25px;
-}
-
-/* LIBROS PREMIUM */
-
-.libros{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:40px;
-max-width:1000px;
+#catalogo{
+padding:80px;
+max-width:900px;
 margin:auto;
-padding:40px;
 }
 
 .libro{
-background:#0a0a0a;
-padding:20px;
-border-radius:10px;
-transition:transform .3s;
-}
-
-.libro:hover{
-transform:scale(1.05);
-}
-
-.libro img{
-width:120px;
-border-radius:6px;
-}
-
-.desc{
-font-size:14px;
-color:#e6c86b;
-margin-top:8px;
-}
-
-.estrellas{
-color:#ffd700;
-margin-top:5px;
-font-size:14px;
-}
-
-.badge{
-background:#d4af37;
-color:black;
-font-size:12px;
-padding:3px 8px;
-display:inline-block;
-margin-top:5px;
-}
-
-/* FAQ */
-
-.faq{
-max-width:800px;
-margin:auto;
-text-align:left;
-}
-
-.faq h3{
-margin-top:30px;
+padding:10px;
+border-bottom:1px solid #222;
 }
 
 </style>
 
-/* MENU */
-
-.menu{
-position:fixed;
-top:25px;
-left:25px;
-font-size:35px;
-color:#d4af37;
-cursor:pointer;
-z-index:1000;
-}
-
-/* MENU LATERAL */
-
-.menu-lateral{
-position:fixed;
-left:-320px;
-top:0;
-width:300px;
-height:100%;
-background:#0a0a0a;
-padding:30px;
-transition:0.4s;
-z-index:999;
-}
-
-.menu-lateral h2{
-margin-bottom:30px;
-}
-
-.menu-lateral a{
-display:block;
-color:#d4af37;
-text-decoration:none;
-margin:12px 0;
-font-size:18px;
-}
-
-.menu-lateral a:hover{
-color:#ffd700;
-}
 </head>
 
 <body>
 
-<!-- LIBROS FLOTANDO -->
+<div class="menu" onclick="abrirMenu()">☰</div>
 
-<div class="book" style="left:10%">📚</div>
-<div class="book" style="left:30%">📚</div>
-<div class="book" style="left:50%">📚</div>
-<div class="book" style="left:70%">📚</div>
-<div class="book" style="left:90%">📚</div>
+<div id="menuLateral" class="menu-lateral">
+
+<h2>CATÁLOGOS</h2>
+
+<a onclick="abrirCatalogo('psicologia')">Psicología</a>
+<a onclick="abrirCatalogo('desarrollo_personal')">Desarrollo Personal</a>
+<a onclick="abrirCatalogo('exito_y_negocio')">Éxito y Negocios</a>
+<a onclick="abrirCatalogo('marketing_y_multinivel')">Marketing</a>
+<a onclick="abrirCatalogo('redes_sociales')">Redes Sociales</a>
+<a onclick="abrirCatalogo('lectura_super_rapida')">Lectura Rápida</a>
+<a onclick="abrirCatalogo('literatura')">Literatura</a>
+<a onclick="abrirCatalogo('poesias')">Poesía</a>
+<a onclick="abrirCatalogo('terror_suspenso_y_mas')">Terror y Suspenso</a>
+<a onclick="abrirCatalogo('historietas')">Historietas</a>
+<a onclick="abrirCatalogo('recetas_y_dietas')">Recetas y Dietas</a>
+<a onclick="abrirCatalogo('nutricion_y_deporte')">Nutrición y Deporte</a>
+<a onclick="abrirCatalogo('domina_el_ingles')">Domina el Inglés</a>
+<a onclick="abrirCatalogo('tdah')">TDAH</a>
+<a onclick="abrirCatalogo('terapia_de_pareja')">Terapia de Pareja</a>
+<a onclick="abrirCatalogo('seduccion')">Seducción</a>
+<a onclick="abrirCatalogo('yooga')">Yoga</a>
+<a onclick="abrirCatalogo('primeros_auxilios')">Primeros Auxilios</a>
+
+</div>
 
 <!-- HERO -->
 
@@ -304,200 +173,124 @@ color:#ffd700;
 
 <p class="subtitulo">
 
-Bienvenido a <b>LECTIO</b>, una biblioteca digital exclusiva donde las ideas que
-transforman vidas se encuentran con lectores que buscan crecer, aprender y dominar su mente.
+Bienvenido a <b>LECTIO</b>, una biblioteca digital exclusiva donde el conocimiento
+y los libros que transforman vidas están al alcance de tu mente.
 
 </p>
 
 <div class="busqueda">
 
-<input placeholder="Buscar libros...">
+<input id="buscador" placeholder="Buscar libros...">
 
 </div>
 
 </div>
 
-<!-- OFERTA BIBLIOTECA -->
+<!-- CATALOGO -->
 
-<section>
-
-<h2>ACCESO EXCLUSIVO A TODA LA BIBLIOTECA LECTIO</h2>
-
-<img class="oferta-img" src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
-
-<p>Más de <b>25.000 libros</b></p>
-<p>Más de <b>13.000 audiolibros</b></p>
-
-<p class="precio-viejo">$120.000 ARS</p>
-<p class="precio-nuevo">$25.000 ARS</p>
-
-<div id="contador"></div>
-
-<p id="viendo"></p>
-
-<a class="boton" href="https://wa.me/543515101643">Acceder ahora</a>
-
-</section>
-
-<!-- LIBRO INDIVIDUAL -->
-
-<section>
-
-<h2>LIBRO INDIVIDUAL</h2>
-
-<img class="oferta-img" src="https://cdn-icons-png.flaticon.com/512/29/29302.png">
-
-<p class="precio-viejo">$20.000</p>
-<p class="precio-nuevo">$3.900</p>
-
-<p>Incluye 2 Audiolibros + Película El Lobo de Wall Street</p>
-
-<a class="boton" href="https://wa.me/543515101643">Comprar ahora</a>
-
-</section>
-
-<!-- LIBROS QUE CAMBIARÁN TU VIDA -->
-
-<section>
-
-<h2>LIBROS QUE CAMBIARÁN TU VIDA</h2>
-
-<div class="libros">
-
-<div class="libro">
-
-<img src="https://covers.openlibrary.org/b/id/8231996-L.jpg">
-
-<p><b>Padre Rico Padre Pobre</b></p>
-
-<div class="badge">BEST SELLER</div>
-
-<p class="desc">Descubre cómo piensan los ricos y aprende a construir riqueza.</p>
-
-<div class="estrellas">★★★★★ 4.9</div>
-
-<p class="precio-viejo">$26.700</p>
-<p class="precio-nuevo">$4.500</p>
-
-</div>
-
-
-<div class="libro">
-
-<img src="https://covers.openlibrary.org/b/id/10431518-L.jpg">
-
-<p><b>No Me Puedes Lastimar</b></p>
-
-<div class="badge">BEST SELLER</div>
-
-<p class="desc">Una historia brutal de disciplina mental que cambia tu forma de ver los límites.</p>
-
-<div class="estrellas">★★★★★ 4.8</div>
-
-<p class="precio-viejo">$26.700</p>
-<p class="precio-nuevo">$4.500</p>
-
-</div>
-
-
-<div class="libro">
-
-<img src="https://covers.openlibrary.org/b/id/11153231-L.jpg">
-
-<p><b>Hábitos Atómicos</b></p>
-
-<div class="badge">BEST SELLER</div>
-
-<p class="desc">Pequeños cambios diarios que pueden transformar completamente tu vida.</p>
-
-<div class="estrellas">★★★★★ 4.9</div>
-
-<p class="precio-viejo">$26.700</p>
-<p class="precio-nuevo">$4.500</p>
-
-</div>
-
-
-<div class="libro">
-
-<img src="https://covers.openlibrary.org/b/id/8228691-L.jpg">
-
-<p><b>El Poder del Ahora</b></p>
-
-<div class="badge">BEST SELLER</div>
-
-<p class="desc">Aprende a liberar tu mente y vivir en el presente.</p>
-
-<div class="estrellas">★★★★★ 4.8</div>
-
-<p class="precio-viejo">$26.700</p>
-<p class="precio-nuevo">$4.500</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FAQ -->
-
-<section>
-
-<h2>PREGUNTAS FRECUENTES</h2>
-
-<div class="faq">
-
-<h3>¿Es seguro comprar?</h3>
-<p>Sí, todas las compras se realizan mediante contacto directo y acceso inmediato a la biblioteca digital.</p>
-
-<h3>¿Cuánto tarda la entrega?</h3>
-<p>El acceso se entrega el mismo día luego de confirmado el pago.</p>
-
-<h3>¿Por qué los libros son tan baratos?</h3>
-<p>Porque ofrecemos acceso digital directo sin intermediarios.</p>
-
-<h3>¿Cómo comprar?</h3>
-<p>Simplemente presiona el botón de compra y te guiaremos por WhatsApp.</p>
-
-</div>
-
-</section>
+<div id="catalogo"></div>
 
 <script>
 
-/* CONTADOR */
+/* MENU */
 
-let tiempo=7200;
+let abierto=false;
 
-function actualizar(){
+function abrirMenu(){
 
-let h=Math.floor(tiempo/3600);
-let m=Math.floor((tiempo%3600)/60);
-let s=tiempo%60;
+const menu=document.getElementById("menuLateral");
 
-document.getElementById("contador").innerHTML=
-"Oferta termina en "+h+"h "+m+"m "+s+"s";
+if(!abierto){
 
-tiempo--;
+menu.style.left="0";
+abierto=true;
 
-}
+}else{
 
-setInterval(actualizar,1000);
-
-/* PERSONAS VIENDO */
-
-function viewers(){
-
-let personas=Math.floor(Math.random()*40)+20;
-
-document.getElementById("viendo").innerHTML=
-personas+" personas están viendo esta oferta ahora";
+menu.style.left="-320px";
+abierto=false;
 
 }
 
-setInterval(viewers,4000);
+}
 
-viewers();
+/* ABRIR CATALOGO */
+
+async function abrirCatalogo(nombre){
+
+const contenedor=document.getElementById("catalogo");
+
+contenedor.innerHTML="<h2>"+nombre.replaceAll("_"," ")+"</h2>";
+
+const respuesta=await fetch("categorias/"+nombre+".json");
+
+const data=await respuesta.json();
+
+data.libros.forEach(libro=>{
+
+const div=document.createElement("div");
+
+div.className="libro";
+
+div.textContent=libro;
+
+contenedor.appendChild(div);
+
+});
+
+}
+
+/* BUSCADOR */
+
+let libros=[];
+
+async function cargarLibros(){
+
+const categorias=[
+"psicologia",
+"desarrollo_personal",
+"exito_y_negocio",
+"marketing_y_multinivel",
+"redes_sociales",
+"lectura_super_rapida"
+];
+
+for(let cat of categorias){
+
+let r=await fetch("categorias/"+cat+".json");
+let d=await r.json();
+
+libros=libros.concat(d.libros);
+
+}
+
+}
+
+cargarLibros();
+
+document.getElementById("buscador").addEventListener("input",function(){
+
+let texto=this.value.toLowerCase();
+
+let resultados=libros.filter(l=>l.toLowerCase().includes(texto));
+
+const contenedor=document.getElementById("catalogo");
+
+contenedor.innerHTML="";
+
+resultados.slice(0,20).forEach(r=>{
+
+const div=document.createElement("div");
+
+div.className="libro";
+
+div.textContent=r;
+
+contenedor.appendChild(div);
+
+});
+
+});
 
 </script>
 
