@@ -99,6 +99,29 @@ const card = document.createElement("div");
 
 card.className = "libroCard";
 
+const img = document.createElement("img");
+
+img.src = "https://covers.openlibrary.org/b/title/" + titulo + "-M.jpg";
+
+img.onerror = function(){
+img.src = "imagenes/libro.jpg";
+}
+
+const nombre = document.createElement("p");
+
+nombre.textContent = titulo;
+
+card.appendChild(img);
+card.appendChild(nombre);
+
+return card;
+
+}
+
+const card = document.createElement("div");
+
+card.className = "libroCard";
+
 card.textContent = titulo;
 
 return card;
