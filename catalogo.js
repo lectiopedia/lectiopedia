@@ -12,7 +12,11 @@ const item = document.createElement("div");
 
 item.className = "libro";
 
-item.textContent = libro;
+item.innerHTML = `
+<img src="imagenes/libro.png" class="portadaLibro">
+<p class="tituloLibro">${libro}</p>
+<button class="botonAgregar">Agregar</button>
+`;
 
 contenedor.appendChild(item);
 
