@@ -12,6 +12,8 @@
 
 <style>
 
+/* BASE */
+
 body{
 background:black;
 color:#d4af37;
@@ -26,7 +28,7 @@ overflow-x:hidden;
 position:fixed;
 top:25px;
 left:25px;
-font-size:35px;
+font-size:38px;
 color:#d4af37;
 cursor:pointer;
 z-index:1000;
@@ -41,10 +43,9 @@ top:0;
 width:300px;
 height:100%;
 background:#0a0a0a;
-padding:30px;
+padding:40px;
 transition:0.4s;
 z-index:999;
-overflow-y:auto;
 }
 
 .menu-lateral h2{
@@ -55,9 +56,8 @@ margin-bottom:30px;
 display:block;
 color:#d4af37;
 text-decoration:none;
-margin:12px 0;
+margin:14px 0;
 font-size:18px;
-cursor:pointer;
 }
 
 .menu-lateral a:hover{
@@ -76,9 +76,11 @@ text-align:center;
 padding:20px;
 }
 
+/* TITULO */
+
 .title span{
 opacity:0;
-font-size:95px;
+font-size:100px;
 animation:aparecer 1s forwards;
 }
 
@@ -97,30 +99,114 @@ to{opacity:1}
 max-width:750px;
 font-size:22px;
 margin-top:20px;
-color:#f1d27a;
+color:#e6c86b;
 }
 
 /* BUSCADOR */
 
 .busqueda input{
 padding:15px;
-width:360px;
+width:350px;
 font-size:18px;
 border:none;
 margin-top:30px;
 }
 
-/* CONTENEDOR LIBROS */
+/* LIBROS FLOTANDO */
 
-#catalogo{
-padding:80px;
-max-width:900px;
+.book{
+position:fixed;
+font-size:28px;
+opacity:0.08;
+animation:flotar 20s linear infinite;
+}
+
+@keyframes flotar{
+0%{transform:translateY(100vh) rotate(0)}
+100%{transform:translateY(-100vh) rotate(360deg)}
+}
+
+/* SECCIONES */
+
+section{
+padding:80px 20px;
+text-align:center;
+}
+
+/* PRECIOS */
+
+.precio-viejo{
+text-decoration:line-through;
+color:red;
+}
+
+.precio-nuevo{
+font-size:48px;
+color:#ffd700;
+}
+
+/* BOTON */
+
+.boton{
+background:#d4af37;
+color:black;
+padding:15px 30px;
+text-decoration:none;
+display:inline-block;
+margin-top:20px;
+font-weight:bold;
+}
+
+/* LIBROS PREMIUM */
+
+.libros{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:40px;
+max-width:1000px;
 margin:auto;
+padding:40px;
 }
 
 .libro{
-padding:10px;
-border-bottom:1px solid #222;
+background:#0a0a0a;
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.libro:hover{
+transform:scale(1.05);
+}
+
+.libro img{
+width:120px;
+border-radius:6px;
+}
+
+.desc{
+font-size:14px;
+color:#e6c86b;
+}
+
+.estrellas{
+color:#ffd700;
+font-size:14px;
+}
+
+.badge{
+background:#d4af37;
+color:black;
+padding:4px 8px;
+font-size:12px;
+}
+
+/* FAQ */
+
+.faq{
+max-width:800px;
+margin:auto;
+text-align:left;
 }
 
 </style>
@@ -129,32 +215,39 @@ border-bottom:1px solid #222;
 
 <body>
 
+<!-- MENU -->
+
 <div class="menu" onclick="abrirMenu()">☰</div>
 
 <div id="menuLateral" class="menu-lateral">
 
 <h2>CATÁLOGOS</h2>
 
-<a onclick="abrirCatalogo('psicologia')">Psicología</a>
-<a onclick="abrirCatalogo('desarrollo_personal')">Desarrollo Personal</a>
-<a onclick="abrirCatalogo('exito_y_negocio')">Éxito y Negocios</a>
-<a onclick="abrirCatalogo('marketing_y_multinivel')">Marketing</a>
-<a onclick="abrirCatalogo('redes_sociales')">Redes Sociales</a>
-<a onclick="abrirCatalogo('lectura_super_rapida')">Lectura Rápida</a>
-<a onclick="abrirCatalogo('literatura')">Literatura</a>
-<a onclick="abrirCatalogo('poesias')">Poesía</a>
-<a onclick="abrirCatalogo('terror_suspenso_y_mas')">Terror y Suspenso</a>
-<a onclick="abrirCatalogo('historietas')">Historietas</a>
-<a onclick="abrirCatalogo('recetas_y_dietas')">Recetas y Dietas</a>
-<a onclick="abrirCatalogo('nutricion_y_deporte')">Nutrición y Deporte</a>
-<a onclick="abrirCatalogo('domina_el_ingles')">Domina el Inglés</a>
-<a onclick="abrirCatalogo('tdah')">TDAH</a>
-<a onclick="abrirCatalogo('terapia_de_pareja')">Terapia de Pareja</a>
-<a onclick="abrirCatalogo('seduccion')">Seducción</a>
-<a onclick="abrirCatalogo('yooga')">Yoga</a>
-<a onclick="abrirCatalogo('primeros_auxilios')">Primeros Auxilios</a>
+<a>Psicología</a>
+<a>Desarrollo Personal</a>
+<a>Éxito y Negocios</a>
+<a>Marketing</a>
+<a>Redes Sociales</a>
+<a>Lectura Rápida</a>
+<a>Literatura</a>
+<a>Poesía</a>
+<a>Terror</a>
+<a>Historietas</a>
+<a>Recetas</a>
+<a>Nutrición</a>
+<a>Inglés</a>
+<a>TDAH</a>
+<a>Terapia de Pareja</a>
+<a>Seducción</a>
+<a>Yoga</a>
 
 </div>
+
+<!-- LIBROS FLOTANDO -->
+
+<div class="book" style="left:10%">📚</div>
+<div class="book" style="left:40%">📚</div>
+<div class="book" style="left:70%">📚</div>
 
 <!-- HERO -->
 
@@ -174,21 +267,103 @@ border-bottom:1px solid #222;
 <p class="subtitulo">
 
 Bienvenido a <b>LECTIO</b>, una biblioteca digital exclusiva donde el conocimiento
-y los libros que transforman vidas están al alcance de tu mente.
+que transforma vidas está al alcance de quienes buscan crecer.
 
 </p>
 
 <div class="busqueda">
 
-<input id="buscador" placeholder="Buscar libros...">
+<input placeholder="Buscar libros...">
 
 </div>
 
 </div>
 
-<!-- CATALOGO -->
+<!-- OFERTA -->
 
-<div id="catalogo"></div>
+<section>
+
+<h2>ACCESO TOTAL A LA BIBLIOTECA LECTIO</h2>
+
+<p>Más de <b>25.000 libros</b></p>
+<p>Más de <b>13.000 audiolibros</b></p>
+
+<p class="precio-viejo">$120.000</p>
+<p class="precio-nuevo">$25.000</p>
+
+<div id="contador"></div>
+<p id="viendo"></p>
+
+<a class="boton" href="https://wa.me/543515101643">Acceder ahora</a>
+
+</section>
+
+<!-- LIBROS PREMIUM -->
+
+<section>
+
+<h2>LIBROS QUE CAMBIARÁN TU VIDA</h2>
+
+<div class="libros">
+
+<div class="libro">
+
+<img src="https://covers.openlibrary.org/b/id/8231996-L.jpg">
+
+<p><b>Padre Rico Padre Pobre</b></p>
+
+<div class="badge">BEST SELLER</div>
+
+<p class="desc">Descubre la mentalidad financiera que usan los ricos.</p>
+
+<div class="estrellas">★★★★★ 4.9</div>
+
+<p class="precio-viejo">$26.700</p>
+<p class="precio-nuevo">$4.500</p>
+
+</div>
+
+<div class="libro">
+
+<img src="https://covers.openlibrary.org/b/id/11153231-L.jpg">
+
+<p><b>Hábitos Atómicos</b></p>
+
+<div class="badge">BEST SELLER</div>
+
+<p class="desc">Pequeños cambios que pueden transformar toda tu vida.</p>
+
+<div class="estrellas">★★★★★ 4.9</div>
+
+<p class="precio-viejo">$26.700</p>
+<p class="precio-nuevo">$4.500</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section>
+
+<h2>PREGUNTAS FRECUENTES</h2>
+
+<div class="faq">
+
+<h3>¿Es seguro comprar?</h3>
+<p>Sí, las compras se realizan mediante contacto directo y entrega inmediata.</p>
+
+<h3>¿Cuánto tarda la entrega?</h3>
+<p>El acceso se entrega el mismo día.</p>
+
+<h3>¿Por qué es tan barato?</h3>
+<p>Porque es contenido digital sin intermediarios.</p>
+
+</div>
+
+</section>
 
 <script>
 
@@ -214,83 +389,39 @@ abierto=false;
 
 }
 
-/* ABRIR CATALOGO */
+/* CONTADOR */
 
-async function abrirCatalogo(nombre){
+let tiempo=7200;
 
-const contenedor=document.getElementById("catalogo");
+function actualizar(){
 
-contenedor.innerHTML="<h2>"+nombre.replaceAll("_"," ")+"</h2>";
+let h=Math.floor(tiempo/3600);
+let m=Math.floor((tiempo%3600)/60);
+let s=tiempo%60;
 
-const respuesta=await fetch("categorias/"+nombre+".json");
+document.getElementById("contador").innerHTML=
+"Oferta termina en "+h+"h "+m+"m "+s+"s";
 
-const data=await respuesta.json();
-
-data.libros.forEach(libro=>{
-
-const div=document.createElement("div");
-
-div.className="libro";
-
-div.textContent=libro;
-
-contenedor.appendChild(div);
-
-});
+tiempo--;
 
 }
 
-/* BUSCADOR */
+setInterval(actualizar,1000);
 
-let libros=[];
+/* PERSONAS VIENDO */
 
-async function cargarLibros(){
+function viewers(){
 
-const categorias=[
-"psicologia",
-"desarrollo_personal",
-"exito_y_negocio",
-"marketing_y_multinivel",
-"redes_sociales",
-"lectura_super_rapida"
-];
+let personas=Math.floor(Math.random()*40)+20;
 
-for(let cat of categorias){
-
-let r=await fetch("categorias/"+cat+".json");
-let d=await r.json();
-
-libros=libros.concat(d.libros);
+document.getElementById("viendo").innerHTML=
+personas+" personas están viendo esta oferta";
 
 }
 
-}
+setInterval(viewers,4000);
 
-cargarLibros();
-
-document.getElementById("buscador").addEventListener("input",function(){
-
-let texto=this.value.toLowerCase();
-
-let resultados=libros.filter(l=>l.toLowerCase().includes(texto));
-
-const contenedor=document.getElementById("catalogo");
-
-contenedor.innerHTML="";
-
-resultados.slice(0,20).forEach(r=>{
-
-const div=document.createElement("div");
-
-div.className="libro";
-
-div.textContent=r;
-
-contenedor.appendChild(div);
-
-});
-
-});
+viewers();
 
 </script>
 
