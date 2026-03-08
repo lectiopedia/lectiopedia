@@ -1,327 +1,299 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <meta charset="UTF-8">
-<title>LECTIO - Biblioteca Digital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>LECTIO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
 body{
-margin:0;
 background:black;
-color:white;
-font-family:'Inter',sans-serif;
-}
-
-/* HEADER */
-
-header{
-text-align:center;
-padding:80px 20px;
-}
-
-/* TITULO LECTIO */
-
-.logo{
-font-family:'Cinzel',serif;
-font-size:70px;
 color:#d4af37;
-letter-spacing:8px;
-animation:brillo 3s infinite;
+font-family:'Cinzel', serif;
+margin:0;
+overflow-x:hidden;
 }
 
-@keyframes brillo{
+/* MENU */
 
-0%{text-shadow:0 0 10px #d4af37;}
-
-50%{text-shadow:0 0 40px #ffd700;}
-
-100%{text-shadow:0 0 10px #d4af37;}
-
+.menu{
+position:fixed;
+left:20px;
+top:20px;
+font-size:35px;
+cursor:pointer;
+color:#d4af37;
+z-index:1000;
 }
 
-.subtitulo{
-margin-top:10px;
-opacity:0.7;
+/* TITULO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.title span{
+opacity:0;
+display:inline-block;
+font-size:80px;
+letter-spacing:10px;
+animation:appear 1s forwards;
+}
+
+.title span:nth-child(1){animation-delay:0.2s}
+.title span:nth-child(2){animation-delay:0.4s}
+.title span:nth-child(3){animation-delay:0.6s}
+.title span:nth-child(4){animation-delay:0.8s}
+.title span:nth-child(5){animation-delay:1s}
+.title span:nth-child(6){animation-delay:1.2s}
+
+@keyframes appear{
+from{opacity:0; transform:translateY(50px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+/* LIBROS FLOTANDO */
+
+.book{
+position:fixed;
+color:#d4af37;
+opacity:0.15;
+font-size:30px;
+animation:float 20s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) rotate(0)}
+100%{transform:translateY(-100vh) rotate(360deg)}
+}
+
+/* REDES */
+
+.redes{
+margin-top:30px;
+}
+
+.redes a{
+margin:10px;
+color:#d4af37;
+font-size:20px;
+text-decoration:none;
+border:1px solid #d4af37;
+padding:10px 20px;
 }
 
 /* SECCIONES */
 
 section{
-padding:60px 40px;
-max-width:1200px;
-margin:auto;
+padding:100px 20px;
+text-align:center;
 }
 
-h2{
-font-family:'Cinzel',serif;
-color:#d4af37;
+/* OFERTA */
+
+.oferta{
+font-size:30px;
 }
 
-/* CATALOGOS */
-<div id="catalogo"></div>
-.catalogos{
-
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-gap:30px;
-
+.precio-viejo{
+text-decoration:line-through;
+color:red;
+font-size:25px;
 }
 
-.catalogo{
-
-background:#111;
-border-radius:10px;
-overflow:hidden;
-cursor:pointer;
-transition:0.4s;
-
+.precio-nuevo{
+font-size:50px;
+color:#ffd700;
 }
 
-.catalogo:hover{
-
-transform:scale(1.05);
-
+.contador{
+font-size:35px;
+margin-top:20px;
 }
 
-.catalogo img{
+/* BOTONES */
 
-width:100%;
-height:160px;
-object-fit:cover;
-
-}
-
-.catalogo h3{
-
-padding:15px;
-font-family:'Cinzel',serif;
-
-}
-
-/* LIBROS */
-
-#libros{
-
-margin-top:40px;
-
-}
-
-.libro{
-
-padding:10px;
-border-bottom:1px solid #333;
-
+.btn{
+background:#d4af37;
+color:black;
+padding:15px 30px;
+margin-top:20px;
+display:inline-block;
+text-decoration:none;
+font-weight:bold;
 }
 
 /* FAQ */
 
 .faq{
-
-margin-top:40px;
-
+max-width:800px;
+margin:auto;
+text-align:left;
 }
 
-.pregunta{
-
-margin-bottom:20px;
-
-}
-
-.pregunta h4{
-
-color:#d4af37;
-
-}
-
-/* FOOTER */
-
-footer{
-
-text-align:center;
-padding:40px;
-opacity:0.6;
-
+.faq h3{
+margin-top:30px;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>
+<div class="menu">☰</div>
 
-<div class="logo">LECTIO</div>
+<!-- LIBROS FLOTANDO -->
 
-<p class="subtitulo">Biblioteca Digital de Conocimiento</p>
+<div class="book" style="left:10%">📚</div>
+<div class="book" style="left:30%">📚</div>
+<div class="book" style="left:50%">📚</div>
+<div class="book" style="left:70%">📚</div>
+<div class="book" style="left:90%">📚</div>
 
-</header>
+<!-- HERO -->
 
+<div class="hero">
+
+<h1 class="title">
+<span>L</span>
+<span>E</span>
+<span>C</span>
+<span>T</span>
+<span>I</span>
+<span>O</span>
+</h1>
+
+<p>Biblioteca digital exclusiva</p>
+
+<div class="redes">
+
+<a href="https://instagram.com/lectio.pedia">Instagram</a>
+
+<a href="https://facebook.com">Facebook</a>
+
+<a href="https://wa.me/543515101643">WhatsApp</a>
+
+</div>
+
+</div>
+
+<!-- OFERTA -->
 
 <section>
 
-<h2>Catálogos</h2>
+<h2>ACCESO EXCLUSIVO A TODA LA BIBLIOTECA LECTIO</h2>
 
-<div class="catalogos" id="catalogos"></div>
+<p>Más de <b>25.000 libros</b></p>
+<p>Más de <b>13.000 audiolibros</b></p>
 
-<div id="libros"></div>
+<p class="precio-viejo">Precio anterior $120.000 ARS</p>
+
+<p class="precio-nuevo">$25.000 ARS</p>
+
+<div class="contador" id="countdown"></div>
+
+<p id="viendo"></p>
+
+<a class="btn" href="https://wa.me/543515101643">OBTENER ACCESO</a>
 
 </section>
 
+<!-- LIBROS INDIVIDUALES -->
 
 <section>
 
-<h2>Preguntas Frecuentes</h2>
+<h2>LIBROS INDIVIDUALES</h2>
+
+<p class="precio-viejo">$20.000</p>
+
+<p class="precio-nuevo">$3.900</p>
+
+<p>Incluye de regalo:</p>
+
+<p>2 Audiolibros + Película "El Lobo de Wall Street"</p>
+
+<a class="btn" href="https://wa.me/543515101643">COMPRAR LIBRO</a>
+
+</section>
+
+<!-- FAQ -->
+
+<section>
+
+<h2>PREGUNTAS FRECUENTES</h2>
 
 <div class="faq">
 
-<div class="pregunta">
+<h3>¿Es seguro comprar?</h3>
 
-<h4>¿Qué es LECTIO?</h4>
+<p>Sí. Todas las compras se realizan mediante contacto directo por WhatsApp donde recibirás atención personalizada.</p>
 
-<p>LECTIO es una biblioteca digital que reúne cientos de libros de conocimiento, desarrollo personal, ciencia y literatura.</p>
+<h3>¿Cuánto tarda la entrega?</h3>
 
-</div>
+<p>El acceso se entrega el mismo día una vez confirmado el pago.</p>
 
-<div class="pregunta">
+<h3>¿Cómo se compra?</h3>
 
-<h4>¿Cómo funciona el catálogo?</h4>
+<p>Simplemente haz clic en el botón de compra y te guiaremos paso a paso.</p>
 
-<p>Selecciona una categoría para ver todos los libros disponibles dentro de ese catálogo.</p>
+<h3>¿Por qué los libros son tan baratos?</h3>
 
-</div>
-
-<div class="pregunta">
-
-<h4>¿Cómo acceder a los libros?</h4>
-
-<p>Una vez dentro del catálogo podrás explorar todos los títulos disponibles.</p>
-
-</div>
+<p>Porque ofrecemos acceso digital directo sin intermediarios ni costos editoriales.</p>
 
 </div>
 
 </section>
 
-
-<footer>
-
-LECTIO © Biblioteca Digital
-
-</footer>
-
-
 <script>
 
-/* CATALOGOS */
+/* CONTADOR OFERTA */
 
-const catalogos=[
+let tiempo = 7200;
 
-{
-nombre:"Habitos y Productividad",
-archivo:"habitos_productividad",
-imagen:"https://images.unsplash.com/photo-1455390582262-044cdead277a"
-},
+function actualizarContador(){
 
-{
-nombre:"Filosofía",
-archivo:"filosofia",
-imagen:"https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
-},
+let horas = Math.floor(tiempo/3600);
+let minutos = Math.floor((tiempo%3600)/60);
+let segundos = tiempo%60;
 
-{
-nombre:"Trading y Finanzas",
-archivo:"trading_forex_mercado",
-imagen:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
-},
+document.getElementById("countdown").innerHTML =
+horas+"h "+minutos+"m "+segundos+"s";
 
-{
-nombre:"Inteligencia Emocional",
-archivo:"inteligencia_emocional",
-imagen:"https://images.unsplash.com/photo-1506126613408-eca07ce68773"
-},
+tiempo--;
 
-{
-nombre:"Ciencia",
-archivo:"ciencia",
-imagen:"https://images.unsplash.com/photo-1532094349884-543bc11b234d"
-},
-
-{
-nombre:"Clásicos",
-archivo:"clasicos",
-imagen:"https://images.unsplash.com/photo-1528207776546-365bb710ee93"
-},
-
-{
-nombre:"Fotografía",
-archivo:"conviertete_en_el_mejor_fotografo",
-imagen:"https://images.unsplash.com/photo-1502920917128-1aa500764b6c"
-},
-
-{
-nombre:"Recetas",
-archivo:"recetas_veganas",
-imagen:"https://images.unsplash.com/photo-1540189549336-e6e99c3679fe"
-}
-
-]
-
-
-const cont=document.getElementById("catalogos")
-
-catalogos.forEach(cat=>{
-
-let div=document.createElement("div")
-
-div.className="catalogo"
-
-div.innerHTML=`
-
-<img src="${cat.imagen}">
-
-<h3>${cat.nombre}</h3>
-
-`
-
-div.onclick=()=>cargar(cat.archivo)
-
-cont.appendChild(div)
-
-})
-
-
-async function cargar(nombre){
-
-let res=await fetch("categorias/"+nombre+".json")
-
-let data=await res.json()
-
-let cont=document.getElementById("libros")
-
-cont.innerHTML="<h2>"+data.categoria+"</h2>"
-
-data.libros.forEach(libro=>{
-
-let div=document.createElement("div")
-
-div.className="libro"
-
-div.textContent=libro
-
-cont.appendChild(div)
-
-})
+if(tiempo<0) tiempo=7200;
 
 }
+
+setInterval(actualizarContador,1000);
+
+
+/* PERSONAS VIENDO */
+
+function viewers(){
+
+let personas = Math.floor(Math.random()*30)+15;
+
+document.getElementById("viendo").innerHTML =
+personas+" personas están viendo esta oferta ahora";
+
+}
+
+setInterval(viewers,3000);
+
+viewers();
 
 </script>
 
 </body>
-
 </html>
