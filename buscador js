@@ -1,0 +1,25 @@
+document.addEventListener("DOMContentLoaded", function(){
+
+const buscador = document.getElementById("buscador");
+
+buscador.addEventListener("keyup", function(){
+
+let texto = buscador.value.toLowerCase();
+
+let libros = document.querySelectorAll(".libro");
+
+libros.forEach(libro => {
+
+let contenido = libro.textContent.toLowerCase();
+
+if(contenido.includes(texto)){
+libro.style.display = "block";
+}else{
+libro.style.display = "none";
+}
+
+});
+
+});
+
+});
