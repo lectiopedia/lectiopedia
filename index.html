@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
@@ -23,9 +24,9 @@ overflow-x:hidden;
 
 .fondo-libros img{
 position:fixed;
-width:40px;
-opacity:0.07;
-animation:flotar 30s linear infinite;
+width:50px;
+opacity:0.06;
+animation:flotar 35s linear infinite;
 }
 
 @keyframes flotar{
@@ -37,7 +38,7 @@ animation:flotar 30s linear infinite;
 
 .redes{
 text-align:center;
-padding:10px;
+padding:12px;
 border-bottom:1px solid #222;
 }
 
@@ -55,11 +56,12 @@ top:80px;
 left:20px;
 font-size:35px;
 cursor:pointer;
+z-index:1000;
 }
 
 .menu-lateral{
 position:fixed;
-left:-300px;
+left:-320px;
 top:0;
 width:260px;
 height:100%;
@@ -67,12 +69,14 @@ background:#0a0a0a;
 padding:30px;
 overflow:auto;
 transition:.4s;
+z-index:999;
 }
 
 .menu-lateral a{
 display:block;
 margin:10px 0;
-cursor:pointer;
+color:#d4af37;
+text-decoration:none;
 }
 
 /* CARRITO */
@@ -81,7 +85,7 @@ cursor:pointer;
 position:fixed;
 right:30px;
 top:80px;
-font-size:28px;
+font-size:30px;
 cursor:pointer;
 }
 
@@ -120,8 +124,6 @@ animation:aparecer 1s forwards;
 @keyframes aparecer{
 to{opacity:1; transform:translateY(0)}
 }
-
-/* SUBTITULO */
 
 .subtitulo{
 max-width:800px;
@@ -196,11 +198,17 @@ font-family:'Cinzel';
 
 <body>
 
+<!-- LIBROS DE FONDO -->
+
 <div class="fondo-libros">
+
 <img src="imagenes/habitos_atomicos.jpg" style="left:10%">
-<img src="imagenes/no_me_puedes_lastimar.jpg" style="left:50%">
+<img src="imagenes/no_me_puedes_lastimar.webp" style="left:50%">
 <img src="imagenes/padre_rico_padre_pobre.jpg" style="left:80%">
+
 </div>
+
+<!-- REDES -->
 
 <div class="redes">
 
@@ -210,21 +218,34 @@ font-family:'Cinzel';
 
 </div>
 
-<div class="menu" onclick="menu()">☰</div>
+<!-- MENU -->
 
-<div class="carrito-icono" onclick="carrito()">🛒</div>
+<div class="menu" onclick="toggleMenu()">☰</div>
 
-<div id="menu" class="menu-lateral">
+<div id="menuLateral" class="menu-lateral">
 
-<h3>Catálogos</h3>
+<h2>Catálogos</h2>
 
 <a>Psicología</a>
-<a>Desarrollo personal</a>
-<a>Éxito y negocio</a>
+<a>Desarrollo Personal</a>
+<a>Éxito y Negocio</a>
 <a>Marketing</a>
 <a>Literatura</a>
+<a>Poesías</a>
+<a>Lectura Rápida</a>
+<a>Domina el Inglés</a>
+<a>Nutrición y Deporte</a>
+<a>Terror y Suspenso</a>
+<a>Seducción</a>
+<a>TDAH</a>
+<a>Terapia de Pareja</a>
+<a>Yoga</a>
 
 </div>
+
+<!-- CARRITO -->
+
+<div class="carrito-icono" onclick="toggleCarrito()">🛒</div>
 
 <div id="carritoPanel" class="carrito-panel">
 
@@ -235,6 +256,8 @@ font-family:'Cinzel';
 <p>Total $<span id="total">0</span></p>
 
 </div>
+
+<!-- HERO -->
 
 <div class="hero">
 
@@ -263,6 +286,8 @@ Bienvenido a LECTIO, una biblioteca digital exclusiva donde las ideas que transf
 
 </div>
 
+<!-- BIBLIOTECA -->
+
 <section>
 
 <h2>Acceso completo a la biblioteca</h2>
@@ -275,6 +300,8 @@ Bienvenido a LECTIO, una biblioteca digital exclusiva donde las ideas que transf
 
 </section>
 
+<!-- LIBRO INDIVIDUAL -->
+
 <section>
 
 <h2>Libro individual</h2>
@@ -284,6 +311,8 @@ Bienvenido a LECTIO, una biblioteca digital exclusiva donde las ideas que transf
 <p class="precio-nuevo">$3900</p>
 
 </section>
+
+<!-- LIBROS QUE CAMBIAN TU VIDA -->
 
 <section>
 
@@ -305,7 +334,7 @@ Bienvenido a LECTIO, una biblioteca digital exclusiva donde las ideas que transf
 
 <div class="libro">
 
-<img src="imagenes/no_me_puedes_lastimar.jpg">
+<img src="imagenes/no_me_puedes_lastimar.webp">
 
 <h3>No Me Puedes Lastimar</h3>
 
@@ -331,6 +360,8 @@ Bienvenido a LECTIO, una biblioteca digital exclusiva donde las ideas que transf
 
 </section>
 
+<!-- INVERTIR EN TU MENTE -->
+
 <section>
 
 <h2>Invertí en tu mente</h2>
@@ -348,6 +379,8 @@ Estás invirtiendo en tu mente.
 
 </section>
 
+<!-- FAQ -->
+
 <section>
 
 <h2>Preguntas frecuentes</h2>
@@ -362,37 +395,35 @@ Estás invirtiendo en tu mente.
 
 <script>
 
-let abierto=false
+/* MENU */
 
-function menu(){
+function toggleMenu(){
 
-let m=document.getElementById("menu")
+let menu=document.getElementById("menuLateral")
 
-if(!abierto){
-m.style.left="0"
-abierto=true
+if(menu.style.left=="0px"){
+menu.style.left="-320px"
 }else{
-m.style.left="-300px"
-abierto=false
+menu.style.left="0px"
 }
 
 }
 
-let carritoAbierto=false
+/* CARRITO */
 
-function carrito(){
+function toggleCarrito(){
 
-let c=document.getElementById("carritoPanel")
+let carrito=document.getElementById("carritoPanel")
 
-if(!carritoAbierto){
-c.style.right="0"
-carritoAbierto=true
+if(carrito.style.right=="0px"){
+carrito.style.right="-320px"
 }else{
-c.style.right="-320px"
-carritoAbierto=false
+carrito.style.right="0px"
 }
 
 }
+
+/* CARRITO LOGICA */
 
 let lista=[]
 
