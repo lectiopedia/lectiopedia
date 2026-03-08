@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <meta charset="UTF-8">
@@ -18,107 +17,26 @@ color:#d4af37;
 font-family:'Cinzel',serif;
 margin:0;
 overflow-x:hidden;
-}
-
-/* LIBROS FLOTANDO */
-
-.fondo-libros img{
-position:fixed;
-width:50px;
-opacity:0.06;
-animation:flotar 35s linear infinite;
-}
-
-@keyframes flotar{
-0%{transform:translateY(100vh)}
-100%{transform:translateY(-200px)}
-}
-
-/* REDES */
-
-.redes{
 text-align:center;
-padding:12px;
-border-bottom:1px solid #222;
 }
 
-.redes a{
-color:#d4af37;
-margin:0 15px;
-text-decoration:none;
+/* LOGO */
+
+.logo{
+font-size:60px;
+animation:templo 3s infinite alternate;
 }
 
-/* MENU */
-
-.menu{
-position:fixed;
-top:80px;
-left:20px;
-font-size:35px;
-cursor:pointer;
-z-index:1000;
+@keyframes templo{
+from{transform:translateY(0)}
+to{transform:translateY(-5px)}
 }
 
-.menu-lateral{
-position:fixed;
-left:-320px;
-top:0;
-width:260px;
-height:100%;
-background:#0a0a0a;
-padding:30px;
-overflow:auto;
-transition:.4s;
-z-index:999;
-}
-
-.menu-lateral.abrir{
-left:0;
-}
-
-.menu-lateral a{
-display:block;
-margin:10px 0;
-color:#d4af37;
-text-decoration:none;
-cursor:pointer;
-}
-
-/* CARRITO */
-
-.carrito-icono{
-position:fixed;
-right:30px;
-top:80px;
-font-size:30px;
-cursor:pointer;
-}
-
-.carrito-panel{
-position:fixed;
-right:-320px;
-top:0;
-width:260px;
-height:100%;
-background:#0a0a0a;
-padding:20px;
-transition:.4s;
-}
-
-.carrito-panel.abrir{
-right:0;
-}
-
-/* HERO */
-
-.hero{
-text-align:center;
-padding:120px 20px;
-}
+/* TITULO */
 
 .title span{
 opacity:0;
-font-size:95px;
+font-size:80px;
 display:inline-block;
 animation:aparecer 1s forwards;
 }
@@ -131,24 +49,21 @@ animation:aparecer 1s forwards;
 .title span:nth-child(6){animation-delay:1.2s}
 
 @keyframes aparecer{
-to{opacity:1; transform:translateY(0)}
+to{opacity:1}
 }
 
+/* SUBTITULO */
+
 .subtitulo{
-max-width:800px;
+max-width:700px;
 margin:auto;
-font-size:18px;
 margin-top:20px;
 }
 
 /* BUSCADOR */
 
-.busqueda{
-margin-top:40px;
-}
-
 .busqueda input{
-padding:14px;
+padding:12px;
 width:350px;
 border:2px solid #d4af37;
 background:black;
@@ -156,11 +71,67 @@ color:#d4af37;
 font-family:'Cinzel';
 }
 
+/* MENU */
+
+.menu{
+position:fixed;
+left:20px;
+top:20px;
+font-size:30px;
+cursor:pointer;
+}
+
+.menu-lateral{
+position:fixed;
+left:-300px;
+top:0;
+width:250px;
+height:100%;
+background:#0a0a0a;
+padding:30px;
+overflow:auto;
+transition:0.4s;
+}
+
+.menu-lateral.abrir{
+left:0;
+}
+
+.menu-lateral a{
+display:block;
+margin:10px 0;
+cursor:pointer;
+}
+
+/* CARRITO */
+
+.carrito-icono{
+position:fixed;
+right:20px;
+top:20px;
+font-size:30px;
+cursor:pointer;
+}
+
+.carrito{
+position:fixed;
+right:-320px;
+top:0;
+width:260px;
+height:100%;
+background:#0a0a0a;
+padding:20px;
+transition:0.4s;
+}
+
+.carrito.abrir{
+right:0;
+}
+
 /* SECCIONES */
 
 section{
 padding:80px 20px;
-text-align:center;
 }
 
 .precio-viejo{
@@ -175,47 +146,25 @@ color:#ffd700;
 
 /* LIBROS */
 
-.libros{
-display:flex;
-gap:40px;
-justify-content:center;
-flex-wrap:wrap;
+#catalogoLibros{
+max-width:900px;
+margin:auto;
 }
 
 .libro{
 background:#0a0a0a;
-padding:20px;
-width:240px;
-border-radius:10px;
-}
-
-.libro img{
-width:100%;
-}
-
-.boton{
-background:#d4af37;
-border:none;
 padding:10px;
-cursor:pointer;
-font-family:'Cinzel';
-}
-
-/* CATALOGO */
-
-#catalogoLibros{
-max-width:900px;
-margin:auto;
-padding:40px;
-}
-
-.libro-item{
-background:#0a0a0a;
-padding:15px;
-margin:10px 0;
-border-left:4px solid #d4af37;
+margin:10px;
 display:flex;
 justify-content:space-between;
+}
+
+button{
+background:#d4af37;
+border:none;
+padding:6px 10px;
+cursor:pointer;
+font-family:'Cinzel';
 }
 
 </style>
@@ -224,33 +173,15 @@ justify-content:space-between;
 
 <body>
 
-<!-- FONDO -->
-
-<div class="fondo-libros">
-
-<img src="imagenes/habitos_atomicos.jpg" style="left:10%">
-<img src="imagenes/no_me_puedes_lastimar.webp" style="left:50%">
-<img src="imagenes/padre_rico_padre_pobre.jpg" style="left:80%">
-
-</div>
-
-<!-- REDES -->
-
-<div class="redes">
-
-<a href="#">Instagram lectio.pedia</a>
-<a href="#">Facebook lectio.pedia</a>
-<a href="https://wa.me/543515101643">WhatsApp</a>
-
-</div>
-
-<!-- MENU -->
-
 <div class="menu" onclick="toggleMenu()">☰</div>
+
+<div class="carrito-icono" onclick="toggleCarrito()">🛒</div>
+
+<!-- MENU LATERAL -->
 
 <div id="menuLateral" class="menu-lateral">
 
-<h2>Catálogos</h2>
+<h3>Catálogos</h3>
 
 <a onclick="abrirCatalogo('psicologia')">Psicología</a>
 <a onclick="abrirCatalogo('desarrollo_personal')">Desarrollo Personal</a>
@@ -258,34 +189,41 @@ justify-content:space-between;
 <a onclick="abrirCatalogo('marketing_y_multinivel')">Marketing</a>
 <a onclick="abrirCatalogo('literatura')">Literatura</a>
 <a onclick="abrirCatalogo('poesias')">Poesías</a>
-<a onclick="abrirCatalogo('lectura_super_rapida')">Lectura Rápida</a>
+<a onclick="abrirCatalogo('lectura_super_rapida')">Lectura Súper Rápida</a>
 <a onclick="abrirCatalogo('domina_el_ingles')">Domina el Inglés</a>
-<a onclick="abrirCatalogo('nutricion_y_deporte')">Nutrición</a>
-<a onclick="abrirCatalogo('terror_suspenso_y_mas')">Terror</a>
+<a onclick="abrirCatalogo('nutricion_y_deporte')">Nutrición y Deporte</a>
+<a onclick="abrirCatalogo('terror_suspenso_y_mas')">Terror y Suspenso</a>
 <a onclick="abrirCatalogo('seduccion')">Seducción</a>
 <a onclick="abrirCatalogo('tdah')">TDAH</a>
-<a onclick="abrirCatalogo('terapia_de_pareja')">Terapia</a>
+<a onclick="abrirCatalogo('terapia_de_pareja')">Terapia de Pareja</a>
 <a onclick="abrirCatalogo('yooga')">Yoga</a>
+<a onclick="abrirCatalogo('historia')">Historia</a>
+<a onclick="abrirCatalogo('historietas')">Historietas</a>
+<a onclick="abrirCatalogo('recetas_y_dietas')">Recetas y Dietas</a>
+<a onclick="abrirCatalogo('primeros_auxilios')">Primeros Auxilios</a>
+<a onclick="abrirCatalogo('metabolismo')">Metabolismo</a>
+<a onclick="abrirCatalogo('jacobo_grinberg')">Jacobo Grinberg</a>
+<a onclick="abrirCatalogo('redes_sociales')">Redes Sociales</a>
 
 </div>
 
 <!-- CARRITO -->
 
-<div class="carrito-icono" onclick="toggleCarrito()">🛒</div>
-
-<div id="carritoPanel" class="carrito-panel">
+<div id="carrito" class="carrito">
 
 <h3>Carrito</h3>
 
 <div id="items"></div>
 
-<p>Total $<span id="total">0</span></p>
+<p>Total: $<span id="total">0</span></p>
 
 </div>
 
 <!-- HERO -->
 
-<div class="hero">
+<div style="padding:120px 20px">
+
+<div class="logo">🏛</div>
 
 <h1 class="title">
 
@@ -300,49 +238,105 @@ justify-content:space-between;
 
 <p class="subtitulo">
 
-Bienvenido a LECTIO, una biblioteca digital exclusiva donde las ideas que transforman vidas se encuentran con lectores que buscan dominar su mente y expandir su conocimiento.
+Bienvenido a LECTIO, una biblioteca digital donde el conocimiento transforma tu mente.
 
 </p>
 
 <div class="busqueda">
 
-<input placeholder="Buscar libros...">
+<input placeholder="Buscar libros">
 
 </div>
 
 </div>
 
-<!-- CONTENEDOR DE LIBROS DEL CATALOGO -->
+<!-- OFERTAS -->
+
+<section>
+
+<h2>Biblioteca completa</h2>
+
+<p class="precio-viejo">$120000</p>
+<p class="precio-nuevo">$25000</p>
+
+</section>
+
+<section>
+
+<h2>Libro individual</h2>
+
+<p class="precio-viejo">$20000</p>
+<p class="precio-nuevo">$3900</p>
+
+</section>
+
+<section>
+
+<h2>Libros más vendidos</h2>
+
+<p class="precio-viejo">$20000</p>
+<p class="precio-nuevo">$4500</p>
+
+</section>
+
+<!-- CATALOGO -->
 
 <div id="catalogoLibros"></div>
 
-<script>
+<!-- INVERTIR -->
 
-/* MENU */
+<section>
+
+<h2>¿Por qué invertir en libros?</h2>
+
+<p>
+
+El conocimiento es el activo más poderoso que existe.  
+Cada libro que lees mejora tu pensamiento, tu inteligencia y tu capacidad para tomar decisiones.
+
+Invertir en libros no es gastar dinero.
+
+Es invertir en tu mente.
+
+</p>
+
+</section>
+
+<!-- FAQ -->
+
+<section>
+
+<h2>Preguntas frecuentes</h2>
+
+<p><b>¿Es seguro comprar?</b></p>
+<p>Si. El acceso se entrega inmediatamente.</p>
+
+<p><b>¿Por qué es tan barato?</b></p>
+<p>Porque es contenido digital.</p>
+
+</section>
+
+<script>
 
 function toggleMenu(){
 document.getElementById("menuLateral").classList.toggle("abrir")
 }
 
-/* CARRITO */
-
 function toggleCarrito(){
-document.getElementById("carritoPanel").classList.toggle("abrir")
+document.getElementById("carrito").classList.toggle("abrir")
 }
 
-/* CARRITO LOGICA */
-
-let lista=[]
+let carrito=[]
 
 function agregar(libro){
 
-lista.push(libro)
+carrito.push(libro)
 
 let items=document.getElementById("items")
 
 items.innerHTML=""
 
-lista.forEach(l=>{
+carrito.forEach(l=>{
 
 let p=document.createElement("p")
 
@@ -352,7 +346,7 @@ items.appendChild(p)
 
 })
 
-document.getElementById("total").textContent=lista.length*4500
+document.getElementById("total").textContent=carrito.length*3900
 
 }
 
@@ -360,30 +354,28 @@ document.getElementById("total").textContent=lista.length*4500
 
 async function abrirCatalogo(nombre){
 
-const contenedor = document.getElementById("catalogoLibros")
+const contenedor=document.getElementById("catalogoLibros")
 
 contenedor.innerHTML="<h2>Cargando catálogo...</h2>"
 
 try{
 
-const respuesta = await fetch("categorias/"+nombre+".json")
+const r=await fetch("categorias/"+nombre+".json")
 
-const data = await respuesta.json()
+const data=await r.json()
 
 contenedor.innerHTML="<h2>"+nombre.replaceAll("_"," ")+"</h2>"
 
-data.libros.forEach(libro => {
+data.libros.forEach(libro=>{
 
-const item=document.createElement("div")
+const div=document.createElement("div")
 
-item.className="libro-item"
+div.className="libro"
 
-item.innerHTML=`
-<p>${libro}</p>
-<button onclick="agregar('${libro}')">Agregar</button>
-`
+div.innerHTML=`<span>${libro}</span>
+<button onclick="agregar('${libro}')">Agregar</button>`
 
-contenedor.appendChild(item)
+contenedor.appendChild(div)
 
 })
 
