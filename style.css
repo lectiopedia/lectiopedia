@@ -133,3 +133,31 @@ background:#d4af37;
 .libro{
 min-width:150px;
 }
+#menuCategorias{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
+margin-top:40px;
+}
+
+#menuCategorias button{
+background:transparent;
+border:1px solid #d4af37;
+color:#d4af37;
+padding:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+#menuCategorias button:hover{
+background:#d4af37;
+color:black;
+}
+#buscador{
+width:400px;
+padding:12px;
+font-size:16px;
+margin-top:20px;
+border-radius:6px;
+border:none;
+}
