@@ -315,3 +315,33 @@ transform:scale(1.05);
 }
 
 }
+.redesLectio{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+.btnRed{
+padding:10px 18px;
+border:1px solid #d4af37;
+color:#d4af37;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btnRed:hover{
+background:#d4af37;
+color:black;
+}
+
+.whatsapp{
+border-color:#25D366;
+color:#25D366;
+}
+
+.whatsapp:hover{
+background:#25D366;
+color:black;
+}
