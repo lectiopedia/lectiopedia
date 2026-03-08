@@ -1,21 +1,21 @@
-const catalogo = {
+async function cargarCatalogo(nombreCategoria){
 
-"Ventas y Marketing":[
-"Vendes o Vendes",
-"El arte de cerrar la venta",
-"Ventas 101",
-"Las 22 leyes inmutables del marketing",
-"El vendedor millonario"
-],
+const respuesta = await fetch(`categorias/${nombreCategoria}.json`);
+const data = await respuesta.json();
 
-"Psicologia":[
-"Psicologia del dinero",
-"Pensar rapido pensar despacio"
-],
+const contenedor = document.getElementById("catalogo");
+contenedor.innerHTML = "";
 
-"Negocios":[
-"Padre rico padre pobre",
-"La semana laboral de 4 horas"
-]
+data.libros.forEach(libro => {
 
-};
+const item = document.createElement("div");
+
+item.className = "libro";
+
+item.textContent = libro;
+
+contenedor.appendChild(item);
+
+});
+
+}
