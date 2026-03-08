@@ -116,3 +116,24 @@ contenedor.appendChild(crearLibro(libro));
 });
 
 }
+cargarFila("librosPopulares", [
+"Padre rico padre pobre",
+"Los secretos de la mente millonaria",
+"Inteligencia emocional",
+"Piense y hágase rico",
+"El poder del ahora"
+]);
+
+cargarFila("recomendados", [
+"Cómo ganar amigos e influir sobre las personas",
+"Tus zonas erróneas",
+"El arte de la guerra",
+"La semana laboral de 4 horas"
+]);
+
+cargarFila("masVendidos", [
+"Hábitos atómicos",
+"El monje que vendió su Ferrari",
+"El código del dinero",
+"Despierta tu héroe interior"
+]);
