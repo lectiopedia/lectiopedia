@@ -21,7 +21,7 @@ const item = document.createElement("div");
 item.className = "libro";
 
 item.innerHTML = `
-<img src="imagenes/libro.png" class="portadaLibro">
+<img src="https://source.unsplash.com/200x300/?book" class="portadaLibro">
 <p class="tituloLibro">${libro}</p>
 <button class="botonAgregar">Agregar</button>
 `;
