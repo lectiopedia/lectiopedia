@@ -12,23 +12,35 @@
 
 <style>
 
-/* BASE */
-
 body{
 background:black;
 color:#d4af37;
 font-family:'Cinzel',serif;
 margin:0;
-overflow-x:hidden;
+}
+
+/* REDES */
+
+.redes{
+background:#000;
+padding:10px;
+text-align:center;
+border-bottom:1px solid #222;
+}
+
+.redes a{
+color:#d4af37;
+margin:0 15px;
+text-decoration:none;
 }
 
 /* MENU */
 
 .menu{
 position:fixed;
-top:25px;
+top:60px;
 left:25px;
-font-size:38px;
+font-size:36px;
 color:#d4af37;
 cursor:pointer;
 z-index:1000;
@@ -38,49 +50,26 @@ z-index:1000;
 
 .menu-lateral{
 position:fixed;
-left:-320px;
+left:-280px;
 top:0;
-width:300px;
+width:250px;
 height:100%;
 background:#0a0a0a;
-padding:40px;
-transition:0.4s;
-z-index:999;
-}
-
-.menu-lateral h2{
-margin-bottom:30px;
-}
-
-.menu-lateral a{
-display:block;
-color:#d4af37;
-text-decoration:none;
-margin:14px 0;
-font-size:18px;
-}
-
-.menu-lateral a:hover{
-color:#ffd700;
+padding:30px;
+transition:.4s;
+overflow:auto;
 }
 
 /* HERO */
 
 .hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 text-align:center;
-padding:20px;
+padding:80px 20px;
 }
-
-/* TITULO */
 
 .title span{
 opacity:0;
-font-size:100px;
+font-size:90px;
 animation:aparecer 1s forwards;
 }
 
@@ -96,73 +85,30 @@ to{opacity:1}
 }
 
 .subtitulo{
-max-width:750px;
-font-size:22px;
-margin-top:20px;
+max-width:700px;
+margin:auto;
+font-size:20px;
 color:#e6c86b;
 }
 
 /* BUSCADOR */
 
-.busqueda input{
-padding:15px;
-width:350px;
-font-size:18px;
-border:none;
+.busqueda{
 margin-top:30px;
 }
 
-/* LIBROS FLOTANDO */
-
-.book{
-position:fixed;
-font-size:28px;
-opacity:0.08;
-animation:flotar 20s linear infinite;
-}
-
-@keyframes flotar{
-0%{transform:translateY(100vh) rotate(0)}
-100%{transform:translateY(-100vh) rotate(360deg)}
-}
-
-/* SECCIONES */
-
-section{
-padding:80px 20px;
-text-align:center;
-}
-
-/* PRECIOS */
-
-.precio-viejo{
-text-decoration:line-through;
-color:red;
-}
-
-.precio-nuevo{
-font-size:48px;
-color:#ffd700;
-}
-
-/* BOTON */
-
-.boton{
-background:#d4af37;
-color:black;
-padding:15px 30px;
-text-decoration:none;
-display:inline-block;
-margin-top:20px;
-font-weight:bold;
+.busqueda input{
+padding:12px;
+width:350px;
+font-size:16px;
 }
 
 /* LIBROS PREMIUM */
 
 .libros{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:40px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
 max-width:1000px;
 margin:auto;
 padding:40px;
@@ -172,33 +118,48 @@ padding:40px;
 background:#0a0a0a;
 padding:20px;
 border-radius:10px;
-transition:0.3s;
-}
-
-.libro:hover{
-transform:scale(1.05);
+text-align:center;
 }
 
 .libro img{
-width:120px;
-border-radius:6px;
+width:150px;
 }
 
-.desc{
-font-size:14px;
-color:#e6c86b;
-}
+/* BOTON */
 
-.estrellas{
-color:#ffd700;
-font-size:14px;
-}
-
-.badge{
+.boton{
 background:#d4af37;
-color:black;
-padding:4px 8px;
-font-size:12px;
+border:none;
+padding:10px 20px;
+cursor:pointer;
+font-family:'Cinzel';
+}
+
+/* CARRITO */
+
+.carrito{
+position:fixed;
+right:20px;
+top:100px;
+width:230px;
+background:#0a0a0a;
+border:1px solid #d4af37;
+padding:15px;
+}
+
+.carrito h3{
+text-align:center;
+}
+
+/* SECCION INVERSION */
+
+.inversion{
+max-width:900px;
+margin:auto;
+padding:60px;
+text-align:center;
+font-size:20px;
+color:#e6c86b;
 }
 
 /* FAQ */
@@ -206,7 +167,7 @@ font-size:12px;
 .faq{
 max-width:800px;
 margin:auto;
-text-align:left;
+padding:60px;
 }
 
 </style>
@@ -215,41 +176,41 @@ text-align:left;
 
 <body>
 
-<!-- MENU -->
+<div class="redes">
+
+<a href="#">Instagram lectio.pedia</a>
+<a href="#">Facebook lectio.pedia</a>
+<a href="https://wa.me/543515101643">WhatsApp</a>
+
+</div>
 
 <div class="menu" onclick="abrirMenu()">☰</div>
 
 <div id="menuLateral" class="menu-lateral">
 
-<h2>CATÁLOGOS</h2>
+<h3>CATÁLOGOS</h3>
 
-<a>Psicología</a>
-<a>Desarrollo Personal</a>
-<a>Éxito y Negocios</a>
-<a>Marketing</a>
-<a>Redes Sociales</a>
-<a>Lectura Rápida</a>
-<a>Literatura</a>
-<a>Poesía</a>
-<a>Terror</a>
-<a>Historietas</a>
-<a>Recetas</a>
-<a>Nutrición</a>
-<a>Inglés</a>
-<a>TDAH</a>
-<a>Terapia de Pareja</a>
-<a>Seducción</a>
-<a>Yoga</a>
+<a onclick="abrirCatalogo('psicologia')">Psicología</a>
+<a onclick="abrirCatalogo('desarrollo_personal')">Desarrollo Personal</a>
+<a onclick="abrirCatalogo('exito_y_negocio')">Éxito y Negocios</a>
+<a onclick="abrirCatalogo('marketing_y_multinivel')">Marketing</a>
+<a onclick="abrirCatalogo('literatura')">Literatura</a>
+<a onclick="abrirCatalogo('poesias')">Poesía</a>
+<a onclick="abrirCatalogo('recetas_y_dietas')">Recetas</a>
 
 </div>
 
-<!-- LIBROS FLOTANDO -->
+<div class="carrito">
 
-<div class="book" style="left:10%">📚</div>
-<div class="book" style="left:40%">📚</div>
-<div class="book" style="left:70%">📚</div>
+<h3>Carrito</h3>
 
-<!-- HERO -->
+<div id="items"></div>
+
+<p>Total: $<span id="total">0</span></p>
+
+<a id="comprar" target="_blank">Comprar</a>
+
+</div>
 
 <div class="hero">
 
@@ -266,77 +227,63 @@ text-align:left;
 
 <p class="subtitulo">
 
-Bienvenido a <b>LECTIO</b>, una biblioteca digital exclusiva donde el conocimiento
-que transforma vidas está al alcance de quienes buscan crecer.
+Biblioteca digital exclusiva con miles de libros para transformar tu mente.
 
 </p>
 
 <div class="busqueda">
 
-<input placeholder="Buscar libros...">
+<input id="buscador" placeholder="Buscar libros">
 
 </div>
 
 </div>
 
-<!-- OFERTA -->
-
 <section>
 
-<h2>ACCESO TOTAL A LA BIBLIOTECA LECTIO</h2>
-
-<p>Más de <b>25.000 libros</b></p>
-<p>Más de <b>13.000 audiolibros</b></p>
-
-<p class="precio-viejo">$120.000</p>
-<p class="precio-nuevo">$25.000</p>
-
-<div id="contador"></div>
-<p id="viendo"></p>
-
-<a class="boton" href="https://wa.me/543515101643">Acceder ahora</a>
-
-</section>
-
-<!-- LIBROS PREMIUM -->
-
-<section>
-
-<h2>LIBROS QUE CAMBIARÁN TU VIDA</h2>
+<h2 style="text-align:center">LIBROS QUE CAMBIARÁN TU VIDA</h2>
 
 <div class="libros">
 
 <div class="libro">
 
-<img src="https://covers.openlibrary.org/b/id/8231996-L.jpg">
+<img src="habitos atomicos.jpeg">
 
-<p><b>Padre Rico Padre Pobre</b></p>
+<p>Hábitos Atómicos</p>
 
-<div class="badge">BEST SELLER</div>
+<button class="boton" onclick="agregar('Hábitos Atómicos')">
 
-<p class="desc">Descubre la mentalidad financiera que usan los ricos.</p>
+Agregar al carrito
 
-<div class="estrellas">★★★★★ 4.9</div>
-
-<p class="precio-viejo">$26.700</p>
-<p class="precio-nuevo">$4.500</p>
+</button>
 
 </div>
 
 <div class="libro">
 
-<img src="https://covers.openlibrary.org/b/id/11153231-L.jpg">
+<img src="no me puedes lastimar.webp">
 
-<p><b>Hábitos Atómicos</b></p>
+<p>No Me Puedes Lastimar</p>
 
-<div class="badge">BEST SELLER</div>
+<button class="boton" onclick="agregar('No Me Puedes Lastimar')">
 
-<p class="desc">Pequeños cambios que pueden transformar toda tu vida.</p>
+Agregar al carrito
 
-<div class="estrellas">★★★★★ 4.9</div>
+</button>
 
-<p class="precio-viejo">$26.700</p>
-<p class="precio-nuevo">$4.500</p>
+</div>
+
+<div class="libro">
+
+<img src="padre rico padre pobre.jpg">
+
+<p>Padre Rico Padre Pobre</p>
+
+<button class="boton" onclick="agregar('Padre Rico Padre Pobre')">
+
+Agregar al carrito
+
+</button>
 
 </div>
 
@@ -344,86 +291,100 @@ que transforma vidas está al alcance de quienes buscan crecer.
 
 </section>
 
-<!-- FAQ -->
+<section class="inversion">
 
-<section>
+<h2>Invertir en tu mente es invertir en tu futuro</h2>
 
-<h2>PREGUNTAS FRECUENTES</h2>
+<p>
 
-<div class="faq">
+Cada libro que encuentras en LECTIO no es simplemente un archivo digital.
 
-<h3>¿Es seguro comprar?</h3>
-<p>Sí, las compras se realizan mediante contacto directo y entrega inmediata.</p>
+Es conocimiento, experiencias de vida, estrategias mentales y herramientas
+que han cambiado la vida de millones de personas en todo el mundo.
 
-<h3>¿Cuánto tarda la entrega?</h3>
+Leer transforma la forma en que piensas, la forma en que tomas decisiones
+y la forma en que construyes tu futuro.
+
+Cuando adquieres conocimiento no estás gastando dinero.
+Estás invirtiendo en tu crecimiento, en tu inteligencia
+y en la persona que quieres llegar a ser.
+
+</p>
+
+</section>
+
+<section class="faq">
+
+<h2>Preguntas frecuentes</h2>
+
+<p><b>¿Es seguro comprar?</b></p>
+<p>Si. El acceso se entrega inmediatamente.</p>
+
+<p><b>¿Cuánto tarda la entrega?</b></p>
 <p>El acceso se entrega el mismo día.</p>
 
-<h3>¿Por qué es tan barato?</h3>
-<p>Porque es contenido digital sin intermediarios.</p>
-
-</div>
+<p><b>¿Por qué es tan barato?</b></p>
+<p>Porque es contenido digital.</p>
 
 </section>
 
 <script>
 
-/* MENU */
-
 let abierto=false;
 
 function abrirMenu(){
 
-const menu=document.getElementById("menuLateral");
+let menu=document.getElementById("menuLateral");
 
 if(!abierto){
-
 menu.style.left="0";
 abierto=true;
-
 }else{
-
-menu.style.left="-320px";
+menu.style.left="-280px";
 abierto=false;
-
 }
 
 }
 
-/* CONTADOR */
+/* CARRITO */
 
-let tiempo=7200;
+let carrito=[];
+
+function agregar(libro){
+
+carrito.push(libro);
+
+actualizar();
+
+}
 
 function actualizar(){
 
-let h=Math.floor(tiempo/3600);
-let m=Math.floor((tiempo%3600)/60);
-let s=tiempo%60;
+let lista=document.getElementById("items");
 
-document.getElementById("contador").innerHTML=
-"Oferta termina en "+h+"h "+m+"m "+s+"s";
+lista.innerHTML="";
 
-tiempo--;
+carrito.forEach(l=>{
+
+let p=document.createElement("p");
+
+p.textContent=l;
+
+lista.appendChild(p);
+
+});
+
+let total=carrito.length*4500;
+
+document.getElementById("total").textContent=total;
+
+document.getElementById("comprar").href=
+"https://wa.me/543515101643?text=Quiero comprar: "+carrito.join(",");
 
 }
-
-setInterval(actualizar,1000);
-
-/* PERSONAS VIENDO */
-
-function viewers(){
-
-let personas=Math.floor(Math.random()*40)+20;
-
-document.getElementById("viendo").innerHTML=
-personas+" personas están viendo esta oferta";
-
-}
-
-setInterval(viewers,4000);
-
-viewers();
 
 </script>
 
 </body>
+
 </html>
