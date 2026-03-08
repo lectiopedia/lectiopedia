@@ -161,3 +161,47 @@ margin-top:20px;
 border-radius:6px;
 border:none;
 }
+.seccion{
+margin-top:40px;
+padding-left:40px;
+}
+
+.seccion h2{
+color:#d4af37;
+margin-bottom:15px;
+}
+
+.filaLibros{
+display:flex;
+gap:15px;
+overflow-x:auto;
+padding-bottom:10px;
+}
+
+.filaLibros::-webkit-scrollbar{
+height:6px;
+}
+
+.filaLibros::-webkit-scrollbar-thumb{
+background:#d4af37;
+}
+
+.libroCard{
+min-width:140px;
+height:200px;
+background:#111;
+border:1px solid #d4af37;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:10px;
+font-size:13px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.libroCard:hover{
+transform:scale(1.1);
+box-shadow:0 0 10px #d4af37;
+}
