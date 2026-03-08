@@ -11,8 +11,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+<script>
 
+let abierto=false;
+
+function abrirMenu(){
+
+const menu=document.getElementById("menuLateral");
+
+if(!abierto){
+
+menu.style.left="0";
+abierto=true;
+
+}else{
+
+menu.style.left="-320px";
+abierto=false;
+
+}
+
+}
+
+</script>
 body{
+  <div class="menu" onclick="abrirMenu()">☰</div>
+
+<div id="menuLateral" class="menu-lateral">
+
+<h2>CATÁLOGOS</h2>
+
+<a href="#">Psicología</a>
+<a href="#">Desarrollo Personal</a>
+<a href="#">Éxito y Negocios</a>
+<a href="#">Marketing</a>
+<a href="#">Redes Sociales</a>
+<a href="#">Lectura Rápida</a>
+<a href="#">Literatura</a>
+<a href="#">Poesía</a>
+<a href="#">Terror y Suspenso</a>
+<a href="#">Historietas</a>
+<a href="#">Recetas y Dietas</a>
+<a href="#">Nutrición y Deporte</a>
+<a href="#">Domina el Inglés</a>
+<a href="#">TDAH</a>
+<a href="#">Terapia de Pareja</a>
+<a href="#">Seducción</a>
+<a href="#">Yoga</a>
+<a href="#">Primeros Auxilios</a>
+
+</div>
 background:black;
 color:#d4af37;
 font-family:'Cinzel',serif;
@@ -186,6 +234,47 @@ margin-top:30px;
 
 </style>
 
+/* MENU */
+
+.menu{
+position:fixed;
+top:25px;
+left:25px;
+font-size:35px;
+color:#d4af37;
+cursor:pointer;
+z-index:1000;
+}
+
+/* MENU LATERAL */
+
+.menu-lateral{
+position:fixed;
+left:-320px;
+top:0;
+width:300px;
+height:100%;
+background:#0a0a0a;
+padding:30px;
+transition:0.4s;
+z-index:999;
+}
+
+.menu-lateral h2{
+margin-bottom:30px;
+}
+
+.menu-lateral a{
+display:block;
+color:#d4af37;
+text-decoration:none;
+margin:12px 0;
+font-size:18px;
+}
+
+.menu-lateral a:hover{
+color:#ffd700;
+}
 </head>
 
 <body>
