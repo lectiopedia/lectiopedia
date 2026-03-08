@@ -11,3 +11,26 @@ margin:10px;
 padding:15px;
 border:1px solid #d4af37;
 }
+.portada{
+height:60vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:url("imagenes/biblioteca.jpg");
+background-size:cover;
+background-position:center;
+text-align:center;
+}
+
+.logoLectio{
+font-size:70px;
+color:#d4af37;
+font-family:'Cinzel',serif;
+}
+
+.subtituloLectio{
+font-size:20px;
+color:white;
+margin-top:10px;
+}
