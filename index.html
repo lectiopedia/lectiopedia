@@ -72,11 +72,16 @@ transition:.4s;
 z-index:999;
 }
 
+.menu-lateral.abrir{
+left:0;
+}
+
 .menu-lateral a{
 display:block;
 margin:10px 0;
 color:#d4af37;
 text-decoration:none;
+cursor:pointer;
 }
 
 /* CARRITO */
@@ -98,6 +103,10 @@ height:100%;
 background:#0a0a0a;
 padding:20px;
 transition:.4s;
+}
+
+.carrito-panel.abrir{
+right:0;
 }
 
 /* HERO */
@@ -192,13 +201,30 @@ cursor:pointer;
 font-family:'Cinzel';
 }
 
+/* CATALOGO */
+
+#catalogoLibros{
+max-width:900px;
+margin:auto;
+padding:40px;
+}
+
+.libro-item{
+background:#0a0a0a;
+padding:15px;
+margin:10px 0;
+border-left:4px solid #d4af37;
+display:flex;
+justify-content:space-between;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<!-- LIBROS DE FONDO -->
+<!-- FONDO -->
 
 <div class="fondo-libros">
 
@@ -226,20 +252,20 @@ font-family:'Cinzel';
 
 <h2>Catálogos</h2>
 
-<a>Psicología</a>
-<a>Desarrollo Personal</a>
-<a>Éxito y Negocio</a>
-<a>Marketing</a>
-<a>Literatura</a>
-<a>Poesías</a>
-<a>Lectura Rápida</a>
-<a>Domina el Inglés</a>
-<a>Nutrición y Deporte</a>
-<a>Terror y Suspenso</a>
-<a>Seducción</a>
-<a>TDAH</a>
-<a>Terapia de Pareja</a>
-<a>Yoga</a>
+<a onclick="abrirCatalogo('psicologia')">Psicología</a>
+<a onclick="abrirCatalogo('desarrollo_personal')">Desarrollo Personal</a>
+<a onclick="abrirCatalogo('exito_y_negocio')">Éxito y Negocio</a>
+<a onclick="abrirCatalogo('marketing_y_multinivel')">Marketing</a>
+<a onclick="abrirCatalogo('literatura')">Literatura</a>
+<a onclick="abrirCatalogo('poesias')">Poesías</a>
+<a onclick="abrirCatalogo('lectura_super_rapida')">Lectura Rápida</a>
+<a onclick="abrirCatalogo('domina_el_ingles')">Domina el Inglés</a>
+<a onclick="abrirCatalogo('nutricion_y_deporte')">Nutrición</a>
+<a onclick="abrirCatalogo('terror_suspenso_y_mas')">Terror</a>
+<a onclick="abrirCatalogo('seduccion')">Seducción</a>
+<a onclick="abrirCatalogo('tdah')">TDAH</a>
+<a onclick="abrirCatalogo('terapia_de_pareja')">Terapia</a>
+<a onclick="abrirCatalogo('yooga')">Yoga</a>
 
 </div>
 
@@ -286,141 +312,22 @@ Bienvenido a LECTIO, una biblioteca digital exclusiva donde las ideas que transf
 
 </div>
 
-<!-- BIBLIOTECA -->
+<!-- CONTENEDOR DE LIBROS DEL CATALOGO -->
 
-<section>
-
-<h2>Acceso completo a la biblioteca</h2>
-
-<p class="precio-viejo">$120000</p>
-
-<p class="precio-nuevo">$25000</p>
-
-<p>Más de 25.000 libros y 13.000 audiolibros</p>
-
-</section>
-
-<!-- LIBRO INDIVIDUAL -->
-
-<section>
-
-<h2>Libro individual</h2>
-
-<p class="precio-viejo">$20000</p>
-
-<p class="precio-nuevo">$3900</p>
-
-</section>
-
-<!-- LIBROS QUE CAMBIAN TU VIDA -->
-
-<section>
-
-<h2>Libros que cambiarán tu vida</h2>
-
-<div class="libros">
-
-<div class="libro">
-
-<img src="imagenes/habitos_atomicos.jpg">
-
-<h3>Hábitos Atómicos</h3>
-
-<p>Pequeños cambios diarios pueden transformar tu vida.</p>
-
-<button class="boton" onclick="agregar('Hábitos Atómicos')">Agregar</button>
-
-</div>
-
-<div class="libro">
-
-<img src="imagenes/no_me_puedes_lastimar.webp">
-
-<h3>No Me Puedes Lastimar</h3>
-
-<p>Disciplina mental para romper tus límites.</p>
-
-<button class="boton" onclick="agregar('No Me Puedes Lastimar')">Agregar</button>
-
-</div>
-
-<div class="libro">
-
-<img src="imagenes/padre_rico_padre_pobre.jpg">
-
-<h3>Padre Rico Padre Pobre</h3>
-
-<p>El libro que cambió la mentalidad financiera del mundo.</p>
-
-<button class="boton" onclick="agregar('Padre Rico Padre Pobre')">Agregar</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- INVERTIR EN TU MENTE -->
-
-<section>
-
-<h2>Invertí en tu mente</h2>
-
-<p>
-
-El conocimiento es el activo más poderoso que una persona puede poseer.
-Cada libro que lees expande tu mente, mejora tus decisiones y redefine tu futuro.
-
-No estás comprando libros.
-
-Estás invirtiendo en tu mente.
-
-</p>
-
-</section>
-
-<!-- FAQ -->
-
-<section>
-
-<h2>Preguntas frecuentes</h2>
-
-<p><b>¿Es seguro comprar?</b></p>
-<p>Si. El acceso se entrega inmediatamente.</p>
-
-<p><b>¿Por qué es tan barato?</b></p>
-<p>Porque es contenido digital.</p>
-
-</section>
+<div id="catalogoLibros"></div>
 
 <script>
 
 /* MENU */
 
 function toggleMenu(){
-
-let menu=document.getElementById("menuLateral")
-
-if(menu.style.left=="0px"){
-menu.style.left="-320px"
-}else{
-menu.style.left="0px"
-}
-
+document.getElementById("menuLateral").classList.toggle("abrir")
 }
 
 /* CARRITO */
 
 function toggleCarrito(){
-
-let carrito=document.getElementById("carritoPanel")
-
-if(carrito.style.right=="0px"){
-carrito.style.right="-320px"
-}else{
-carrito.style.right="0px"
-}
-
+document.getElementById("carritoPanel").classList.toggle("abrir")
 }
 
 /* CARRITO LOGICA */
@@ -446,6 +353,45 @@ items.appendChild(p)
 })
 
 document.getElementById("total").textContent=lista.length*4500
+
+}
+
+/* ABRIR CATALOGO */
+
+async function abrirCatalogo(nombre){
+
+const contenedor = document.getElementById("catalogoLibros")
+
+contenedor.innerHTML="<h2>Cargando catálogo...</h2>"
+
+try{
+
+const respuesta = await fetch("categorias/"+nombre+".json")
+
+const data = await respuesta.json()
+
+contenedor.innerHTML="<h2>"+nombre.replaceAll("_"," ")+"</h2>"
+
+data.libros.forEach(libro => {
+
+const item=document.createElement("div")
+
+item.className="libro-item"
+
+item.innerHTML=`
+<p>${libro}</p>
+<button onclick="agregar('${libro}')">Agregar</button>
+`
+
+contenedor.appendChild(item)
+
+})
+
+}catch{
+
+contenedor.innerHTML="No se pudo cargar el catálogo."
+
+}
 
 }
 
