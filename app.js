@@ -15,3 +15,29 @@ const menu = document.getElementById("menuLateral");
 menu.classList.toggle("menuAbierto");
 
 }
+async function cargarPopulares(){
+
+const contenedor = document.getElementById("librosPopulares");
+
+const respuesta = await fetch("categorias/psicologia.json");
+
+const data = await respuesta.json();
+
+data.libros.slice(0,20).forEach(libro => {
+
+const item = document.createElement("div");
+
+item.className = "libro";
+
+item.innerHTML = `
+<img src="https://source.unsplash.com/200x300/?book" class="portadaLibro">
+<p>${libro}</p>
+`;
+
+contenedor.appendChild(item);
+
+});
+
+}
+
+cargarPopulares();
