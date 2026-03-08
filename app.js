@@ -93,3 +93,26 @@ contenedor.appendChild(item);
 
 cargarRecomendados();
 cargarVendidos();
+function crearLibro(titulo){
+
+const card = document.createElement("div");
+
+card.className = "libroCard";
+
+card.textContent = titulo;
+
+return card;
+
+}
+
+function cargarFila(id, libros){
+
+const contenedor = document.getElementById(id);
+
+libros.slice(0,20).forEach(libro => {
+
+contenedor.appendChild(crearLibro(libro));
+
+});
+
+}
