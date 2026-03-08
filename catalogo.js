@@ -4,9 +4,17 @@ const respuesta = await fetch(`categorias/${nombreCategoria}.json`);
 const data = await respuesta.json();
 
 const contenedor = document.getElementById("catalogoLibros");
+
 contenedor.innerHTML = "";
 
-data.libros.forEach(libro => {
+let indice = 0;
+const cantidad = 40;
+
+function cargarMas(){
+
+for(let i = 0; i < cantidad && indice < data.libros.length; i++){
+
+const libro = data.libros[indice];
 
 const item = document.createElement("div");
 
@@ -20,6 +28,22 @@ item.innerHTML = `
 
 contenedor.appendChild(item);
 
-});
+indice++;
+
+}
+
+}
+
+cargarMas();
+
+window.onscroll = function(){
+
+if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 200){
+
+cargarMas();
+
+}
+
+};
 
 }
