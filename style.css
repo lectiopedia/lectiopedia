@@ -290,3 +290,28 @@ color:#25D366;
 background:#25D366;
 color:black;
 }
+.logoTemplo{
+display:flex;
+justify-content:center;
+margin-bottom:10px;
+}
+
+.temploIcono{
+width:120px;
+fill:#d4af37;
+animation:temploBrillo 3s infinite alternate;
+}
+
+@keyframes temploBrillo{
+
+0%{
+opacity:0.6;
+transform:scale(1);
+}
+
+100%{
+opacity:1;
+transform:scale(1.05);
+}
+
+}
