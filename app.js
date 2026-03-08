@@ -8,3 +8,10 @@ startCountdown()
 generateLibrary()
 loadCatalogs()
 createBackground()
+function abrirMenu(){
+
+const menu = document.getElementById("menuLateral");
+
+menu.classList.toggle("menuAbierto");
+
+}
