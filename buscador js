@@ -1,25 +1,61 @@
-document.addEventListener("DOMContentLoaded", function(){
+async function buscarLibros(){
 
-const buscador = document.getElementById("buscador");
+const texto = document.getElementById("buscador").value.toLowerCase();
 
-buscador.addEventListener("keyup", function(){
+const contenedor = document.getElementById("catalogoLibros");
 
-let texto = buscador.value.toLowerCase();
+contenedor.innerHTML = "Buscando...";
 
-let libros = document.querySelectorAll(".libro");
+const categorias = [
 
-libros.forEach(libro => {
+"psicologia",
+"desarrollo_personal",
+"marketing_y_multinivel",
+"exito_y_negocio",
+"historia",
+"literatura",
+"seduccion",
+"tdah",
+"nutricion_y_deporte",
+"terror_suspenso_y_mas"
 
-let contenido = libro.textContent.toLowerCase();
+];
 
-if(contenido.includes(texto)){
-libro.style.display = "block";
-}else{
-libro.style.display = "none";
+let resultados = [];
+
+for(let categoria of categorias){
+
+const respuesta = await fetch(`categorias/${categoria}.json`);
+
+const data = await respuesta.json();
+
+data.libros.forEach(libro => {
+
+if(libro.toLowerCase().includes(texto)){
+
+resultados.push(libro);
+
 }
 
 });
 
-});
+}
+
+contenedor.innerHTML = "";
+
+resultados.forEach(libro => {
+
+const item = document.createElement("div");
+
+item.className = "libro";
+
+item.innerHTML = `
+<img src="imagenes/libro.png" class="portadaLibro">
+<p class="tituloLibro">${libro}</p>
+`;
+
+contenedor.appendChild(item);
 
 });
+
+}
