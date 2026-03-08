@@ -370,3 +370,42 @@ left:0;
 .derecha{
 right:0;
 }
+.temploFondo{
+
+position:absolute;
+
+top:0;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:600px;
+
+height:300px;
+
+background-image:url("imagenes/templo.png");
+
+background-size:contain;
+
+background-repeat:no-repeat;
+
+opacity:0.15;
+
+pointer-events:none;
+
+animation:temploMover 8s ease-in-out infinite alternate;
+
+}
+
+@keyframes temploMover{
+
+0%{
+transform:translateX(-50%) translateY(0px);
+}
+
+100%{
+transform:translateX(-50%) translateY(-10px);
+}
+
+}
