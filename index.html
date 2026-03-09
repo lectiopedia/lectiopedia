@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
@@ -21,20 +22,90 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* FONDO */
+/* FONDO ANIMADO */
 
 body::before{
-content:"📚 🧠 ⚡ 📖 📚 🧠 ⚡";
+content:"📚 🧠 ⚡ 📖 📚 ⚡ 🧠";
 position:fixed;
 font-size:50px;
 opacity:0.05;
-animation:mover 60s linear infinite;
-white-space:nowrap;
+animation:fondo 60s linear infinite;
 }
 
-@keyframes mover{
+@keyframes fondo{
 from{transform:translateX(-100%)}
 to{transform:translateX(100%)}
+}
+
+/* MENU LATERAL */
+
+.menuLateral{
+position:fixed;
+left:0;
+top:120px;
+background:#111827;
+padding:20px;
+border-right:2px solid #d4af37;
+}
+
+.menuLateral button{
+display:block;
+margin:10px 0;
+padding:8px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+}
+
+/* PORTADA */
+
+.portada{
+padding:80px 20px;
+}
+
+.templo{
+font-size:60px;
+animation:aparecer 2s;
+}
+
+.logo{
+font-size:70px;
+color:#d4af37;
+text-shadow:0 0 20px #d4af37;
+animation:logoAnim 2s;
+}
+
+@keyframes logoAnim{
+0%{opacity:0;letter-spacing:30px}
+100%{opacity:1;letter-spacing:5px}
+}
+
+.sub{
+font-size:22px;
+animation:flotar 3s infinite alternate;
+}
+
+@keyframes flotar{
+from{transform:translateY(0)}
+to{transform:translateY(-10px)}
+}
+
+/* BUSCADOR */
+
+#buscador{
+padding:15px;
+width:300px;
+border-radius:8px;
+border:none;
+margin-top:20px;
+}
+
+/* REDES */
+
+.redes i{
+font-size:28px;
+margin:10px;
+color:white;
 }
 
 /* CARRITO */
@@ -48,8 +119,6 @@ color:black;
 padding:10px 15px;
 border-radius:8px;
 cursor:pointer;
-font-weight:bold;
-z-index:1000;
 }
 
 .carritoPanel{
@@ -61,74 +130,16 @@ height:100%;
 background:#111827;
 padding:20px;
 transition:0.4s;
-overflow:auto;
 }
 
 .carritoPanel.activo{
 right:0;
 }
 
-/* PORTADA */
-
-.portada{
-padding:80px 20px;
-background:linear-gradient(#0f1720,#1b263b);
-}
-
-.templo{
-font-size:60px;
-animation:aparecer 2s ease;
-}
-
-.logo{
-font-size:70px;
-color:#d4af37;
-text-shadow:0 0 20px #d4af37;
-animation:logoAnim 3s ease;
-}
-
-@keyframes logoAnim{
-0%{opacity:0;transform:scale(0.4)}
-100%{opacity:1;transform:scale(1)}
-}
-
-.sub{
-font-size:22px;
-margin-top:10px;
-animation:flotar 3s infinite alternate;
-}
-
-@keyframes flotar{
-from{transform:translateY(0)}
-to{transform:translateY(-10px)}
-}
-
-/* BUSCADOR */
-
-#buscador{
-margin-top:30px;
-padding:15px;
-width:300px;
-border-radius:8px;
-border:none;
-}
-
-/* REDES */
-
-.redes i{
-font-size:28px;
-margin:10px;
-color:white;
-}
-
-/* CATALOGO */
+/* LIBROS */
 
 .catalogo{
 padding:60px;
-}
-
-.categoria{
-margin-top:50px;
 }
 
 .libros{
@@ -152,23 +163,25 @@ padding:10px;
 background:#d4af37;
 border:none;
 cursor:pointer;
-font-weight:bold;
 }
 
-/* MAS VENDIDOS */
+/* OFERTAS */
 
-.masVendidos{
-padding:60px;
+.ofertas{
 background:#111827;
+padding:40px;
 }
 
-/* EDUCACION */
-
-.educacion{
-padding:60px;
+.precioAnterior{
+text-decoration:line-through;
 }
 
-/* NOTIFICACION */
+.precio{
+color:#00ffae;
+font-size:30px;
+}
+
+/* NOTIFICACIONES */
 
 .notificacion{
 position:fixed;
@@ -185,6 +198,18 @@ display:none;
 </head>
 
 <body>
+
+<div class="menuLateral">
+
+<h3>Categorías</h3>
+
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('psicologia')">Psicología</button>
+<button onclick="filtrar('negocios')">Negocios</button>
+<button onclick="filtrar('seduccion')">Seducción</button>
+<button onclick="filtrar('desarrollo')">Desarrollo</button>
+
+</div>
 
 <div class="carritoIcono" onclick="abrirCarrito()">
 🛒 <span id="contadorCarrito">0</span>
@@ -206,16 +231,15 @@ Comprar por WhatsApp
 
 <section class="portada">
 
-<div class="templo">🏛️</div>
+<div class="templo">🏛</div>
+
 <div class="logo">LECTIO</div>
 
 <div class="sub">
 DESCUBRE QUIÉN ERES REALMENTE
 </div>
 
-<p>Más de 25.000 libros y 13.000 audiolibros</p>
-
-<input id="buscador" placeholder="Buscar libros...">
+<input id="buscador" placeholder="Buscar libros">
 
 <div class="redes">
 
@@ -231,53 +255,61 @@ DESCUBRE QUIÉN ERES REALMENTE
 
 </section>
 
-<section class="masVendidos">
+<section class="ofertas">
 
-<h2 style="color:#d4af37">LOS MÁS VENDIDOS</h2>
+<h2>ACCESO COMPLETO A LA BIBLIOTECA</h2>
 
-<div class="libros">
+<p class="precioAnterior">$120000</p>
 
-<div class="libro">
-Psicología Oscura
-<button onclick="agregarCarrito('Psicología Oscura',3900)">Agregar al carrito</button>
-</div>
+<p class="precio">$25000</p>
 
-<div class="libro">
-Hábitos Atómicos
-<button onclick="agregarCarrito('Hábitos Atómicos',3900)">Agregar al carrito</button>
-</div>
+<p>Incluye miles de libros + audiolibros + película El Lobo de Wall Street</p>
 
-<div class="libro">
-Padre Rico Padre Pobre
-<button onclick="agregarCarrito('Padre Rico Padre Pobre',3900)">Agregar al carrito</button>
-</div>
+<div id="contador"></div>
 
-</div>
+<div id="personas"></div>
 
 </section>
 
 <section class="catalogo">
 
-<h2 style="color:#d4af37">CATÁLOGO</h2>
+<h2>CATÁLOGO</h2>
 
-<div id="contenedorCatalogo"></div>
-
-</section>
-
-<section class="educacion">
-
-<h2 style="color:#d4af37">POR QUÉ INVERTIR EN LIBROS DIGITALES</h2>
-
-<p>Acceso inmediato al conocimiento</p>
-<p>Biblioteca ilimitada</p>
-<p>Menor costo que libros físicos</p>
-<p>Aprendizaje constante</p>
+<div id="contenedorLibros" class="libros"></div>
 
 </section>
 
 <div id="notificacion" class="notificacion"></div>
 
 <script>
+
+/* CONTADOR */
+
+let tiempo=7200
+
+setInterval(()=>{
+
+let h=Math.floor(tiempo/3600)
+let m=Math.floor((tiempo%3600)/60)
+let s=tiempo%60
+
+document.getElementById("contador").innerText=
+"Oferta termina en "+h+":"+m+":"+s
+
+tiempo--
+
+},1000)
+
+/* PERSONAS */
+
+setInterval(()=>{
+
+let n=Math.floor(Math.random()*25)+15
+
+document.getElementById("personas").innerText=
+n+" personas viendo esta oferta"
+
+},4000)
 
 /* CARRITO */
 
@@ -287,31 +319,38 @@ function abrirCarrito(){
 document.getElementById("carritoPanel").classList.toggle("activo")
 }
 
-function agregarCarrito(nombre,precio){
+function agregar(nombre,precio){
+
 carrito.push({nombre,precio})
-actualizarCarrito()
+
+actualizar()
+
 }
 
-function eliminar(index){
-carrito.splice(index,1)
-actualizarCarrito()
+function eliminar(i){
+
+carrito.splice(i,1)
+
+actualizar()
+
 }
 
-function actualizarCarrito(){
+function actualizar(){
 
-let contenedor=document.getElementById("itemsCarrito")
+let cont=document.getElementById("itemsCarrito")
+
+cont.innerHTML=""
+
 let total=0
-
-contenedor.innerHTML=""
 
 carrito.forEach((item,i)=>{
 
 let div=document.createElement("div")
 
-div.innerHTML=item.nombre+" - $"+item.precio+
+div.innerHTML=item.nombre+" $"+item.precio+
 " <span onclick='eliminar("+i+")'>❌</span>"
 
-contenedor.appendChild(div)
+cont.appendChild(div)
 
 total+=item.precio
 
@@ -338,95 +377,85 @@ window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
 
 document.getElementById("buscador").addEventListener("keyup",function(){
 
-let filtro=this.value.toLowerCase()
+let f=this.value.toLowerCase()
 
-let libros=document.querySelectorAll(".libro")
+document.querySelectorAll(".libro").forEach(libro=>{
 
-libros.forEach(libro=>{
+let t=libro.innerText.toLowerCase()
 
-let texto=libro.innerText.toLowerCase()
-
-libro.style.display=texto.includes(filtro) ? "block":"none"
+libro.style.display=t.includes(f)?"block":"none"
 
 })
 
 })
 
-/* CATALOGO AUTOMATICO */
+/* GENERAR 1000 LIBROS */
 
-let catalogo={
+let categorias=["psicologia","negocios","seduccion","desarrollo"]
 
-"Psicología":[
-"Psicología Oscura",
-"Hábitos Atómicos",
-"Inteligencia Emocional"
-],
+let contenedor=document.getElementById("contenedorLibros")
 
-"Negocios":[
-"Padre Rico Padre Pobre",
-"Piense y Hágase Rico"
-],
+categorias.forEach(cat=>{
 
-"Seducción":[
-"El Arte de la Seducción"
-]
-
-}
-
-let contenedor=document.getElementById("contenedorCatalogo")
-
-for(let categoria in catalogo){
-
-let bloque=document.createElement("div")
-
-bloque.className="categoria"
-
-bloque.innerHTML="<h3>"+categoria+"</h3>"
-
-let librosDiv=document.createElement("div")
-librosDiv.className="libros"
-
-catalogo[categoria].forEach(libro=>{
+for(let i=1;i<=250;i++){
 
 let div=document.createElement("div")
 
 div.className="libro"
 
+div.dataset.cat=cat
+
 div.innerHTML=`
-${libro}
-<button onclick="agregarCarrito('${libro}',3900)">
+${cat} libro ${i}
+<br>
+<button onclick="agregar('${cat} libro ${i}',3900)">
 Agregar al carrito
 </button>
 `
 
-librosDiv.appendChild(div)
+contenedor.appendChild(div)
+
+}
 
 })
 
-bloque.appendChild(librosDiv)
+/* FILTRO */
 
-contenedor.appendChild(bloque)
+function filtrar(cat){
+
+document.querySelectorAll(".libro").forEach(libro=>{
+
+if(cat==="todos"){
+libro.style.display="block"
+return
+}
+
+libro.style.display=libro.dataset.cat===cat?"block":"none"
+
+})
 
 }
 
 /* NOTIFICACIONES */
 
-let nombres=["Juan","María","Carlos","Lucía"]
-let ciudades=["Córdoba","Buenos Aires","Rosario","Mendoza"]
+let nombres=["Juan","Maria","Carlos","Lucia"]
+
+let ciudades=["Córdoba","Buenos Aires","Rosario"]
 
 setInterval(()=>{
 
-let nombre=nombres[Math.floor(Math.random()*nombres.length)]
-let ciudad=ciudades[Math.floor(Math.random()*ciudades.length)]
+let n=nombres[Math.floor(Math.random()*nombres.length)]
+let c=ciudades[Math.floor(Math.random()*ciudades.length)]
 
 let box=document.getElementById("notificacion")
 
-box.innerText=nombre+" de "+ciudad+" compró Psicología Oscura"
+box.innerText=n+" de "+c+" compró un libro"
+
 box.style.display="block"
 
 setTimeout(()=>box.style.display="none",4000)
 
-},12000)
+},15000)
 
 </script>
 
