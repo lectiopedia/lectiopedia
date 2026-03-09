@@ -15,112 +15,188 @@
 body{
 margin:0;
 font-family:'Cinzel',serif;
-background:linear-gradient(180deg,#0c0f1a,#08142b);
+background:#0f1720;
 color:white;
-}
-
-/* LOGO */
-
-.hero{
 text-align:center;
-padding:100px 20px;
+overflow-x:hidden;
 }
 
-.hero h1{
-font-size:80px;
+/* LIBROS CAYENDO */
+
+.libroFondo{
+position:fixed;
+font-size:30px;
+opacity:0.08;
+animation:caer linear infinite;
+}
+
+@keyframes caer{
+0%{transform:translateY(-100px)}
+100%{transform:translateY(120vh)}
+}
+
+/* MENU CATALOGOS */
+
+.menuCatalogos{
+position:fixed;
+left:0;
+top:120px;
+background:#111827;
+padding:20px;
+border-right:3px solid #d4af37;
+}
+
+.menuCatalogos button{
+display:block;
+margin:10px 0;
+padding:10px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* PORTADA */
+
+.portada{
+padding:80px 20px;
+background:linear-gradient(#0f1720,#1b263b);
+}
+
+.logo{
+font-size:70px;
 color:#d4af37;
-letter-spacing:10px;
+text-shadow:0 0 20px #d4af37;
+animation:logoAnim 4s infinite alternate;
 }
 
-.hero h2{
-font-size:26px;
-margin-top:10px;
+@keyframes logoAnim{
+from{letter-spacing:5px}
+to{letter-spacing:18px}
 }
 
-.hero p{
+.sub{
+font-size:22px;
 margin-top:10px;
+opacity:0.9;
+animation:flotar 3s infinite alternate;
+}
+
+@keyframes flotar{
+from{transform:translateY(0)}
+to{transform:translateY(-10px)}
 }
 
 /* BUSCADOR */
 
-.buscador-box{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:15px;
+#buscador{
 margin-top:30px;
-}
-
-.buscador-box input{
+padding:15px;
 width:320px;
-padding:12px;
-border-radius:6px;
+border-radius:10px;
 border:2px solid #d4af37;
-background:black;
+background:#111827;
 color:white;
+font-size:16px;
 }
 
-.botones{
-display:flex;
-gap:15px;
+/* REDES */
+
+.redes{
+margin-top:20px;
 }
 
-.boton{
-border:2px solid #d4af37;
+.redes a{
+margin:10px;
+color:white;
+text-decoration:none;
 padding:10px 20px;
-color:white;
-text-decoration:none;
+border:2px solid #d4af37;
 border-radius:6px;
-}
-
-.boton:hover{
-background:#d4af37;
-color:black;
-}
-
-/* CATALOGO */
-
-.catalogo{
-position:fixed;
-left:20px;
-top:200px;
-}
-
-.catalogo-toggle{
-background:#d4af37;
-color:black;
-padding:12px;
-border:none;
-font-weight:bold;
-cursor:pointer;
-border-radius:5px;
-}
-
-.catalogo-lista{
-display:none;
-flex-direction:column;
-gap:8px;
-margin-top:10px;
-}
-
-.catalogo-lista a{
-background:#d4af37;
-color:black;
-padding:8px;
-text-decoration:none;
-border-radius:4px;
-font-size:14px;
 }
 
 /* OFERTAS */
 
 .ofertas{
-text-align:center;
-padding:80px 20px;
+margin-top:60px;
+padding:40px;
+background:#111827;
 }
 
 .ofertas h2{
+color:#d4af37;
 font-size:40px;
+}
+
+.contenedorOfertas{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+}
+
+.oferta{
+background:#1f2937;
+padding:30px;
+width:300px;
+border:2px solid #d4af37;
+border-radius:10px;
+}
+
+.precioAnterior{
+text-decoration:line-through;
+color:#aaa;
+}
+
+.precio{
+font-size:35px;
+color:#00ffae;
+}
+
+/* CATALOGO */
+
+.catalogo{
+padding:60px;
+}
+
+.catalogo button{
+margin:10px;
+padding:12px 18px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* INVERTIR */
+
+.invertir{
+padding:60px;
+background:#111827;
+}
+
+.invertir h2{
+color:#d4af37;
+}
+
+/* FAQ */
+
+.faq{
+padding:60px;
+}
+
+.faq h2{
+color:#d4af37;
+}
+
+.pregunta{
+margin-top:20px;
+font-weight:bold;
+}
+
+.respuesta{
+opacity:0.8;
 }
 
 </style>
@@ -129,93 +205,176 @@ font-size:40px;
 
 <body>
 
-<!-- CATALOGO -->
+<div class="menuCatalogos">
 
-<div class="catalogo">
+<h3>Catálogos</h3>
 
-<button class="catalogo-toggle">
-☰ CATALOGOS
-</button>
-
-<div class="catalogo-lista">
-
-<a>Psicologia</a>
-<a>Exitos y negocio</a>
-<a>Desarrollo personal</a>
-<a>Habitos y productividad</a>
-<a>Recetas, salud y deporte</a>
-<a>Ingles</a>
-<a>Historia</a>
-<a>Clasicos</a>
-<a>Brian Tracy</a>
-<a>Autoayuda y liderazgo</a>
-<a>Libros biblicos</a>
-<a>Filosofia</a>
-<a>Recetas para diabeticos</a>
-<a>Autoestima</a>
-<a>Libros de terror</a>
-<a>Audiolibros</a>
-<a>Cuentos de disney</a>
-<a>Fotografia</a>
-<a>Otros</a>
+<button onclick="pedirCatalogo('psicologia')">Psicología</button>
+<button onclick="pedirCatalogo('habitos')">Hábitos</button>
+<button onclick="pedirCatalogo('ventas')">Ventas</button>
+<button onclick="pedirCatalogo('marketing')">Marketing</button>
+<button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
 
 </div>
 
+<!-- LIBROS FONDO -->
+
+<div class="libroFondo" style="left:10%;animation-duration:12s">📚</div>
+<div class="libroFondo" style="left:40%;animation-duration:15s">📖</div>
+<div class="libroFondo" style="left:70%;animation-duration:10s">📚</div>
+
+<section class="portada">
+
+<div class="logo">LECTIO</div>
+
+<div class="sub">
+DESCUBRE QUIÉN ERES REALMENTE
 </div>
 
-<!-- HERO -->
+<p>Más de 25.000 libros y 13.000 audiolibros</p>
 
-<section class="hero">
+<input id="buscador" placeholder="Buscar entre 25.000 libros">
 
-<h1>LECTIO</h1>
+<div class="redes">
 
-<h2>DESCUBRE QUIÉN ERES REALMENTE</h2>
-
-<p>MÁS DE 25.000 LIBROS Y 13.000 AUDIOLIBROS</p>
-
-<div class="buscador-box">
-
-<input type="text" placeholder="Buscar libros...">
-
-<div class="botones">
-
-<a class="boton" href="https://instagram.com/lectio.pedia">
-INSTAGRAM
+<a href="#" onclick="pedirCatalogo('catalogo general')">
+Instagram
 </a>
 
-<a class="boton" href="#">
-WHATSAPP
+<a href="#" onclick="pedirCatalogo('catalogo general')">
+WhatsApp
 </a>
-
-</div>
 
 </div>
 
 </section>
-
-<!-- OFERTAS -->
 
 <section class="ofertas">
 
 <h2>OFERTAS EXCLUSIVAS</h2>
 
+<div class="contenedorOfertas">
+
+<div class="oferta">
+
+<h3>Libro individual</h3>
+
+<p class="precioAnterior">$20.200</p>
+<p class="precio">$3.900</p>
+
+<p>
++ 3 audiolibros<br>
++ Película El Lobo de Wall Street
+</p>
+
+<button onclick="pedirCatalogo('libro individual')">
+Comprar
+</button>
+
+</div>
+
+<div class="oferta">
+
+<h3>3 Libros</h3>
+
+<p class="precio">$10.000</p>
+
+<button onclick="pedirCatalogo('3 libros')">
+Comprar
+</button>
+
+</div>
+
+<div class="oferta">
+
+<h3>Biblioteca completa</h3>
+
+<p class="precioAnterior">$120.000</p>
+<p class="precio">$23.900</p>
+
+<div class="contador" id="contador"></div>
+
+<div class="personas" id="personas"></div>
+
+<button onclick="pedirCatalogo('biblioteca completa')">
+Acceder
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="catalogo">
+
+<h2>Pedir catálogo de</h2>
+
+<button onclick="pedirCatalogo('psicologia')">Psicología</button>
+<button onclick="pedirCatalogo('habitos')">Hábitos</button>
+<button onclick="pedirCatalogo('ventas')">Ventas</button>
+<button onclick="pedirCatalogo('marketing')">Marketing</button>
+<button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
+
+</section>
+
+<section class="invertir">
+
+<h2>¿Por qué invertir en libros digitales?</h2>
+
+<p>Acceso inmediato al conocimiento.</p>
+<p>Biblioteca completa en tu celular.</p>
+<p>Precio menor que libros físicos.</p>
+<p>Aprendizaje constante.</p>
+
+</section>
+
+<section class="faq">
+
+<h2>Preguntas frecuentes</h2>
+
+<div class="pregunta">¿Cómo recibo los libros?</div>
+<div class="respuesta">Se entregan digitalmente después de la compra.</div>
+
+<div class="pregunta">¿Dónde puedo leerlos?</div>
+<div class="respuesta">En celular, tablet o computadora.</div>
+
+<div class="pregunta">¿Los libros son descargables?</div>
+<div class="respuesta">Se entregan en formato digital.</div>
+
 </section>
 
 <script>
 
-document.querySelector(".catalogo-toggle").onclick=function(){
+let tiempo=7200
 
-let menu=document.querySelector(".catalogo-lista");
+setInterval(()=>{
 
-if(menu.style.display=="flex"){
+let horas=Math.floor(tiempo/3600)
+let minutos=Math.floor((tiempo%3600)/60)
+let segundos=tiempo%60
 
-menu.style.display="none";
+document.getElementById("contador").innerText=
+"Oferta termina en "+horas+":"+minutos+":"+segundos
 
-}else{
+tiempo--
 
-menu.style.display="flex";
+},1000)
 
-}
+setInterval(()=>{
+
+let personas=Math.floor(Math.random()*20)+25
+
+document.getElementById("personas").innerText=
+personas+" personas viendo esta oferta"
+
+},4000)
+
+function pedirCatalogo(tipo){
+
+let mensaje="Hola, quiero pedir catalogo de "+tipo
+
+window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
 
 }
 
