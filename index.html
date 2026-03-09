@@ -8,7 +8,7 @@
 
 <title>LECTIO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -25,16 +25,16 @@ overflow-x:hidden;
 
 .librosFondo{
 position:fixed;
-top:-100px;
 width:100%;
+height:100%;
 pointer-events:none;
 }
 
-.libroF{
+.libroAnim{
 position:absolute;
 font-size:30px;
-animation:caer 12s linear infinite;
-opacity:0.1;
+opacity:0.08;
+animation:caer linear infinite;
 }
 
 @keyframes caer{
@@ -42,18 +42,18 @@ opacity:0.1;
 100%{transform:translateY(120vh)}
 }
 
-/* MENU LATERAL */
+/* MENU CATALOGOS */
 
-.menuCatalogo{
+.menuCatalogos{
 position:fixed;
 left:0;
-top:150px;
+top:120px;
 background:#111827;
 padding:20px;
-border-right:2px solid #d4af37;
+border-right:3px solid #d4af37;
 }
 
-.menuCatalogo button{
+.menuCatalogos button{
 display:block;
 margin:10px 0;
 padding:10px;
@@ -74,24 +74,18 @@ background:linear-gradient(#0f1720,#1b263b);
 font-size:70px;
 color:#d4af37;
 text-shadow:0 0 20px #d4af37;
-animation:logoAnim 3s infinite alternate;
+animation:logoMov 4s infinite alternate;
 }
 
-@keyframes logoAnim{
-from{letter-spacing:5px}
-to{letter-spacing:20px}
+@keyframes logoMov{
+0%{letter-spacing:5px}
+100%{letter-spacing:20px}
 }
 
 .sub{
 font-size:22px;
 margin-top:10px;
 opacity:0.9;
-animation:flotar 3s infinite alternate;
-}
-
-@keyframes flotar{
-from{transform:translateY(0)}
-to{transform:translateY(-10px)}
 }
 
 /* BUSCADOR */
@@ -99,8 +93,8 @@ to{transform:translateY(-10px)}
 #buscador{
 margin-top:30px;
 padding:15px;
-width:320px;
-border-radius:8px;
+width:330px;
+border-radius:10px;
 border:2px solid #d4af37;
 background:#111827;
 color:white;
@@ -108,10 +102,6 @@ font-size:16px;
 }
 
 /* REDES */
-
-.redes{
-margin-top:20px;
-}
 
 .redes a{
 margin:10px;
@@ -159,35 +149,28 @@ color:#aaa;
 .precio{
 font-size:35px;
 color:#00ffae;
-margin-top:10px;
 }
 
 /* CATALOGO */
 
-.catalogos{
+.catalogo{
 padding:60px;
 }
 
-.catalogos h2{
-color:#d4af37;
-}
-
-/* BOTONES CATALOGOS */
-
-.botonesCatalogo button{
+.catalogo button{
 margin:10px;
 padding:12px 18px;
 background:#d4af37;
 border:none;
-font-weight:bold;
 cursor:pointer;
+font-weight:bold;
 }
 
-/* SECCION INVERTIR */
+/* INVERTIR */
 
 .invertir{
-background:#111827;
 padding:60px;
+background:#111827;
 }
 
 .invertir h2{
@@ -220,21 +203,23 @@ opacity:0.8;
 <body>
 
 <div class="librosFondo">
-<div class="libroF" style="left:10%">📖</div>
-<div class="libroF" style="left:30%">📚</div>
-<div class="libroF" style="left:60%">📖</div>
-<div class="libroF" style="left:80%">📚</div>
+
+<div class="libroAnim" style="left:10%;animation-duration:12s">📚</div>
+<div class="libroAnim" style="left:30%;animation-duration:15s">📖</div>
+<div class="libroAnim" style="left:60%;animation-duration:10s">📚</div>
+<div class="libroAnim" style="left:80%;animation-duration:18s">📖</div>
+
 </div>
 
-<div class="menuCatalogo">
+<div class="menuCatalogos">
 
 <h3>Catálogos</h3>
 
-<button onclick="pedir('psicologia')">Psicología</button>
-<button onclick="pedir('habitos')">Hábitos</button>
-<button onclick="pedir('ventas')">Ventas</button>
-<button onclick="pedir('marketing')">Marketing</button>
-<button onclick="pedir('audiolibros')">Audiolibros</button>
+<button onclick="pedirCatalogo('psicologia')">Psicología</button>
+<button onclick="pedirCatalogo('habitos')">Hábitos</button>
+<button onclick="pedirCatalogo('ventas')">Ventas</button>
+<button onclick="pedirCatalogo('marketing')">Marketing</button>
+<button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
 
 </div>
 
@@ -248,15 +233,15 @@ DESCUBRE QUIÉN ERES REALMENTE
 
 <p>Más de 25.000 libros y 13.000 audiolibros</p>
 
-<input id="buscador" placeholder="Buscar entre 25.000 libros">
+<input id="buscador" placeholder="Buscar libros...">
 
 <div class="redes">
 
-<a href="#" onclick="pedir('catalogo general')">
+<a href="#" onclick="pedirCatalogo('catalogo general')">
 Instagram
 </a>
 
-<a href="#" onclick="pedir('catalogo general')">
+<a href="#" onclick="pedirCatalogo('catalogo general')">
 WhatsApp
 </a>
 
@@ -275,14 +260,10 @@ WhatsApp
 <h3>Libro individual</h3>
 
 <p class="precioAnterior">$20.200</p>
+
 <p class="precio">$3.900</p>
 
-<p>
-+ 3 audiolibros<br>
-+ Película El Lobo de Wall Street
-</p>
-
-<button class="botonComprar" onclick="pedir('libro individual')">
+<button onclick="pedirCatalogo('libro individual')">
 Comprar
 </button>
 
@@ -294,7 +275,7 @@ Comprar
 
 <p class="precio">$10.000</p>
 
-<button class="botonComprar" onclick="pedir('3 libros')">
+<button onclick="pedirCatalogo('3 libros')">
 Comprar
 </button>
 
@@ -305,13 +286,14 @@ Comprar
 <h3>Biblioteca completa</h3>
 
 <p class="precioAnterior">$120.000</p>
+
 <p class="precio">$23.900</p>
 
-<div class="contador" id="contador"></div>
+<div id="contador"></div>
 
-<div class="personas" id="personas"></div>
+<div id="personas"></div>
 
-<button class="botonComprar" onclick="pedir('biblioteca completa')">
+<button onclick="pedirCatalogo('biblioteca completa')">
 Acceder
 </button>
 
@@ -321,19 +303,15 @@ Acceder
 
 </section>
 
-<section class="catalogos">
+<section class="catalogo">
 
 <h2>Pedir catálogo de</h2>
 
-<div class="botonesCatalogo">
-
-<button onclick="pedir('psicologia')">Psicología</button>
-<button onclick="pedir('habitos')">Hábitos</button>
-<button onclick="pedir('ventas')">Ventas</button>
-<button onclick="pedir('marketing')">Marketing</button>
-<button onclick="pedir('audiolibros')">Audiolibros</button>
-
-</div>
+<button onclick="pedirCatalogo('psicologia')">Psicología</button>
+<button onclick="pedirCatalogo('habitos')">Hábitos</button>
+<button onclick="pedirCatalogo('ventas')">Ventas</button>
+<button onclick="pedirCatalogo('marketing')">Marketing</button>
+<button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
 
 </section>
 
@@ -342,9 +320,9 @@ Acceder
 <h2>¿Por qué invertir en libros digitales?</h2>
 
 <p>Acceso inmediato al conocimiento.</p>
-<p>Una biblioteca completa en tu celular.</p>
-<p>Precio mucho menor que libros físicos.</p>
-<p>Aprendizaje constante y crecimiento personal.</p>
+<p>Biblioteca completa en tu celular.</p>
+<p>Precio menor que libros físicos.</p>
+<p>Aprendizaje constante.</p>
 
 </section>
 
@@ -353,10 +331,10 @@ Acceder
 <h2>Preguntas frecuentes</h2>
 
 <div class="pregunta">¿Cómo recibo los libros?</div>
-<div class="respuesta">Se envían digitalmente después de la compra.</div>
+<div class="respuesta">Se entregan digitalmente después de la compra.</div>
 
-<div class="pregunta">¿En qué dispositivos puedo leerlos?</div>
-<div class="respuesta">Celular, computadora o tablet.</div>
+<div class="pregunta">¿Dónde puedo leerlos?</div>
+<div class="respuesta">En celular, tablet o computadora.</div>
 
 <div class="pregunta">¿Los libros son descargables?</div>
 <div class="respuesta">Se entregan en formato digital.</div>
@@ -364,8 +342,6 @@ Acceder
 </section>
 
 <script>
-
-/* CONTADOR */
 
 let tiempo=7200
 
@@ -382,8 +358,6 @@ tiempo--
 
 },1000)
 
-/* PERSONAS */
-
 setInterval(()=>{
 
 let personas=Math.floor(Math.random()*20)+25
@@ -393,9 +367,7 @@ personas+" personas viendo esta oferta"
 
 },4000)
 
-/* MENSAJE WHATSAPP */
-
-function pedir(tipo){
+function pedirCatalogo(tipo){
 
 let mensaje="Hola, quiero pedir catalogo de "+tipo
 
