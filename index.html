@@ -21,12 +21,12 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* LIBROS CAYENDO */
+/* FONDO LIBROS */
 
 .libroFondo{
 position:fixed;
-font-size:30px;
-opacity:0.08;
+font-size:28px;
+opacity:0.07;
 animation:caer linear infinite;
 }
 
@@ -35,15 +35,16 @@ animation:caer linear infinite;
 100%{transform:translateY(120vh)}
 }
 
-/* MENU CATALOGOS */
+/* MENU LATERAL */
 
 .menuCatalogos{
 position:fixed;
 left:0;
-top:120px;
+top:150px;
 background:#111827;
 padding:20px;
 border-right:3px solid #d4af37;
+z-index:100;
 }
 
 .menuCatalogos button{
@@ -92,7 +93,7 @@ to{transform:translateY(-10px)}
 #buscador{
 margin-top:30px;
 padding:15px;
-width:320px;
+width:330px;
 border-radius:10px;
 border:2px solid #d4af37;
 background:#111827;
@@ -144,6 +145,10 @@ border:2px solid #d4af37;
 border-radius:10px;
 }
 
+.oferta h3{
+color:#d4af37;
+}
+
 .precioAnterior{
 text-decoration:line-through;
 color:#aaa;
@@ -152,15 +157,37 @@ color:#aaa;
 .precio{
 font-size:35px;
 color:#00ffae;
+margin-top:10px;
 }
 
-/* CATALOGO */
-
-.catalogo{
-padding:60px;
+.contador{
+font-size:20px;
+color:#ff6b6b;
+margin-top:10px;
 }
 
-.catalogo button{
+.personas{
+margin-top:10px;
+color:#ccc;
+}
+
+.botonComprar{
+margin-top:20px;
+padding:12px 20px;
+background:#d4af37;
+border:none;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* CATALOGOS */
+
+.catalogos{
+padding:70px 20px;
+}
+
+.catalogos button{
 margin:10px;
 padding:12px 18px;
 background:#d4af37;
@@ -172,8 +199,8 @@ font-weight:bold;
 /* INVERTIR */
 
 .invertir{
-padding:60px;
 background:#111827;
+padding:60px;
 }
 
 .invertir h2{
@@ -196,7 +223,7 @@ font-weight:bold;
 }
 
 .respuesta{
-opacity:0.8;
+opacity:0.85;
 }
 
 </style>
@@ -204,6 +231,15 @@ opacity:0.8;
 </head>
 
 <body>
+
+<!-- LIBROS FONDO -->
+
+<div class="libroFondo" style="left:10%;animation-duration:12s">📚</div>
+<div class="libroFondo" style="left:40%;animation-duration:16s">📖</div>
+<div class="libroFondo" style="left:70%;animation-duration:10s">📚</div>
+<div class="libroFondo" style="left:90%;animation-duration:14s">📖</div>
+
+<!-- MENU CATALOGOS -->
 
 <div class="menuCatalogos">
 
@@ -216,12 +252,6 @@ opacity:0.8;
 <button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
 
 </div>
-
-<!-- LIBROS FONDO -->
-
-<div class="libroFondo" style="left:10%;animation-duration:12s">📚</div>
-<div class="libroFondo" style="left:40%;animation-duration:15s">📖</div>
-<div class="libroFondo" style="left:70%;animation-duration:10s">📚</div>
 
 <section class="portada">
 
@@ -260,14 +290,15 @@ WhatsApp
 <h3>Libro individual</h3>
 
 <p class="precioAnterior">$20.200</p>
+
 <p class="precio">$3.900</p>
 
 <p>
-+ 3 audiolibros<br>
-+ Película El Lobo de Wall Street
++ 3 audiolibros de regalo<br>
++ Película "El Lobo de Wall Street"
 </p>
 
-<button onclick="pedirCatalogo('libro individual')">
+<button class="botonComprar" onclick="pedirCatalogo('libro individual')">
 Comprar
 </button>
 
@@ -279,7 +310,7 @@ Comprar
 
 <p class="precio">$10.000</p>
 
-<button onclick="pedirCatalogo('3 libros')">
+<button class="botonComprar" onclick="pedirCatalogo('3 libros')">
 Comprar
 </button>
 
@@ -290,14 +321,19 @@ Comprar
 <h3>Biblioteca completa</h3>
 
 <p class="precioAnterior">$120.000</p>
+
 <p class="precio">$23.900</p>
 
-<div class="contador" id="contador"></div>
+<div class="contador" id="contador">
+Oferta termina en 02:00:00
+</div>
 
-<div class="personas" id="personas"></div>
+<div class="personas" id="personas">
+37 personas viendo esta oferta
+</div>
 
-<button onclick="pedirCatalogo('biblioteca completa')">
-Acceder
+<button class="botonComprar" onclick="pedirCatalogo('biblioteca completa')">
+Acceder ahora
 </button>
 
 </div>
@@ -306,7 +342,7 @@ Acceder
 
 </section>
 
-<section class="catalogo">
+<section class="catalogos">
 
 <h2>Pedir catálogo de</h2>
 
@@ -323,9 +359,9 @@ Acceder
 <h2>¿Por qué invertir en libros digitales?</h2>
 
 <p>Acceso inmediato al conocimiento.</p>
-<p>Biblioteca completa en tu celular.</p>
-<p>Precio menor que libros físicos.</p>
-<p>Aprendizaje constante.</p>
+<p>Una biblioteca completa en tu celular.</p>
+<p>Precio mucho menor que libros físicos.</p>
+<p>Aprendizaje constante para tu crecimiento.</p>
 
 </section>
 
@@ -336,8 +372,8 @@ Acceder
 <div class="pregunta">¿Cómo recibo los libros?</div>
 <div class="respuesta">Se entregan digitalmente después de la compra.</div>
 
-<div class="pregunta">¿Dónde puedo leerlos?</div>
-<div class="respuesta">En celular, tablet o computadora.</div>
+<div class="pregunta">¿En qué dispositivos puedo leerlos?</div>
+<div class="respuesta">En celular, computadora o tablet.</div>
 
 <div class="pregunta">¿Los libros son descargables?</div>
 <div class="respuesta">Se entregan en formato digital.</div>
