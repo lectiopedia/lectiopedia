@@ -18,6 +18,49 @@ font-family:'Cinzel',serif;
 background:#0f1720;
 color:white;
 text-align:center;
+overflow-x:hidden;
+}
+
+/* LIBROS CAYENDO */
+
+.librosFondo{
+position:fixed;
+top:-100px;
+width:100%;
+pointer-events:none;
+}
+
+.libroF{
+position:absolute;
+font-size:30px;
+animation:caer 12s linear infinite;
+opacity:0.1;
+}
+
+@keyframes caer{
+0%{transform:translateY(-100px)}
+100%{transform:translateY(120vh)}
+}
+
+/* MENU LATERAL */
+
+.menuCatalogo{
+position:fixed;
+left:0;
+top:150px;
+background:#111827;
+padding:20px;
+border-right:2px solid #d4af37;
+}
+
+.menuCatalogo button{
+display:block;
+margin:10px 0;
+padding:10px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+font-weight:bold;
 }
 
 /* PORTADA */
@@ -31,6 +74,12 @@ background:linear-gradient(#0f1720,#1b263b);
 font-size:70px;
 color:#d4af37;
 text-shadow:0 0 20px #d4af37;
+animation:logoAnim 3s infinite alternate;
+}
+
+@keyframes logoAnim{
+from{letter-spacing:5px}
+to{letter-spacing:20px}
 }
 
 .sub{
@@ -50,9 +99,12 @@ to{transform:translateY(-10px)}
 #buscador{
 margin-top:30px;
 padding:15px;
-width:300px;
+width:320px;
 border-radius:8px;
-border:none;
+border:2px solid #d4af37;
+background:#111827;
+color:white;
+font-size:16px;
 }
 
 /* REDES */
@@ -99,10 +151,6 @@ border:2px solid #d4af37;
 border-radius:10px;
 }
 
-.oferta h3{
-color:#d4af37;
-}
-
 .precioAnterior{
 text-decoration:line-through;
 color:#aaa;
@@ -114,35 +162,81 @@ color:#00ffae;
 margin-top:10px;
 }
 
-/* CONTADOR */
+/* CATALOGO */
 
-.contador{
-font-size:20px;
-color:#ff6b6b;
-margin-top:10px;
+.catalogos{
+padding:60px;
 }
 
-.personas{
-margin-top:10px;
-color:#ccc;
+.catalogos h2{
+color:#d4af37;
 }
 
-.botonComprar{
-margin-top:20px;
-padding:12px 20px;
+/* BOTONES CATALOGOS */
+
+.botonesCatalogo button{
+margin:10px;
+padding:12px 18px;
 background:#d4af37;
 border:none;
-color:black;
 font-weight:bold;
 cursor:pointer;
+}
+
+/* SECCION INVERTIR */
+
+.invertir{
+background:#111827;
+padding:60px;
+}
+
+.invertir h2{
+color:#d4af37;
+}
+
+/* FAQ */
+
+.faq{
+padding:60px;
+}
+
+.faq h2{
+color:#d4af37;
+}
+
+.pregunta{
+margin-top:20px;
+font-weight:bold;
+}
+
+.respuesta{
+opacity:0.8;
 }
 
 </style>
 
 </head>
 
-
 <body>
+
+<div class="librosFondo">
+<div class="libroF" style="left:10%">📖</div>
+<div class="libroF" style="left:30%">📚</div>
+<div class="libroF" style="left:60%">📖</div>
+<div class="libroF" style="left:80%">📚</div>
+</div>
+
+<div class="menuCatalogo">
+
+<h3>Catálogos</h3>
+
+<button onclick="pedir('psicologia')">Psicología</button>
+<button onclick="pedir('habitos')">Hábitos</button>
+<button onclick="pedir('ventas')">Ventas</button>
+<button onclick="pedir('marketing')">Marketing</button>
+<button onclick="pedir('audiolibros')">Audiolibros</button>
+
+</div>
 
 <section class="portada">
 
@@ -158,11 +252,11 @@ DESCUBRE QUIÉN ERES REALMENTE
 
 <div class="redes">
 
-<a href="https://instagram.com/lectio.pedia" target="_blank">
+<a href="#" onclick="pedir('catalogo general')">
 Instagram
 </a>
 
-<a href="https://wa.me/543515101643" target="_blank">
+<a href="#" onclick="pedir('catalogo general')">
 WhatsApp
 </a>
 
@@ -170,38 +264,29 @@ WhatsApp
 
 </section>
 
-
-<!-- OFERTAS -->
-
 <section class="ofertas">
 
 <h2>OFERTAS EXCLUSIVAS</h2>
 
 <div class="contenedorOfertas">
 
-<!-- LIBRO INDIVIDUAL -->
-
 <div class="oferta">
 
 <h3>Libro individual</h3>
 
 <p class="precioAnterior">$20.200</p>
-
 <p class="precio">$3.900</p>
 
 <p>
-+ 3 audiolibros de regalo<br>
-+ Película "El Lobo de Wall Street"
++ 3 audiolibros<br>
++ Película El Lobo de Wall Street
 </p>
 
-<button class="botonComprar">
+<button class="botonComprar" onclick="pedir('libro individual')">
 Comprar
 </button>
 
 </div>
-
-
-<!-- PACK 3 LIBROS -->
 
 <div class="oferta">
 
@@ -209,43 +294,25 @@ Comprar
 
 <p class="precio">$10.000</p>
 
-<p>
-+ 10 audiolibros de regalo<br>
-+ 1 libro de regalo<br>
-+ Película "El Lobo de Wall Street"
-</p>
-
-<button class="botonComprar">
+<button class="botonComprar" onclick="pedir('3 libros')">
 Comprar
 </button>
 
 </div>
-
-
-<!-- ACCESO COMPLETO -->
 
 <div class="oferta">
 
 <h3>Biblioteca completa</h3>
 
 <p class="precioAnterior">$120.000</p>
-
 <p class="precio">$23.900</p>
 
-<p>
-Acceso completo a toda la biblioteca
-</p>
+<div class="contador" id="contador"></div>
 
-<div class="contador" id="contador">
-Oferta termina en 02:00:00
-</div>
+<div class="personas" id="personas"></div>
 
-<div class="personas" id="personas">
-37 personas viendo esta oferta
-</div>
-
-<button class="botonComprar">
-Acceder ahora
+<button class="botonComprar" onclick="pedir('biblioteca completa')">
+Acceder
 </button>
 
 </div>
@@ -254,10 +321,51 @@ Acceder ahora
 
 </section>
 
+<section class="catalogos">
+
+<h2>Pedir catálogo de</h2>
+
+<div class="botonesCatalogo">
+
+<button onclick="pedir('psicologia')">Psicología</button>
+<button onclick="pedir('habitos')">Hábitos</button>
+<button onclick="pedir('ventas')">Ventas</button>
+<button onclick="pedir('marketing')">Marketing</button>
+<button onclick="pedir('audiolibros')">Audiolibros</button>
+
+</div>
+
+</section>
+
+<section class="invertir">
+
+<h2>¿Por qué invertir en libros digitales?</h2>
+
+<p>Acceso inmediato al conocimiento.</p>
+<p>Una biblioteca completa en tu celular.</p>
+<p>Precio mucho menor que libros físicos.</p>
+<p>Aprendizaje constante y crecimiento personal.</p>
+
+</section>
+
+<section class="faq">
+
+<h2>Preguntas frecuentes</h2>
+
+<div class="pregunta">¿Cómo recibo los libros?</div>
+<div class="respuesta">Se envían digitalmente después de la compra.</div>
+
+<div class="pregunta">¿En qué dispositivos puedo leerlos?</div>
+<div class="respuesta">Celular, computadora o tablet.</div>
+
+<div class="pregunta">¿Los libros son descargables?</div>
+<div class="respuesta">Se entregan en formato digital.</div>
+
+</section>
 
 <script>
 
-/* CONTADOR 2 HORAS */
+/* CONTADOR */
 
 let tiempo=7200
 
@@ -274,8 +382,7 @@ tiempo--
 
 },1000)
 
-
-/* PERSONAS VIENDO */
+/* PERSONAS */
 
 setInterval(()=>{
 
@@ -286,8 +393,17 @@ personas+" personas viendo esta oferta"
 
 },4000)
 
-</script>
+/* MENSAJE WHATSAPP */
 
+function pedir(tipo){
+
+let mensaje="Hola, quiero pedir catalogo de "+tipo
+
+window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
+
+}
+
+</script>
 
 </body>
 
