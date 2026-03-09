@@ -366,7 +366,20 @@ personas+" personas viendo esta oferta"
 
 },4000)
 
-</script>
+<script>
+
+/* PERSONAS VIENDO */
+
+setInterval(()=>{
+
+let personas=Math.floor(Math.random()*20)+25
+
+document.getElementById("personas").innerText=
+personas+" personas viendo esta oferta"
+
+},4000)
+
+
 let carrito=[]
 
 function abrirCarrito(){
@@ -375,30 +388,23 @@ document.getElementById("carritoPanel").classList.toggle("activo")
 
 }
 
-
 function agregarCarrito(nombre,precio){
 
 carrito.push({nombre,precio})
-
 actualizarCarrito()
 
 }
 
-
 function actualizarCarrito(){
 
 let contenedor=document.getElementById("itemsCarrito")
+let total=0
 
 contenedor.innerHTML=""
 
-let total=0
-
-carrito.forEach((item,i)=>{
+carrito.forEach(item=>{
 
 let div=document.createElement("div")
-
-div.className="itemCarrito"
-
 div.innerHTML=item.nombre+" - $"+item.precio
 
 contenedor.appendChild(div)
@@ -408,25 +414,23 @@ total+=item.precio
 })
 
 document.getElementById("totalCarrito").innerText="Total: $"+total
-
 document.getElementById("contadorCarrito").innerText=carrito.length
 
 }
-
 
 function comprarWhatsApp(){
 
 let mensaje="Hola, quiero comprar:%0A"
 
 carrito.forEach(item=>{
-
 mensaje+=item.nombre+" - $"+item.precio+"%0A"
-
 })
 
 window.open("https://wa.me/543515101643?text="+mensaje)
 
 }
+
+</script>
 
 </body>
 
