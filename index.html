@@ -21,14 +21,14 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* FONDO ANIMADO */
+/* FONDO */
 
 body::before{
-content:"📚 🧠 ⚡ 📖 🧠 📚";
+content:"📚 🧠 ⚡ 📖 📚 🧠 ⚡";
 position:fixed;
-font-size:40px;
+font-size:50px;
 opacity:0.05;
-animation:mover 40s linear infinite;
+animation:mover 60s linear infinite;
 white-space:nowrap;
 }
 
@@ -62,22 +62,10 @@ background:#111827;
 padding:20px;
 transition:0.4s;
 overflow:auto;
-z-index:999;
 }
 
 .carritoPanel.activo{
 right:0;
-}
-
-.itemCarrito{
-border-bottom:1px solid #333;
-padding:10px;
-}
-
-.eliminar{
-color:red;
-cursor:pointer;
-margin-left:10px;
 }
 
 /* PORTADA */
@@ -88,7 +76,7 @@ background:linear-gradient(#0f1720,#1b263b);
 }
 
 .templo{
-font-size:50px;
+font-size:60px;
 animation:aparecer 2s ease;
 }
 
@@ -100,14 +88,13 @@ animation:logoAnim 3s ease;
 }
 
 @keyframes logoAnim{
-0%{opacity:0;transform:scale(0.5)}
+0%{opacity:0;transform:scale(0.4)}
 100%{opacity:1;transform:scale(1)}
 }
 
 .sub{
 font-size:22px;
 margin-top:10px;
-opacity:0.9;
 animation:flotar 3s infinite alternate;
 }
 
@@ -128,49 +115,10 @@ border:none;
 
 /* REDES */
 
-.redes a{
+.redes i{
+font-size:28px;
 margin:10px;
 color:white;
-font-size:25px;
-}
-
-/* OFERTAS */
-
-.ofertas{
-margin-top:60px;
-padding:40px;
-background:#111827;
-}
-
-.ofertas h2{
-color:#d4af37;
-font-size:40px;
-}
-
-.contenedorOfertas{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-margin-top:40px;
-}
-
-.oferta{
-background:#1f2937;
-padding:30px;
-width:300px;
-border:2px solid #d4af37;
-border-radius:10px;
-}
-
-.precioAnterior{
-text-decoration:line-through;
-color:#aaa;
-}
-
-.precio{
-font-size:35px;
-color:#00ffae;
 }
 
 /* CATALOGO */
@@ -180,7 +128,7 @@ padding:60px;
 }
 
 .categoria{
-margin-top:40px;
+margin-top:50px;
 }
 
 .libros{
@@ -207,32 +155,33 @@ cursor:pointer;
 font-weight:bold;
 }
 
-/* SECCION EDUCATIVA */
+/* MAS VENDIDOS */
 
-.educacion{
+.masVendidos{
 padding:60px;
 background:#111827;
 }
 
-.educacion h2{
-color:#d4af37;
-font-size:40px;
-animation:flotar 3s infinite alternate;
+/* EDUCACION */
+
+.educacion{
+padding:60px;
 }
 
-/* NOTIFICACIONES */
+/* NOTIFICACION */
 
 .notificacion{
 position:fixed;
 bottom:20px;
 left:20px;
 background:#111827;
-padding:15px;
 border:1px solid #d4af37;
+padding:15px;
 display:none;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -282,71 +231,46 @@ DESCUBRE QUIÉN ERES REALMENTE
 
 </section>
 
-<section class="catalogo">
+<section class="masVendidos">
 
-<h2 style="color:#d4af37">CATÁLOGO</h2>
-
-<div class="categoria">
-<h3>Psicología</h3>
+<h2 style="color:#d4af37">LOS MÁS VENDIDOS</h2>
 
 <div class="libros">
 
 <div class="libro">
 Psicología Oscura
-<button onclick="agregarCarrito('Psicología Oscura',3900)">
-Agregar al carrito
-</button>
+<button onclick="agregarCarrito('Psicología Oscura',3900)">Agregar al carrito</button>
 </div>
 
 <div class="libro">
 Hábitos Atómicos
-<button onclick="agregarCarrito('Hábitos Atómicos',3900)">
-Agregar al carrito
-</button>
+<button onclick="agregarCarrito('Hábitos Atómicos',3900)">Agregar al carrito</button>
 </div>
-
-</div>
-</div>
-
-<div class="categoria">
-<h3>Negocios y Dinero</h3>
-
-<div class="libros">
 
 <div class="libro">
 Padre Rico Padre Pobre
-<button onclick="agregarCarrito('Padre Rico Padre Pobre',3900)">
-Agregar al carrito
-</button>
+<button onclick="agregarCarrito('Padre Rico Padre Pobre',3900)">Agregar al carrito</button>
 </div>
 
 </div>
-</div>
 
-<div class="categoria">
-<h3>Seducción</h3>
+</section>
 
-<div class="libros">
+<section class="catalogo">
 
-<div class="libro">
-El Arte de la Seducción
-<button onclick="agregarCarrito('El Arte de la Seducción',3900)">
-Agregar al carrito
-</button>
-</div>
+<h2 style="color:#d4af37">CATÁLOGO</h2>
 
-</div>
-</div>
+<div id="contenedorCatalogo"></div>
 
 </section>
 
 <section class="educacion">
 
-<h2>POR QUÉ INVERTIR EN LIBROS DIGITALES</h2>
+<h2 style="color:#d4af37">POR QUÉ INVERTIR EN LIBROS DIGITALES</h2>
 
 <p>Acceso inmediato al conocimiento</p>
+<p>Biblioteca ilimitada</p>
 <p>Menor costo que libros físicos</p>
-<p>Biblioteca personal ilimitada</p>
 <p>Aprendizaje constante</p>
 
 </section>
@@ -355,6 +279,8 @@ Agregar al carrito
 
 <script>
 
+/* CARRITO */
+
 let carrito=[]
 
 function abrirCarrito(){
@@ -362,17 +288,13 @@ document.getElementById("carritoPanel").classList.toggle("activo")
 }
 
 function agregarCarrito(nombre,precio){
-
 carrito.push({nombre,precio})
 actualizarCarrito()
-
 }
 
 function eliminar(index){
-
 carrito.splice(index,1)
 actualizarCarrito()
-
 }
 
 function actualizarCarrito(){
@@ -385,9 +307,9 @@ contenedor.innerHTML=""
 carrito.forEach((item,i)=>{
 
 let div=document.createElement("div")
-div.className="itemCarrito"
+
 div.innerHTML=item.nombre+" - $"+item.precio+
-"<span class='eliminar' onclick='eliminar("+i+")'>❌</span>"
+" <span onclick='eliminar("+i+")'>❌</span>"
 
 contenedor.appendChild(div)
 
@@ -395,17 +317,17 @@ total+=item.precio
 
 })
 
-document.getElementById("totalCarrito").innerText="Total: $"+total
 document.getElementById("contadorCarrito").innerText=carrito.length
+document.getElementById("totalCarrito").innerText="Total: $"+total
 
 }
 
 function comprarWhatsApp(){
 
-let mensaje="Hola, quiero comprar:%0A"
+let mensaje="Hola quiero comprar:%0A"
 
 carrito.forEach(item=>{
-mensaje+=item.nombre+" - $"+item.precio+"%0A"
+mensaje+=item.nombre+"%0A"
 })
 
 window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
@@ -417,25 +339,79 @@ window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
 document.getElementById("buscador").addEventListener("keyup",function(){
 
 let filtro=this.value.toLowerCase()
+
 let libros=document.querySelectorAll(".libro")
 
 libros.forEach(libro=>{
 
 let texto=libro.innerText.toLowerCase()
 
-if(texto.includes(filtro)){
-libro.style.display="block"
-}else{
-libro.style.display="none"
+libro.style.display=texto.includes(filtro) ? "block":"none"
+
+})
+
+})
+
+/* CATALOGO AUTOMATICO */
+
+let catalogo={
+
+"Psicología":[
+"Psicología Oscura",
+"Hábitos Atómicos",
+"Inteligencia Emocional"
+],
+
+"Negocios":[
+"Padre Rico Padre Pobre",
+"Piense y Hágase Rico"
+],
+
+"Seducción":[
+"El Arte de la Seducción"
+]
+
 }
 
-})
+let contenedor=document.getElementById("contenedorCatalogo")
+
+for(let categoria in catalogo){
+
+let bloque=document.createElement("div")
+
+bloque.className="categoria"
+
+bloque.innerHTML="<h3>"+categoria+"</h3>"
+
+let librosDiv=document.createElement("div")
+librosDiv.className="libros"
+
+catalogo[categoria].forEach(libro=>{
+
+let div=document.createElement("div")
+
+div.className="libro"
+
+div.innerHTML=`
+${libro}
+<button onclick="agregarCarrito('${libro}',3900)">
+Agregar al carrito
+</button>
+`
+
+librosDiv.appendChild(div)
 
 })
 
-/* NOTIFICACIONES DE COMPRA */
+bloque.appendChild(librosDiv)
 
-let nombres=["Juan","María","Carlos","Lucía","Pedro"]
+contenedor.appendChild(bloque)
+
+}
+
+/* NOTIFICACIONES */
+
+let nombres=["Juan","María","Carlos","Lucía"]
 let ciudades=["Córdoba","Buenos Aires","Rosario","Mendoza"]
 
 setInterval(()=>{
@@ -443,18 +419,14 @@ setInterval(()=>{
 let nombre=nombres[Math.floor(Math.random()*nombres.length)]
 let ciudad=ciudades[Math.floor(Math.random()*ciudades.length)]
 
-let mensaje=nombre+" de "+ciudad+" compró Psicología Oscura"
-
 let box=document.getElementById("notificacion")
 
-box.innerText=mensaje
+box.innerText=nombre+" de "+ciudad+" compró Psicología Oscura"
 box.style.display="block"
 
-setTimeout(()=>{
-box.style.display="none"
-},4000)
+setTimeout(()=>box.style.display="none",4000)
 
-},10000)
+},12000)
 
 </script>
 
