@@ -187,8 +187,16 @@ cursor:pointer;
 padding:70px 20px;
 }
 
-.catalogos button{
-margin:10px;
+.catalogoGrid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+max-width:700px;
+margin:auto;
+margin-top:20px;
+}
+
+.catalogoGrid button{
 padding:12px 18px;
 background:#d4af37;
 border:none;
@@ -346,11 +354,24 @@ Acceder ahora
 
 <h2>Pedir catálogo de</h2>
 
+<div class="catalogoGrid">
+
 <button onclick="pedirCatalogo('psicologia')">Psicología</button>
 <button onclick="pedirCatalogo('habitos')">Hábitos</button>
 <button onclick="pedirCatalogo('ventas')">Ventas</button>
 <button onclick="pedirCatalogo('marketing')">Marketing</button>
+
 <button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
+<button onclick="pedirCatalogo('negocios')">Negocios</button>
+<button onclick="pedirCatalogo('finanzas')">Finanzas</button>
+<button onclick="pedirCatalogo('liderazgo')">Liderazgo</button>
+
+<button onclick="pedirCatalogo('filosofia')">Filosofía</button>
+<button onclick="pedirCatalogo('psicologia oscura')">Psicología Oscura</button>
+<button onclick="pedirCatalogo('seduccion')">Seducción</button>
+<button onclick="pedirCatalogo('desarrollo personal')">Desarrollo Personal</button>
+
+</div>
 
 </section>
 
