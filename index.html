@@ -15,228 +15,112 @@
 body{
 margin:0;
 font-family:'Cinzel',serif;
-background:#0f1720;
+background:linear-gradient(180deg,#0c0f1a,#08142b);
 color:white;
+}
+
+/* LOGO */
+
+.hero{
 text-align:center;
-overflow-x:hidden;
-
-/* espacio para el menú lateral */
-padding-left:180px;
-
+padding:100px 20px;
 }
 
-/* FONDO LIBROS */
-
-.libroFondo{
-position:fixed;
-font-size:28px;
-opacity:0.07;
-animation:caer linear infinite;
-}
-
-@keyframes caer{
-0%{transform:translateY(-100px)}
-100%{transform:translateY(120vh)}
-}
-
-/* MENU LATERAL */
-
-.menuCatalogos{
-position:fixed;
-left:0;
-top:150px;
-width:160px;
-background:#111827;
-padding:20px;
-border-right:3px solid #d4af37;
-z-index:100;
-}
-
-.menuCatalogos button{
-display:block;
-margin:10px 0;
-padding:10px;
-background:#d4af37;
-border:none;
-cursor:pointer;
-font-weight:bold;
-}
-
-/* PORTADA */
-
-.portada{
-padding:80px 20px;
-background:linear-gradient(#0f1720,#1b263b);
-}
-
-.logo{
-font-size:70px;
+.hero h1{
+font-size:80px;
 color:#d4af37;
-text-shadow:0 0 20px #d4af37;
-animation:logoAnim 4s infinite alternate;
+letter-spacing:10px;
 }
 
-@keyframes logoAnim{
-from{letter-spacing:5px}
-to{letter-spacing:18px}
-}
-
-.sub{
-font-size:22px;
+.hero h2{
+font-size:26px;
 margin-top:10px;
-opacity:0.9;
-animation:flotar 3s infinite alternate;
 }
 
-@keyframes flotar{
-from{transform:translateY(0)}
-to{transform:translateY(-10px)}
+.hero p{
+margin-top:10px;
 }
 
 /* BUSCADOR */
 
-#buscador{
+.buscador-box{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
 margin-top:30px;
-padding:15px;
-width:330px;
-border-radius:10px;
+}
+
+.buscador-box input{
+width:320px;
+padding:12px;
+border-radius:6px;
 border:2px solid #d4af37;
-background:#111827;
+background:black;
 color:white;
-font-size:16px;
 }
 
-/* REDES */
-
-.redes{
-margin-top:20px;
+.botones{
+display:flex;
+gap:15px;
 }
 
-.redes a{
-margin:10px;
+.boton{
+border:2px solid #d4af37;
+padding:10px 20px;
 color:white;
 text-decoration:none;
-padding:10px 20px;
-border:2px solid #d4af37;
 border-radius:6px;
+}
+
+.boton:hover{
+background:#d4af37;
+color:black;
+}
+
+/* CATALOGO */
+
+.catalogo{
+position:fixed;
+left:20px;
+top:200px;
+}
+
+.catalogo-toggle{
+background:#d4af37;
+color:black;
+padding:12px;
+border:none;
+font-weight:bold;
+cursor:pointer;
+border-radius:5px;
+}
+
+.catalogo-lista{
+display:none;
+flex-direction:column;
+gap:8px;
+margin-top:10px;
+}
+
+.catalogo-lista a{
+background:#d4af37;
+color:black;
+padding:8px;
+text-decoration:none;
+border-radius:4px;
+font-size:14px;
 }
 
 /* OFERTAS */
 
 .ofertas{
-margin-top:60px;
-padding:40px;
-background:#111827;
+text-align:center;
+padding:80px 20px;
 }
 
 .ofertas h2{
-color:#d4af37;
 font-size:40px;
-}
-
-.contenedorOfertas{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-margin-top:40px;
-}
-
-.oferta{
-background:#1f2937;
-padding:30px;
-width:300px;
-border:2px solid #d4af37;
-border-radius:10px;
-}
-
-.oferta h3{
-color:#d4af37;
-}
-
-.precioAnterior{
-text-decoration:line-through;
-color:#aaa;
-}
-
-.precio{
-font-size:35px;
-color:#00ffae;
-margin-top:10px;
-}
-
-.contador{
-font-size:20px;
-color:#ff6b6b;
-margin-top:10px;
-}
-
-.personas{
-margin-top:10px;
-color:#ccc;
-}
-
-.botonComprar{
-margin-top:20px;
-padding:12px 20px;
-background:#d4af37;
-border:none;
-color:black;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* CATALOGOS */
-
-.catalogos{
-padding:70px 20px;
-}
-
-.catalogoGrid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-max-width:700px;
-margin:auto;
-margin-top:20px;
-}
-
-.catalogoGrid button{
-padding:12px 18px;
-background:#d4af37;
-border:none;
-cursor:pointer;
-font-weight:bold;
-}
-
-/* INVERTIR */
-
-.invertir{
-background:#111827;
-padding:60px;
-}
-
-.invertir h2{
-color:#d4af37;
-}
-
-/* FAQ */
-
-.faq{
-padding:60px;
-}
-
-.faq h2{
-color:#d4af37;
-}
-
-.pregunta{
-margin-top:20px;
-font-weight:bold;
-}
-
-.respuesta{
-opacity:0.85;
 }
 
 </style>
@@ -245,25 +129,98 @@ opacity:0.85;
 
 <body>
 
-<!-- LIBROS FONDO -->
+<!-- CATALOGO -->
 
-<div class="libroFondo" style="left:10%;animation-duration:12s">📚</div>
-<div class="libroFondo" style="left:40%;animation-duration:16s">📖</div>
-<div class="libroFondo" style="left:70%;animation-duration:10s">📚</div>
-<div class="libroFondo" style="left:90%;animation-duration:14s">📖</div>
+<div class="catalogo">
 
-<!-- MENU CATALOGOS -->
+<button class="catalogo-toggle">
+☰ CATALOGOS
+</button>
 
-<div class="menuCatalogos">
+<div class="catalogo-lista">
 
-<h3>Catálogos</h3>
-
-<button onclick="pedirCatalogo('psicologia')">Psicología</button>
-<button onclick="pedirCatalogo('habitos')">Hábitos</button>
-<button onclick="pedirCatalogo('ventas')">Ventas</button>
-<button onclick="pedirCatalogo('marketing')">Marketing</button>
-<button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
+<a>Psicologia</a>
+<a>Exitos y negocio</a>
+<a>Desarrollo personal</a>
+<a>Habitos y productividad</a>
+<a>Recetas, salud y deporte</a>
+<a>Ingles</a>
+<a>Historia</a>
+<a>Clasicos</a>
+<a>Brian Tracy</a>
+<a>Autoayuda y liderazgo</a>
+<a>Libros biblicos</a>
+<a>Filosofia</a>
+<a>Recetas para diabeticos</a>
+<a>Autoestima</a>
+<a>Libros de terror</a>
+<a>Audiolibros</a>
+<a>Cuentos de disney</a>
+<a>Fotografia</a>
+<a>Otros</a>
 
 </div>
 
-<!-- el resto del código sigue exactamente igual -->
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>LECTIO</h1>
+
+<h2>DESCUBRE QUIÉN ERES REALMENTE</h2>
+
+<p>MÁS DE 25.000 LIBROS Y 13.000 AUDIOLIBROS</p>
+
+<div class="buscador-box">
+
+<input type="text" placeholder="Buscar libros...">
+
+<div class="botones">
+
+<a class="boton" href="https://instagram.com/lectio.pedia">
+INSTAGRAM
+</a>
+
+<a class="boton" href="#">
+WHATSAPP
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- OFERTAS -->
+
+<section class="ofertas">
+
+<h2>OFERTAS EXCLUSIVAS</h2>
+
+</section>
+
+<script>
+
+document.querySelector(".catalogo-toggle").onclick=function(){
+
+let menu=document.querySelector(".catalogo-lista");
+
+if(menu.style.display=="flex"){
+
+menu.style.display="none";
+
+}else{
+
+menu.style.display="flex";
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
