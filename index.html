@@ -13,13 +13,77 @@
 <style>
 
 body{
+
 margin:0;
 font-family:'Cinzel',serif;
 background:#0f1720;
 color:white;
 text-align:center;
 }
+.carritoIcono{
 
+position:fixed;
+
+top:20px;
+
+right:20px;
+
+background:#d4af37;
+
+color:black;
+
+padding:10px 15px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+z-index:1000;
+
+}
+
+
+.carritoPanel{
+
+position:fixed;
+
+right:-350px;
+
+top:0;
+
+width:350px;
+
+height:100%;
+
+background:#111827;
+
+padding:20px;
+
+transition:0.4s;
+
+overflow:auto;
+
+z-index:999;
+
+}
+
+
+.carritoPanel.activo{
+
+right:0;
+
+}
+
+
+.itemCarrito{
+
+border-bottom:1px solid #333;
+
+padding:10px;
+
+}
 /* PORTADA */
 
 .portada{
@@ -143,7 +207,23 @@ cursor:pointer;
 
 
 <body>
+<div class="carritoIcono" onclick="abrirCarrito()">
+🛒 <span id="contadorCarrito">0</span>
+</div>
 
+<div id="carritoPanel" class="carritoPanel">
+
+<h2>Tu carrito</h2>
+
+<div id="itemsCarrito"></div>
+
+<p id="totalCarrito">Total: $0</p>
+
+<button onclick="comprarWhatsApp()">
+Comprar por WhatsApp
+</button>
+
+</div>
 <section class="portada">
 
 <div class="logo">LECTIO</div>
@@ -287,7 +367,66 @@ personas+" personas viendo esta oferta"
 },4000)
 
 </script>
+let carrito=[]
 
+function abrirCarrito(){
+
+document.getElementById("carritoPanel").classList.toggle("activo")
+
+}
+
+
+function agregarCarrito(nombre,precio){
+
+carrito.push({nombre,precio})
+
+actualizarCarrito()
+
+}
+
+
+function actualizarCarrito(){
+
+let contenedor=document.getElementById("itemsCarrito")
+
+contenedor.innerHTML=""
+
+let total=0
+
+carrito.forEach((item,i)=>{
+
+let div=document.createElement("div")
+
+div.className="itemCarrito"
+
+div.innerHTML=item.nombre+" - $"+item.precio
+
+contenedor.appendChild(div)
+
+total+=item.precio
+
+})
+
+document.getElementById("totalCarrito").innerText="Total: $"+total
+
+document.getElementById("contadorCarrito").innerText=carrito.length
+
+}
+
+
+function comprarWhatsApp(){
+
+let mensaje="Hola, quiero comprar:%0A"
+
+carrito.forEach(item=>{
+
+mensaje+=item.nombre+" - $"+item.precio+"%0A"
+
+})
+
+window.open("https://wa.me/543515101643?text="+mensaje)
+
+}
 
 </body>
 
