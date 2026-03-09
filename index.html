@@ -351,7 +351,10 @@ document.getElementById("contador").innerText=
 "Oferta termina en "+horas+":"+minutos+":"+segundos
 
 tiempo--
-
+  
+if(tiempo<=0){
+tiempo=0
+}
 },1000)
 
 
@@ -426,9 +429,9 @@ carrito.forEach(item=>{
 mensaje+=item.nombre+" - $"+item.precio+"%0A"
 })
 
-window.open("https://wa.me/543515101643?text="+mensaje)
+window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
 
-}
+} 
 
 </script>
 
