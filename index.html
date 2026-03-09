@@ -8,192 +8,119 @@
 
 <title>LECTIO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
 font-family:'Cinzel',serif;
-background:#0f1720;
+background:linear-gradient(180deg,#0c0f1a,#08142b);
 color:white;
+}
+
+/* LOGO */
+
+.hero{
 text-align:center;
-overflow-x:hidden;
+padding:100px 20px;
 }
 
-/* LIBROS CAYENDO */
-
-.librosFondo{
-position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-
-.libroAnim{
-position:absolute;
-font-size:30px;
-opacity:0.08;
-animation:caer linear infinite;
-}
-
-@keyframes caer{
-0%{transform:translateY(-100px)}
-100%{transform:translateY(120vh)}
-}
-
-/* MENU CATALOGOS */
-
-.menuCatalogos{
-position:fixed;
-left:0;
-top:120px;
-background:#111827;
-padding:20px;
-border-right:3px solid #d4af37;
-}
-
-.menuCatalogos button{
-display:block;
-margin:10px 0;
-padding:10px;
-background:#d4af37;
-border:none;
-cursor:pointer;
-font-weight:bold;
-}
-
-/* PORTADA */
-
-.portada{
-padding:80px 20px;
-background:linear-gradient(#0f1720,#1b263b);
-}
-
-.logo{
-font-size:70px;
+.hero h1{
+font-size:80px;
 color:#d4af37;
-text-shadow:0 0 20px #d4af37;
-animation:logoMov 4s infinite alternate;
+letter-spacing:10px;
 }
 
-@keyframes logoMov{
-0%{letter-spacing:5px}
-100%{letter-spacing:20px}
-}
-
-.sub{
-font-size:22px;
+.hero h2{
+font-size:26px;
 margin-top:10px;
-opacity:0.9;
+}
+
+.hero p{
+margin-top:10px;
 }
 
 /* BUSCADOR */
 
-#buscador{
+.buscador-box{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
 margin-top:30px;
-padding:15px;
-width:330px;
-border-radius:10px;
-border:2px solid #d4af37;
-background:#111827;
-color:white;
-font-size:16px;
 }
 
-/* REDES */
+.buscador-box input{
+width:320px;
+padding:12px;
+border-radius:6px;
+border:2px solid #d4af37;
+background:black;
+color:white;
+}
 
-.redes a{
-margin:10px;
+.botones{
+display:flex;
+gap:15px;
+}
+
+.boton{
+border:2px solid #d4af37;
+padding:10px 20px;
 color:white;
 text-decoration:none;
-padding:10px 20px;
-border:2px solid #d4af37;
 border-radius:6px;
 }
 
-/* OFERTAS */
-
-.ofertas{
-margin-top:60px;
-padding:40px;
-background:#111827;
-}
-
-.ofertas h2{
-color:#d4af37;
-font-size:40px;
-}
-
-.contenedorOfertas{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:30px;
-margin-top:40px;
-}
-
-.oferta{
-background:#1f2937;
-padding:30px;
-width:300px;
-border:2px solid #d4af37;
-border-radius:10px;
-}
-
-.precioAnterior{
-text-decoration:line-through;
-color:#aaa;
-}
-
-.precio{
-font-size:35px;
-color:#00ffae;
+.boton:hover{
+background:#d4af37;
+color:black;
 }
 
 /* CATALOGO */
 
 .catalogo{
-padding:60px;
+position:fixed;
+left:20px;
+top:200px;
 }
 
-.catalogo button{
-margin:10px;
-padding:12px 18px;
+.catalogo-toggle{
 background:#d4af37;
+color:black;
+padding:12px;
 border:none;
+font-weight:bold;
 cursor:pointer;
-font-weight:bold;
+border-radius:5px;
 }
 
-/* INVERTIR */
-
-.invertir{
-padding:60px;
-background:#111827;
+.catalogo-lista{
+display:none;
+flex-direction:column;
+gap:8px;
+margin-top:10px;
 }
 
-.invertir h2{
-color:#d4af37;
+.catalogo-lista a{
+background:#d4af37;
+color:black;
+padding:8px;
+text-decoration:none;
+border-radius:4px;
+font-size:14px;
 }
 
-/* FAQ */
+/* OFERTAS */
 
-.faq{
-padding:60px;
+.ofertas{
+text-align:center;
+padding:80px 20px;
 }
 
-.faq h2{
-color:#d4af37;
-}
-
-.pregunta{
-margin-top:20px;
-font-weight:bold;
-}
-
-.respuesta{
-opacity:0.8;
+.ofertas h2{
+font-size:40px;
 }
 
 </style>
@@ -202,176 +129,93 @@ opacity:0.8;
 
 <body>
 
-<div class="librosFondo">
+<!-- CATALOGO -->
 
-<div class="libroAnim" style="left:10%;animation-duration:12s">📚</div>
-<div class="libroAnim" style="left:30%;animation-duration:15s">📖</div>
-<div class="libroAnim" style="left:60%;animation-duration:10s">📚</div>
-<div class="libroAnim" style="left:80%;animation-duration:18s">📖</div>
+<div class="catalogo">
+
+<button class="catalogo-toggle">
+☰ CATALOGOS
+</button>
+
+<div class="catalogo-lista">
+
+<a>Psicologia</a>
+<a>Exitos y negocio</a>
+<a>Desarrollo personal</a>
+<a>Habitos y productividad</a>
+<a>Recetas, salud y deporte</a>
+<a>Ingles</a>
+<a>Historia</a>
+<a>Clasicos</a>
+<a>Brian Tracy</a>
+<a>Autoayuda y liderazgo</a>
+<a>Libros biblicos</a>
+<a>Filosofia</a>
+<a>Recetas para diabeticos</a>
+<a>Autoestima</a>
+<a>Libros de terror</a>
+<a>Audiolibros</a>
+<a>Cuentos de disney</a>
+<a>Fotografia</a>
+<a>Otros</a>
 
 </div>
 
-<div class="menuCatalogos">
-
-<h3>Catálogos</h3>
-
-<button onclick="pedirCatalogo('psicologia')">Psicología</button>
-<button onclick="pedirCatalogo('habitos')">Hábitos</button>
-<button onclick="pedirCatalogo('ventas')">Ventas</button>
-<button onclick="pedirCatalogo('marketing')">Marketing</button>
-<button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
-
 </div>
 
-<section class="portada">
+<!-- HERO -->
 
-<div class="logo">LECTIO</div>
+<section class="hero">
 
-<div class="sub">
-DESCUBRE QUIÉN ERES REALMENTE
-</div>
+<h1>LECTIO</h1>
 
-<p>Más de 25.000 libros y 13.000 audiolibros</p>
+<h2>DESCUBRE QUIÉN ERES REALMENTE</h2>
 
-<input id="buscador" placeholder="Buscar libros...">
+<p>MÁS DE 25.000 LIBROS Y 13.000 AUDIOLIBROS</p>
 
-<div class="redes">
+<div class="buscador-box">
 
-<a href="#" onclick="pedirCatalogo('catalogo general')">
-Instagram
+<input type="text" placeholder="Buscar libros...">
+
+<div class="botones">
+
+<a class="boton" href="https://instagram.com/lectio.pedia">
+INSTAGRAM
 </a>
 
-<a href="#" onclick="pedirCatalogo('catalogo general')">
-WhatsApp
+<a class="boton" href="#">
+WHATSAPP
 </a>
+
+</div>
 
 </div>
 
 </section>
+
+<!-- OFERTAS -->
 
 <section class="ofertas">
 
 <h2>OFERTAS EXCLUSIVAS</h2>
 
-<div class="contenedorOfertas">
-
-<div class="oferta">
-
-<h3>Libro individual</h3>
-
-<p class="precioAnterior">$20.200</p>
-
-<p class="precio">$3.900</p>
-
-<button onclick="pedirCatalogo('libro individual')">
-Comprar
-</button>
-
-</div>
-
-<div class="oferta">
-
-<h3>3 Libros</h3>
-
-<p class="precio">$10.000</p>
-
-<button onclick="pedirCatalogo('3 libros')">
-Comprar
-</button>
-
-</div>
-
-<div class="oferta">
-
-<h3>Biblioteca completa</h3>
-
-<p class="precioAnterior">$120.000</p>
-
-<p class="precio">$23.900</p>
-
-<div id="contador"></div>
-
-<div id="personas"></div>
-
-<button onclick="pedirCatalogo('biblioteca completa')">
-Acceder
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="catalogo">
-
-<h2>Pedir catálogo de</h2>
-
-<button onclick="pedirCatalogo('psicologia')">Psicología</button>
-<button onclick="pedirCatalogo('habitos')">Hábitos</button>
-<button onclick="pedirCatalogo('ventas')">Ventas</button>
-<button onclick="pedirCatalogo('marketing')">Marketing</button>
-<button onclick="pedirCatalogo('audiolibros')">Audiolibros</button>
-
-</section>
-
-<section class="invertir">
-
-<h2>¿Por qué invertir en libros digitales?</h2>
-
-<p>Acceso inmediato al conocimiento.</p>
-<p>Biblioteca completa en tu celular.</p>
-<p>Precio menor que libros físicos.</p>
-<p>Aprendizaje constante.</p>
-
-</section>
-
-<section class="faq">
-
-<h2>Preguntas frecuentes</h2>
-
-<div class="pregunta">¿Cómo recibo los libros?</div>
-<div class="respuesta">Se entregan digitalmente después de la compra.</div>
-
-<div class="pregunta">¿Dónde puedo leerlos?</div>
-<div class="respuesta">En celular, tablet o computadora.</div>
-
-<div class="pregunta">¿Los libros son descargables?</div>
-<div class="respuesta">Se entregan en formato digital.</div>
-
 </section>
 
 <script>
 
-let tiempo=7200
+document.querySelector(".catalogo-toggle").onclick=function(){
 
-setInterval(()=>{
+let menu=document.querySelector(".catalogo-lista");
 
-let horas=Math.floor(tiempo/3600)
-let minutos=Math.floor((tiempo%3600)/60)
-let segundos=tiempo%60
+if(menu.style.display=="flex"){
 
-document.getElementById("contador").innerText=
-"Oferta termina en "+horas+":"+minutos+":"+segundos
+menu.style.display="none";
 
-tiempo--
+}else{
 
-},1000)
+menu.style.display="flex";
 
-setInterval(()=>{
-
-let personas=Math.floor(Math.random()*20)+25
-
-document.getElementById("personas").innerText=
-personas+" personas viendo esta oferta"
-
-},4000)
-
-function pedirCatalogo(tipo){
-
-let mensaje="Hola, quiero pedir catalogo de "+tipo
-
-window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
+}
 
 }
 
