@@ -5,293 +5,289 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-<div class="logoTemplo">
 
-<svg viewBox="0 0 200 120" class="temploIcono">
-
-<polygon points="100,10 10,50 190,50"/>
-
-<rect x="20" y="50" width="160" height="10"/>
-
-<rect x="40" y="60" width="10" height="40"/>
-<rect x="70" y="60" width="10" height="40"/>
-<rect x="100" y="60" width="10" height="40"/>
-<rect x="130" y="60" width="10" height="40"/>
-<rect x="160" y="60" width="10" height="40"/>
-
-<rect x="20" y="100" width="160" height="10"/>
-
-</svg>
-
-</div>
 <title>LECTIO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+body{
+margin:0;
+font-family:'Cinzel',serif;
+background:#0f1720;
+color:white;
+text-align:center;
+}
+
+/* PORTADA */
+
+.portada{
+padding:80px 20px;
+background:linear-gradient(#0f1720,#1b263b);
+}
+
+.logo{
+font-size:70px;
+color:#d4af37;
+text-shadow:0 0 20px #d4af37;
+}
+
+.sub{
+font-size:22px;
+margin-top:10px;
+opacity:0.9;
+animation:flotar 3s infinite alternate;
+}
+
+@keyframes flotar{
+from{transform:translateY(0)}
+to{transform:translateY(-10px)}
+}
+
+/* BUSCADOR */
+
+#buscador{
+margin-top:30px;
+padding:15px;
+width:300px;
+border-radius:8px;
+border:none;
+}
+
+/* REDES */
+
+.redes{
+margin-top:20px;
+}
+
+.redes a{
+margin:10px;
+color:white;
+text-decoration:none;
+padding:10px 20px;
+border:2px solid #d4af37;
+border-radius:6px;
+}
+
+/* OFERTAS */
+
+.ofertas{
+margin-top:60px;
+padding:40px;
+background:#111827;
+}
+
+.ofertas h2{
+color:#d4af37;
+font-size:40px;
+}
+
+.contenedorOfertas{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+}
+
+.oferta{
+background:#1f2937;
+padding:30px;
+width:300px;
+border:2px solid #d4af37;
+border-radius:10px;
+}
+
+.oferta h3{
+color:#d4af37;
+}
+
+.precioAnterior{
+text-decoration:line-through;
+color:#aaa;
+}
+
+.precio{
+font-size:35px;
+color:#00ffae;
+margin-top:10px;
+}
+
+/* CONTADOR */
+
+.contador{
+font-size:20px;
+color:#ff6b6b;
+margin-top:10px;
+}
+
+.personas{
+margin-top:10px;
+color:#ccc;
+}
+
+.botonComprar{
+margin-top:20px;
+padding:12px 20px;
+background:#d4af37;
+border:none;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
 
 </head>
 
+
 <body>
-  <div class="columnasGriegas">
 
-<div class="columna izquierda"></div>
-
-<div class="columna derecha"></div>
-
-</div>
-  .logoLectio{
-
-font-size:70px;
-
-color:#d4af37;
-
-text-shadow:
-0 0 10px #d4af37,
-0 0 20px #d4af37,
-0 0 40px #d4af37;
-
-animation:brilloTitulo 4s infinite alternate;
-
-}
-
-@keyframes brilloTitulo{
-
-0%{
-text-shadow:0 0 10px #d4af37;
-}
-
-100%{
-text-shadow:
-0 0 20px #d4af37,
-0 0 40px #d4af37,
-0 0 60px #d4af37;
-}
-
-}
-  <div class="botonMenu" onclick="abrirMenu()">☰</div>
-  <div id="menuLateral" class="menuLateral">
-
-<h3>Categorías</h3>
-
-<button onclick="cargarCatalogo('psicologia')">Psicología</button>
-
-<button onclick="cargarCatalogo('desarrollo_personal')">
-Desarrollo personal
-</button>
-
-<button onclick="cargarCatalogo('marketing_y_multinivel')">
-Marketing
-</button>
-
-<button onclick="cargarCatalogo('exito_y_negocio')">
-Éxito y negocio
-</button>
-
-<button onclick="cargarCatalogo('historia')">Historia</button>
-
-<button onclick="cargarCatalogo('literatura')">Literatura</button>
-
-<button onclick="cargarCatalogo('seduccion')">Seducción</button>
-
-<button onclick="cargarCatalogo('tdah')">TDAH</button>
-
-<button onclick="cargarCatalogo('nutricion_y_deporte')">
-Nutrición
-</button>
-
-<button onclick="cargarCatalogo('terror_suspenso_y_mas')">
-Terror y suspenso
-</button>
-
-</div>
 <section class="portada">
-<div class="logoTemplo">
 
-<svg viewBox="0 0 200 120" class="temploIcono">
+<div class="logo">LECTIO</div>
 
-<polygon points="100,10 10,50 190,50" />
-
-<rect x="20" y="50" width="160" height="10"/>
-
-<rect x="40" y="60" width="10" height="40"/>
-<rect x="70" y="60" width="10" height="40"/>
-<rect x="100" y="60" width="10" height="40"/>
-<rect x="130" y="60" width="10" height="40"/>
-<rect x="160" y="60" width="10" height="40"/>
-
-<rect x="20" y="100" width="160" height="10"/>
-
-</svg>
-
-</div>
-  <div class="temploFondo"></div>
-<h1 class="logoLectio">LECTIO</h1>
-
-<p class="subtituloLectio animacionGriega">
+<div class="sub">
 DESCUBRE QUIÉN ERES REALMENTE
-</p>
-
-</section>
+</div>
 
 <p>Más de 25.000 libros y 13.000 audiolibros</p>
 
-<input id="buscador" placeholder="Buscar entre 25.000 libros..." onkeyup="buscarLibros()">
-  
-<div class="redesLectio">
+<input id="buscador" placeholder="Buscar entre 25.000 libros">
 
-<a href="https://instagram.com/lectio.pedia" target="_blank" class="btnRed instagram">
+<div class="redes">
+
+<a href="https://instagram.com/lectio.pedia" target="_blank">
 Instagram
 </a>
 
-<a href="https://wa.me/543515101643" target="_blank" class="btnRed whatsapp">
+<a href="https://wa.me/543515101643" target="_blank">
 WhatsApp
 </a>
 
 </div>
-<div id="menuCategorias">
-<section class="seccionLibros">
-
-<h2>Libros populares</h2>
-
-<div class="filaLibros" id="librosPopulares"></div>
-
-</section>
-  <section class="seccionLibros">
-
-<h2>Recomendados</h2>
-
-<div class="filaLibros" id="librosRecomendados"></div>
 
 </section>
 
-<section class="seccionLibros">
 
-<h2>Más vendidos</h2>
+<!-- OFERTAS -->
 
-<div class="filaLibros" id="librosVendidos"></div>
+<section class="ofertas">
 
-</section>
-<button onclick="cargarCatalogo('adolescentes')">Adolescentes</button>
+<h2>OFERTAS EXCLUSIVAS</h2>
 
-<button onclick="cargarCatalogo('anthony_robbins')">Anthony Robbins</button>
+<div class="contenedorOfertas">
 
-<button onclick="cargarCatalogo('aprende_sobre_dinero')">Aprender sobre dinero</button>
+<!-- LIBRO INDIVIDUAL -->
 
-<button onclick="cargarCatalogo('autoayuda_liderazgo')">Autoayuda y liderazgo</button>
+<div class="oferta">
 
-<button onclick="cargarCatalogo('best_sellers_modernos')">Best sellers</button>
+<h3>Libro individual</h3>
 
-<button onclick="cargarCatalogo('brian_tracy')">Brian Tracy</button>
+<p class="precioAnterior">$20.200</p>
 
-<button onclick="cargarCatalogo('ciencia')">Ciencia</button>
+<p class="precio">$3.900</p>
 
-<button onclick="cargarCatalogo('clasicos')">Clásicos</button>
+<p>
++ 3 audiolibros de regalo<br>
++ Película "El Lobo de Wall Street"
+</p>
 
-<button onclick="cargarCatalogo('desarrollo_personal')">Desarrollo personal</button>
-
-<button onclick="cargarCatalogo('divulgacion_cientifica')">Divulgación científica</button>
-
-<button onclick="cargarCatalogo('domina_el_ingles')">Dominar inglés</button>
-
-<button onclick="cargarCatalogo('dummies_domina_tu_materia')">Dummies</button>
-
-<button onclick="cargarCatalogo('esenciales_clasicos')">Esenciales clásicos</button>
-
-<button onclick="cargarCatalogo('exito_y_negocio')">Éxito y negocio</button>
-
-<button onclick="cargarCatalogo('filosofia')">Filosofía</button>
-
-<button onclick="cargarCatalogo('genera_clientes_de_por_vida')">Ventas</button>
-
-<button onclick="cargarCatalogo('grafologia')">Grafología</button>
-
-<button onclick="cargarCatalogo('habitos_productividad')">Hábitos y productividad</button>
-
-<button onclick="cargarCatalogo('historia')">Historia</button>
-
-<button onclick="cargarCatalogo('historia_america_latina')">Historia América Latina</button>
-
-<button onclick="cargarCatalogo('historietas')">Historietas</button>
-
-<button onclick="cargarCatalogo('inteligencia_emocional')">Inteligencia emocional</button>
-
-<button onclick="cargarCatalogo('jacobo_grinberg')">Jacobo Grinberg</button>
-
-<button onclick="cargarCatalogo('lectura_super_rapida')">Lectura rápida</button>
-
-<button onclick="cargarCatalogo('literatura')">Literatura</button>
-
-<button onclick="cargarCatalogo('marketing_y_multinivel')">Marketing</button>
-
-<button onclick="cargarCatalogo('metabolismo')">Metabolismo</button>
-
-<button onclick="cargarCatalogo('nutricion_y_deporte')">Nutrición</button>
-
-<button onclick="cargarCatalogo('poesias')">Poesías</button>
-
-<button onclick="cargarCatalogo('primeros_auxilios')">Primeros auxilios</button>
-
-<button onclick="cargarCatalogo('recetas_y_dietas')">Recetas y dietas</button>
-
-<button onclick="cargarCatalogo('redes_sociales')">Redes sociales</button>
-
-<button onclick="cargarCatalogo('robert_kiyosaki')">Robert Kiyosaki</button>
-
-<button onclick="cargarCatalogo('seduccion')">Seducción</button>
-
-<button onclick="cargarCatalogo('supera_tu_duelo')">Superación personal</button>
-
-<button onclick="cargarCatalogo('tdah')">TDAH</button>
-
-<button onclick="cargarCatalogo('terapia_de_pareja')">Terapia de pareja</button>
-
-<button onclick="cargarCatalogo('terror_suspenso_y_mas')">Terror y suspenso</button>
-
-<button onclick="cargarCatalogo('trading_forex_mercado')">Trading</button>
-
-<button onclick="cargarCatalogo('yooga')">Yoga</button>
+<button class="botonComprar">
+Comprar
+</button>
 
 </div>
-  <section class="seccion">
 
-<h2>🔥 Libros populares</h2>
-<div class="filaLibros" id="librosPopulares"></div>
 
-</section>
+<!-- PACK 3 LIBROS -->
 
-<section class="seccion">
+<div class="oferta">
 
-<h2>⭐ Recomendados</h2>
-<div class="filaLibros" id="recomendados"></div>
+<h3>3 Libros</h3>
 
-</section>
+<p class="precio">$10.000</p>
 
-<section class="seccion">
+<p>
++ 10 audiolibros de regalo<br>
++ 1 libro de regalo<br>
++ Película "El Lobo de Wall Street"
+</p>
 
-<h2>💰 Más vendidos</h2>
-<div class="filaLibros" id="masVendidos"></div>
-
-</section>
-
-<section class="seccion">
-
-<h2>📚 Categorías</h2>
-<div id="menuCategorias"></div>
-
-</section>
-
-<div id="catalogoLibros"></div>
-<button onclick="cargarCatalogo('psicologia')">
-Ver libros de psicología
+<button class="botonComprar">
+Comprar
 </button>
-<div id="catalogoLibros"></div>
 
-<script src="menu.js"></script>
-<script src="carrito.js"></script>
-<script src="buscador.js"></script>
-<script src="catalogo.js"></script>
+</div>
+
+
+<!-- ACCESO COMPLETO -->
+
+<div class="oferta">
+
+<h3>Biblioteca completa</h3>
+
+<p class="precioAnterior">$120.000</p>
+
+<p class="precio">$23.900</p>
+
+<p>
+Acceso completo a toda la biblioteca
+</p>
+
+<div class="contador" id="contador">
+Oferta termina en 02:00:00
+</div>
+
+<div class="personas" id="personas">
+37 personas viendo esta oferta
+</div>
+
+<button class="botonComprar">
+Acceder ahora
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* CONTADOR 2 HORAS */
+
+let tiempo=7200
+
+setInterval(()=>{
+
+let horas=Math.floor(tiempo/3600)
+let minutos=Math.floor((tiempo%3600)/60)
+let segundos=tiempo%60
+
+document.getElementById("contador").innerText=
+"Oferta termina en "+horas+":"+minutos+":"+segundos
+
+tiempo--
+
+},1000)
+
+
+/* PERSONAS VIENDO */
+
+setInterval(()=>{
+
+let personas=Math.floor(Math.random()*20)+25
+
+document.getElementById("personas").innerText=
+personas+" personas viendo esta oferta"
+
+},4000)
+
+</script>
+
 
 </body>
 
