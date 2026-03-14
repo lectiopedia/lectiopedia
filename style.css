@@ -1,12 +1,12 @@
 
 .templo{
-font-size:60px;
+font-size: clamp(40px, 10vw, 60px);
 animation:aparecer 2s ease;
 }
 
 
 .logo{
-font-size:70px;
+font-size: clamp(35px, 12vw, 70px);
 color:#d4af37;
 text-shadow:0 0 20px #d4af37;
 animation:logoAnim 3s ease;
@@ -60,18 +60,25 @@ z-index:1000;
 
 .carritoPanel{
 position:fixed;
-right:-350px;
+right:-100%;
 top:0;
 width:350px;
 height:100%;
+max-width: 85%;
 background:#111827;
 padding:20px;
 transition:0.4s;
 overflow:auto;
+visibility: hidden;
+
+z-index: 999; 
+    box-shadow: -10px 0 50px rgba(0,0,0,0.8); 
+    visibility: hidden;
 }
 
 .carritoPanel.activo{
 right:0;
+visibility: visible;
 }
 
 h2{
@@ -98,12 +105,14 @@ to{transform:translateY(-10px)}
 
 /* BUSCADOR */
 
-#buscador{
-margin-top:30px;
-padding:15px;
-width:300px;
-border-radius:8px;
-border:none;
+#buscador {
+    margin-top: 30px;
+    padding: 15px;
+    width: 85%; 
+    max-width: 400px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px; 
 }
 
 /* REDES */
@@ -172,3 +181,6 @@ border:1px solid #d4af37;
 padding:15px;
 display:none;
 }
+
+
+
