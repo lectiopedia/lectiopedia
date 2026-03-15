@@ -20,17 +20,32 @@
 </div>
 
 <div id="carritoPanel" class="carritoPanel">
+    <div class="carritoHeader">
+        <h2>Tu Carrito</h2>
+    </div>
+    
+    <p class="entregaInfo"><i class="fas fa-bolt"></i> Entrega digital inmediata</p>
 
-<h2>Tu carrito</h2>
+    <hr class="divisor">
 
-<div id="itemsCarrito"></div>
+    <div id="itemsCarrito">
+        <p class="carritoVacio">Tu biblioteca está esperando...</p>
+    </div>
 
-<p id="totalCarrito">Total: $0</p>
+    <hr class="divisor">
 
-<button onclick="comprarWhatsApp()">
-Comprar por WhatsApp
-</button>
-
+    <div class="carritoFooter">
+        <div class="totalContenedor">
+            <span>Subtotal:</span>
+            <span id="totalCarrito">$0</span>
+        </div>
+        
+        <button class="btnWhatsApp" onclick="comprarWhatsApp()">
+            <i class="fab fa-whatsapp"></i> FINALIZAR COMPRA
+        </button>
+        
+        <button class="btnVaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+    </div>
 </div>
 
 <section class="portada">

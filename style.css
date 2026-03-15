@@ -58,6 +58,22 @@ font-weight:bold;
 z-index:1000;
 }
 
+.totalContenedor {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+
+.divisor {
+    border: 0;
+    border-top: 1px solid #2d3748;
+    margin: 20px 0;
+}
+
 .carritoPanel{
 position:fixed;
 right:-100%;
@@ -74,6 +90,33 @@ visibility: hidden;
 z-index: 999; 
     box-shadow: -10px 0 50px rgba(0,0,0,0.8); 
     visibility: hidden;
+}
+
+.btnWhatsApp {
+    width: 100%;
+    padding: 15px;
+    background: #25d366; /* Verde WhatsApp */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btnWhatsApp:hover {
+    background: #128c7e;
+    transform: scale(1.02);
+}
+
+.btnVaciar {
+    background: transparent;
+    color: #ff4444;
+    border: none;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
 }
 
 .carritoPanel.activo{
