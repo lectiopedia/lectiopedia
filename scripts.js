@@ -1,55 +1,89 @@
-let carrito=[]
+let carrito = [];
 
-function abrirCarrito(){
-document.getElementById("carritoPanel").classList.toggle("activo")
+// Abrir y cerrar el carrito
+function abrirCarrito() {
+    const panel = document.getElementById("carritoPanel");
+    const estaActivo = panel.classList.toggle("activo");
+
+    // Manejo profesional del scroll: 
+    // Si el panel quedó activo (abierto), bloqueamos el scroll. Si no, lo liberamos.
 }
 
-function agregarCarrito(nombre,precio){
-carrito.push({nombre,precio})
-actualizarCarrito()
+function cerrarCarrito() {
+    const panel = document.getElementById("carritoPanel");
+    panel.classList.remove("activo");
 }
 
-function eliminar(index){
-carrito.splice(index,1)
-actualizarCarrito()
+// Agregar nuevos libros
+function agregarCarrito(nombre, precio) {
+    carrito.push({ nombre, precio });
+    actualizarCarrito();
+    
+    // Feedback visual
+    console.log(`Agregado: ${nombre}`);
 }
 
-function actualizarCarrito(){
-
-let contenedor=document.getElementById("itemsCarrito")
-let total=0
-
-contenedor.innerHTML=""
-
-carrito.forEach((item,i)=>{
-
-let div=document.createElement("div")
-
-div.innerHTML=item.nombre+" - $"+item.precio+
-" <span onclick='eliminar("+i+")'>❌</span>"
-
-contenedor.appendChild(div)
-
-total+=item.precio
-
-})
-
-document.getElementById("contadorCarrito").innerText=carrito.length
-document.getElementById("totalCarrito").innerText="Total: $"+total
-
+// Eliminar libro individual
+function eliminarItem(index) {
+    carrito.splice(index, 1);
+    actualizarCarrito();
 }
 
-function comprarWhatsApp(){
-
-let mensaje="Hola quiero comprar:%0A"
-
-carrito.forEach(item=>{
-mensaje+=item.nombre+"%0A"
-})
-
-window.open("https://wa.me/543515101643?text="+encodeURIComponent(mensaje))
-
+// Vaciar carrito
+function vaciarCarrito() {
+    if (carrito.length > 0) {
+        carrito = [];
+        actualizarCarrito();
+    }
 }
+
+// Actualizar interfaz
+function actualizarCarrito() {
+    const contenedor = document.getElementById("itemsCarrito");
+    const contador = document.getElementById("contadorCarrito");
+    const totalDisplay = document.getElementById("totalCarrito");
+    
+    let total = 0;
+    contenedor.innerHTML = ""; // Limpiamos
+
+    // Si el carrito está vacío, se muestra un mensaje 
+    if (carrito.length === 0) {
+        contenedor.innerHTML = `<p style="opacity:0.5; padding:20px;">Tu biblioteca está vacía...</p>`;
+    }
+
+    carrito.forEach((item, i) => {
+        const div = document.createElement("div");
+        div.classList.add("item-carrito-estilo"); 
+        
+        div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid #2d3748; padding-bottom:5px;">
+                <span>${item.nombre}</span>
+                <div>
+                    <span style="color:#d4af37; margin-right:10px;">$${item.precio}</span>
+                    <span onclick="eliminarItem(${i})" style="cursor:pointer;">❌</span>
+                </div>
+            </div>
+        `;
+        contenedor.appendChild(div);
+        total += item.precio;
+    });
+
+    // Acualizan numeros
+    contador.innerText = carrito.length;
+    totalDisplay.innerText = `$${total}`;
+}
+
+// Link al whatsapp
+function comprarWhatsApp() {
+    if (carrito.length === 0) return alert("Agrega algún libro primero");
+
+    let mensaje = "¡Hola! Me interesan estos libros de LECTIO:%0A";
+    carrito.forEach((l, i) => mensaje += `${i+1}. ${l.nombre} ($${l.precio})%0A`);
+    mensaje += `%0ATotal: $${document.getElementById("totalCarrito").innerText}`;
+
+    window.open(`https://wa.me/543515101643?text=${mensaje}`, '_blank');
+}
+
 
 /* BUSCADOR */
 
