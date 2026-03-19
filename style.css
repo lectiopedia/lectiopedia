@@ -264,8 +264,49 @@ background:#111827;
 
 /* EDUCACION */
 
-.educacion{
-padding:60px;
+.beneficios {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.beneficios h2 {
+    color: #d4af37;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.beneficio-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.beneficio-card i {
+    font-size: 30px;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.beneficio-card h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-10px);
+    border-color: #d4af37;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
 }
 
 /* NOTIFICACION */
