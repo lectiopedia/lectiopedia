@@ -21,8 +21,9 @@ animation:logoAnim 3s ease;
 body{
 margin:0;
 font-family:'Cinzel',serif;
-background:#0f1720;
 color:white;
+background: radial-gradient(circle, #1a202c 0%, #0f172a 100%);
+background-attachment: fixed;
 text-align:center;
 overflow-x:hidden;
 }
@@ -158,8 +159,11 @@ visibility: visible;
     text-decoration: underline;
 }
 
-h2{
-    color:#d4af37
+h2 {
+    color: #d4af37;
+    letter-spacing: 4px; 
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
 }
 /* PORTADA */
 
@@ -223,43 +227,160 @@ to{transform:translateY(-10px)}
 
 /* CATALOGO */
 
-.catalogo{
-padding:60px;
+.catalogo {
+    padding: 80px 5%; 
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-.categoria{
-margin-top:50px;
+.masVendidos {
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    padding-bottom: 100px; 
+    padding: 80px 5%; 
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-.libros{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
+.separador-seccion {
+    height: 1px;
+    width: 60%; 
+    margin: 60px auto;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.8) 50%, 
+        transparent 100%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
 }
 
-.libro{
-background:#1f2937;
-padding:20px;
-width:200px;
-border:2px solid #d4af37;
-border-radius:10px;
+.separador-seccion::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #d4af37;
+    transform: rotate(45deg);
+    position: absolute;
+    
+
+    box-shadow: 0 0 15px #d4af37, 0 0 30px rgba(212, 175, 55, 0.5);
+
+    animation: pulsoRombo 3s infinite ease-in-out;
 }
 
-.libro button{
-margin-top:10px;
-padding:10px;
-background:#d4af37;
-border:none;
-cursor:pointer;
-font-weight:bold;
+/* Animación de pulso */
+@keyframes pulsoRombo {
+    0%, 100% {
+        transform: rotate(45deg) scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: rotate(45deg) scale(1.2);
+        filter: brightness(1.5);
+        box-shadow: 0 0 25px #d4af37;
+    }
 }
 
-/* MAS VENDIDOS */
 
-.masVendidos{
-padding:60px;
-background:#111827;
+.categoria {
+    text-align: left;
+    border-left: 3px solid #d4af37; 
+    padding-left: 20px;
+    margin: 60px 0 40px 0; 
+}
+
+.categoria h2 {
+    font-size: 10px;
+    color: #d4af37;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+
+.libros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+    gap: 30px;
+    justify-content: start;
+    align-items: stretch; 
+    padding: 20px 0;
+}
+
+.libro {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 25px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 12px;
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: visible; 
+}
+
+.libro::before {
+    content: "LECTIO";
+    display: flex; 
+    height: 200px;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px dashed rgba(212, 175, 55, 0.2);
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(212, 175, 55, 0.4);
+    flex-shrink: 0; 
+}
+
+.libro:hover {
+    transform: translateY(-12px);
+    border-color: rgba(212, 175, 55, 0.8);
+    background: rgba(212, 175, 55, 0.04);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* TÍTULO */
+.libro h3 {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-grow: 1; 
+    display: flex;
+    align-items: flex-start;
+}
+
+
+.libro button {
+    width: 100%;
+    padding: 14px;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: auto; 
+}
+
+.libro button:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
 }
 
 /* EDUCACION */
