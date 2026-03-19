@@ -45,41 +45,68 @@ to{transform:translateX(100%)}
 
 /* CARRITO */
 
+@keyframes entradaCarrito {
+    0% { opacity: 0; transform: translateX(50px) scale(0.8); filter: blur(5px); }
+    100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+}
+
+@keyframes pulsoDorado {
+    0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+}
+
+@keyframes saltoCarrito {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.2) translateY(-5px); }
+    50% { transform: scale(0.9); }
+    80% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
 .carritoIcono {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #111827;
-    color: #d4af37; 
-    padding: 10px 20px;
-    border-radius: 20px; 
-    border: 2px solid #d4af37; 
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 18px;
     z-index: 2000;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); 
+
+    background: #111827;
+    color: #d4af37;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid #d4af37;
+    font-weight: bold;
+    font-size: 16px;
+    
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    cursor: pointer;
+
+    animation: entradaCarrito 0.8s ease-out forwards, 
+               pulsoDorado 3s infinite ease-in-out;
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible; 
 }
 
-.totalContenedor {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: bold;
-    color: #d4af37;
-    margin-bottom: 20px;
+
+/* Animacioness de Interacción */
+
+.carritoIcono:hover {
+    background: #1f2937;
+    color: white;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
 }
 
-
-.divisor {
-    border: 0;
-    border-top: 1px solid #2d3748;
-    margin: 20px 0;
+.carritoIcono:active {
+    transform: translateY(1px) scale(0.98);
 }
 
+.carritoIcono.agregando {
+    animation: saltoCarrito 0.5s ease-out !important;
+}
 .carritoPanel{
 position:fixed;
 right:-100%;
@@ -98,38 +125,10 @@ z-index: 999;
     visibility: hidden;
 }
 
-.btnWhatsApp {
-    width: 100%;
-    padding: 15px;
-    background: #25d366; /* Verde WhatsApp */
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btnWhatsApp:hover {
-    background: #128c7e;
-    transform: scale(1.02);
-}
-
-.btnVaciar {
-    background: transparent;
-    color: #ff4444;
-    border: none;
-    margin-top: 15px;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: underline;
-}
-
 .carritoPanel.activo{
 right:0;
 visibility: visible;
 }
-
 
 h2{
     color:#d4af37
@@ -158,11 +157,19 @@ to{transform:translateY(-10px)}
 #buscador {
     margin-top: 30px;
     padding: 15px;
-    width: 85%; 
+    width: 85%;
     max-width: 400px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px; 
+    border-radius: 30px; 
+    background: #111827; 
+    border: 2px solid #d4af37;
+    color: white; 
+    font-size: 16px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); 
+    outline: none; 
+}
+
+#buscador::placeholder {
+    color: rgba(255, 255, 255, 0.205);
 }
 
 /* REDES */

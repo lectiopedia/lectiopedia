@@ -16,22 +16,24 @@ function cerrarCarrito() {
 // Agregar nuevos libros
 function agregarCarrito(nombre, precio, boton) {
     carrito.push({ nombre, precio });
+
+    const iconoCarrito = document.querySelector(".carritoIcono");
     if (boton) {
         const textoOriginal = boton.innerText;
         boton.innerText = "¡Agregado! ✅";
         boton.classList.add("btn-agregado");
-        
+        if (iconoCarrito) {
+            iconoCarrito.classList.add("agregando");
+        }
         setTimeout(() => {
             boton.innerText = textoOriginal;
             boton.classList.remove("btn-agregado");
+            if (iconoCarrito) {
+                iconoCarrito.classList.remove("agregando");
+            }
         }, 1500);
     }
-
-    const icono = document.querySelector(".carritoIcono");
-        icono.classList.add("animar-carrito");
-        setTimeout(() => icono.classList.remove("animar-carrito"), 300);
-
-        actualizarCarrito();
+    actualizarCarrito();
 }
 
 // Eliminar libro individual
