@@ -167,10 +167,23 @@ to{transform:translateY(-10px)}
 
 /* REDES */
 
-.redes i{
-font-size:28px;
-margin:10px;
-color:white;
+.redes {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin-top: 30px; 
+}
+
+.redes i {
+    font-size: clamp(35px, 10vw, 45px); 
+    color: #d4af37; 
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); 
+    transition: 0.3s;
+}
+
+.redes i:hover {
+    transform: scale(1.1); 
+    color: white; 
 }
 
 /* CATALOGO */
