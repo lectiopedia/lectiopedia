@@ -130,6 +130,34 @@ right:0;
 visibility: visible;
 }
 
+.btnWhatsApp {
+    width: 100%;
+    padding: 15px;
+    background: #25d366; /* Verde WhatsApp */
+    color: white;
+    border: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btnWhatsApp:hover {
+    background: #128c7e;
+    transform: scale(1.02);
+}
+
+.btnVaciar {
+    background: transparent;
+    color: #ff4444;
+    border: none;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
 h2{
     color:#d4af37
 }
