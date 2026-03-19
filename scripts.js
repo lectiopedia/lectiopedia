@@ -1,12 +1,11 @@
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('carrito-lectio')) || [];
+
+document.addEventListener("DOMContentLoaded", actualizarCarrito);
 
 // Abrir y cerrar el carrito
 function abrirCarrito() {
     const panel = document.getElementById("carritoPanel");
     const estaActivo = panel.classList.toggle("activo");
-
-    // Manejo profesional del scroll: 
-    // Si el panel quedó activo (abierto), bloqueamos el scroll. Si no, lo liberamos.
 }
 
 function cerrarCarrito() {
@@ -15,12 +14,24 @@ function cerrarCarrito() {
 }
 
 // Agregar nuevos libros
-function agregarCarrito(nombre, precio) {
+function agregarCarrito(nombre, precio, boton) {
     carrito.push({ nombre, precio });
-    actualizarCarrito();
-    
-    // Feedback visual
-    console.log(`Agregado: ${nombre}`);
+    if (boton) {
+        const textoOriginal = boton.innerText;
+        boton.innerText = "¡Agregado! ✅";
+        boton.classList.add("btn-agregado");
+        
+        setTimeout(() => {
+            boton.innerText = textoOriginal;
+            boton.classList.remove("btn-agregado");
+        }, 1500);
+    }
+
+    const icono = document.querySelector(".carritoIcono");
+        icono.classList.add("animar-carrito");
+        setTimeout(() => icono.classList.remove("animar-carrito"), 300);
+
+        actualizarCarrito();
 }
 
 // Eliminar libro individual
@@ -66,11 +77,15 @@ function actualizarCarrito() {
         `;
         contenedor.appendChild(div);
         total += item.precio;
+
     });
 
     // Acualizan numeros
     contador.innerText = carrito.length;
     totalDisplay.innerText = `$${total}`;
+    localStorage.setItem('carrito-lectio', JSON.stringify(carrito));
+    document.getElementById("contadorCarrito").innerText = carrito.length;
+    document.getElementById("totalCarrito").innerText = "Total: $" + calcularTotal();
 }
 
 // Link al whatsapp
@@ -84,6 +99,9 @@ function comprarWhatsApp() {
     window.open(`https://wa.me/543515101643?text=${mensaje}`, '_blank');
 }
 
+function calcularTotal() {
+    return carrito.reduce((acc, item) => acc + item.precio, 0);
+}
 
 /* BUSCADOR */
 
