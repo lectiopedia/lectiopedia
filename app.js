@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM cargado, iniciando componentes...");
 
-    // 1. Dibujar el catálogo (Llamamos a la función de catalogo.js)
+
     if (typeof window.renderizarCatalogo === "function") {
         window.renderizarCatalogo();
     } else {
         console.error("La función renderizarCatalogo no está disponible.");
     }
 
-    // 2. Actualizar el carrito (Llamamos a la función de scripts.js)
+
     if (typeof window.actualizarCarrito === "function") {
         window.actualizarCarrito();
     }
 
-    // 3. Tu lógica del Buscador
+
     const buscador = document.getElementById("buscador");
     if (buscador) {
         buscador.addEventListener("keyup", function() {
@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 4. Tus Notificaciones
     let nombres = ["Juan", "María", "Carlos", "Lucía", "Ana", "Marcelo"];
     let ciudades = ["Córdoba", "Buenos Aires", "Rosario", "Mendoza","La Pampa"];
     let libros = ["Psicología Oscura", "Padre Rico Padre Pobre", "Hábitos Atómicos"]
@@ -44,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function cargarMasVendidos() {
     const contenedor = document.getElementById("contenedorMasVendidos");
-    // Usamos libros de tu objeto catalogo o de donde quieras
+
     const destacados = ["Hábitos Atómicos", "Padre Rico Padre Pobre", "Psicología Oscura", "El Poder de las Palabras"];
     
     destacados.forEach(libro => {
@@ -58,6 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 }
 
-// Y la llamas:
+
 cargarMasVendidos();
 });

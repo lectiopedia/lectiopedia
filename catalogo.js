@@ -38,5 +38,5 @@ function renderizarCatalogo() {
     console.log("Catálogo renderizado con éxito.");
 }
 
-// Lo registramos en window para que app.js lo pueda llamar
+
 window.renderizarCatalogo = renderizarCatalogo;
