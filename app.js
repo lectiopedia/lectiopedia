@@ -1,162 +1,63 @@
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM cargado, iniciando componentes...");
 
-import {startCountdown} from './modules/contador.js'
-import {generateLibrary} from './modules/biblioteca.js'
-import {loadCatalogs} from './modules/catalogos.js'
-import {createBackground} from './modules/background.js'
+    // 1. Dibujar el catálogo (Llamamos a la función de catalogo.js)
+    if (typeof window.renderizarCatalogo === "function") {
+        window.renderizarCatalogo();
+    } else {
+        console.error("La función renderizarCatalogo no está disponible.");
+    }
 
-startCountdown()
-generateLibrary()
-loadCatalogs()
-createBackground()
-function abrirMenu(){
+    // 2. Actualizar el carrito (Llamamos a la función de scripts.js)
+    if (typeof window.actualizarCarrito === "function") {
+        window.actualizarCarrito();
+    }
 
-const menu = document.getElementById("menuLateral");
+    // 3. Tu lógica del Buscador
+    const buscador = document.getElementById("buscador");
+    if (buscador) {
+        buscador.addEventListener("keyup", function() {
+            let filtro = this.value.toLowerCase();
+            let libros = document.querySelectorAll(".libro");
+            libros.forEach(libro => {
+                let texto = libro.innerText.toLowerCase();
+                libro.style.display = texto.includes(filtro) ? "block" : "none";
+            });
+        });
+    }
 
-menu.classList.toggle("menuAbierto");
+    // 4. Tus Notificaciones
+    let nombres = ["Juan", "María", "Carlos", "Lucía", "Ana", "Marcelo"];
+    let ciudades = ["Córdoba", "Buenos Aires", "Rosario", "Mendoza","La Pampa"];
+    let libros = ["Psicología Oscura", "Padre Rico Padre Pobre", "Hábitos Atómicos"]
+    setInterval(() => {
+        let box = document.getElementById("notificacion");
+        if (box) {
+            let nombre = nombres[Math.floor(Math.random() * nombres.length)];
+            let ciudad = ciudades[Math.floor(Math.random() * ciudades.length)];
+            let libro = libros[Math.floor(Math.random() * libros.length)];
+            box.innerText = `${nombre} de ${ciudad} compró ${libro}`;
+            box.style.display = "block";
+            setTimeout(() => box.style.display = "none", 4000);
+        }
+    }, 12000);
 
+    function cargarMasVendidos() {
+    const contenedor = document.getElementById("contenedorMasVendidos");
+    // Usamos libros de tu objeto catalogo o de donde quieras
+    const destacados = ["Hábitos Atómicos", "Padre Rico Padre Pobre", "Psicología Oscura", "El Poder de las Palabras"];
+    
+    destacados.forEach(libro => {
+        let div = document.createElement("div");
+        div.className = "libro";
+        div.innerHTML = `
+            ${libro}
+            <button onclick="agregarCarrito('${libro}', 3900, this)">Agregar al carrito</button>
+        `;
+        contenedor.appendChild(div);
+    });
 }
-async function cargarPopulares(){
 
-const contenedor = document.getElementById("librosPopulares");
-
-const respuesta = await fetch("categorias/psicologia.json");
-
-const data = await respuesta.json();
-
-data.libros.slice(0,20).forEach(libro => {
-
-const item = document.createElement("div");
-
-item.className = "libro";
-
-item.innerHTML = `
-<img src="https://source.unsplash.com/200x300/?book" class="portadaLibro">
-<p>${libro}</p>
-`;
-
-contenedor.appendChild(item);
-
+// Y la llamas:
+cargarMasVendidos();
 });
-
-}
-
-cargarPopulares();
-async function cargarRecomendados(){
-
-const contenedor = document.getElementById("librosRecomendados");
-
-const respuesta = await fetch("categorias/desarrollo_personal.json");
-
-const data = await respuesta.json();
-
-data.libros.slice(0,15).forEach(libro => {
-
-const item = document.createElement("div");
-
-item.className = "libro";
-
-item.innerHTML = `
-<img src="https://source.unsplash.com/200x300/?book" class="portadaLibro">
-<p>${libro}</p>
-`;
-
-contenedor.appendChild(item);
-
-});
-
-}
-
-async function cargarVendidos(){
-
-const contenedor = document.getElementById("librosVendidos");
-
-const respuesta = await fetch("categorias/exito_y_negocio.json");
-
-const data = await respuesta.json();
-
-data.libros.slice(0,15).forEach(libro => {
-
-const item = document.createElement("div");
-
-item.className = "libro";
-
-item.innerHTML = `
-<img src="https://source.unsplash.com/200x300/?bookstore" class="portadaLibro">
-<p>${libro}</p>
-`;
-
-contenedor.appendChild(item);
-
-});
-
-}
-
-cargarRecomendados();
-cargarVendidos();
-function crearLibro(titulo){
-
-const card = document.createElement("div");
-
-card.className = "libroCard";
-
-const img = document.createElement("img");
-
-img.src = "https://covers.openlibrary.org/b/title/" + titulo + "-M.jpg";
-
-img.onerror = function(){
-img.src = "imagenes/libro.jpg";
-}
-
-const nombre = document.createElement("p");
-
-nombre.textContent = titulo;
-
-card.appendChild(img);
-card.appendChild(nombre);
-
-return card;
-
-}
-
-const card = document.createElement("div");
-
-card.className = "libroCard";
-
-card.textContent = titulo;
-
-return card;
-
-}
-
-function cargarFila(id, libros){
-
-const contenedor = document.getElementById(id);
-
-libros.slice(0,20).forEach(libro => {
-
-contenedor.appendChild(crearLibro(libro));
-
-});
-
-}
-cargarFila("librosPopulares", [
-"Padre rico padre pobre",
-"Los secretos de la mente millonaria",
-"Inteligencia emocional",
-"Piense y hágase rico",
-"El poder del ahora"
-]);
-
-cargarFila("recomendados", [
-"Cómo ganar amigos e influir sobre las personas",
-"Tus zonas erróneas",
-"El arte de la guerra",
-"La semana laboral de 4 horas"
-]);
-
-cargarFila("masVendidos", [
-"Hábitos atómicos",
-"El monje que vendió su Ferrari",
-"El código del dinero",
-"Despierta tu héroe interior"
-]);

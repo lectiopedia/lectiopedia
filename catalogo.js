@@ -1,49 +1,42 @@
-async function cargarCatalogo(nombreCategoria){
-
-const respuesta = await fetch(`categorias/${nombreCategoria}.json`);
-const data = await respuesta.json();
-
-const contenedor = document.getElementById("catalogoLibros");
-
-contenedor.innerHTML = "";
-
-let indice = 0;
-const cantidad = 40;
-
-function cargarMas(){
-
-for(let i = 0; i < cantidad && indice < data.libros.length; i++){
-
-const libro = data.libros[indice];
-
-const item = document.createElement("div");
-
-item.className = "libro";
-
-item.innerHTML = `
-<img src="https://source.unsplash.com/200x300/?book" class="portadaLibro">
-<p class="tituloLibro">${libro}</p>
-<button class="botonAgregar">Agregar</button>
-`;
-
-contenedor.appendChild(item);
-
-indice++;
-
-}
-
-}
-
-cargarMas();
-
-window.onscroll = function(){
-
-if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 200){
-
-cargarMas();
-
-}
-
+let catalogo = {
+    "Psicología": ["Psicología Oscura", "Hábitos Atómicos", "Inteligencia Emocional"],
+    "Negocios": ["Padre Rico Padre Pobre", "Piense y Hágase Rico"],
+    "Seducción": ["El Arte de la Seducción"]
 };
 
+function renderizarCatalogo() {
+    const contenedor = document.getElementById("contenedorCatalogo");
+    
+    if (!contenedor) {
+        console.error("ERROR: No encontré el div 'contenedorCatalogo'. Revisa tu HTML.");
+        return;
+    }
+    
+    contenedor.innerHTML = ""; 
+    for (let categoria in catalogo) {
+        let bloque = document.createElement("div");
+        bloque.className = "categoria";
+        bloque.innerHTML = `<h3>${categoria}</h3>`;
+        
+        let librosDiv = document.createElement("div");
+        librosDiv.className = "libros";
+        
+        catalogo[categoria].forEach(libro => {
+            let div = document.createElement("div");
+            div.className = "libro";
+            div.innerHTML = `
+                ${libro}
+                <button onclick="agregarCarrito('${libro}', 3900, this)">
+                Agregar al carrito
+                </button>
+            `;
+            librosDiv.appendChild(div);
+        });
+        bloque.appendChild(librosDiv);
+        contenedor.appendChild(bloque);
+    }
+    console.log("Catálogo renderizado con éxito.");
 }
+
+// Lo registramos en window para que app.js lo pueda llamar
+window.renderizarCatalogo = renderizarCatalogo;
