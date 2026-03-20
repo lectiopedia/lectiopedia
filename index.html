@@ -15,97 +15,75 @@
 
 <body>
 
-<div class="carritoIcono" onclick="abrirCarrito()">
-🛒 <span id="contadorCarrito">0</span>
-</div>
+    <div class="carritoIcono" onclick="abrirCarrito()">
+        🛒 <span id="contadorCarrito">0</span>
+    </div>
 
-<div id="carritoPanel" class="carritoPanel">
+    <div id="carritoPanel" class="carritoPanel">
+        <div class="carritoHeader">
+            <h2>Tu Carrito</h2>
+        </div>
+        <p class="entregaInfo"><i class="fas fa-bolt"></i> Entrega digital inmediata</p>
+        <hr class="divisor">
+        <div id="itemsCarrito">
+            <p class="carritoVacio">Tu biblioteca está esperando...</p>
+        </div>
+        <hr class="divisor">
+        <div class="carritoFooter">
+            <div class="totalContenedor">
+                <span>Subtotal:</span>
+                <span id="totalCarrito">$0</span>
+            </div>
+            <button class="btnWhatsApp" onclick="comprarWhatsApp()">
+                <i class="fab fa-whatsapp"></i> FINALIZAR COMPRA
+            </button>
+            <button class="btnVaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+        </div>
+    </div>
 
-<h2>Tu carrito</h2>
+    <section class="portada">
+        <div class="templo">🏛️</div>
+        <div class="logo">LECTIO</div>
+        <div class="sub">DESCUBRE QUIÉN ERES REALMENTE</div>
+        <p>Más de 25.000 libros y 13.000 audiolibros</p>
+        <input id="buscador" placeholder="Buscar libros...">
+        <div class="redes">
+            <a href="https://instagram.com/lectio.pedia" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/543515101643" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
 
-<div id="itemsCarrito"></div>
+    <div class="separador-seccion"></div>
 
-<p id="totalCarrito">Total: $0</p>
+    <section class="masVendidos">
+        <h2>LOS MÁS VENDIDOS</h2>
+        <div id="contenedorMasVendidos" class="libros">
+            </div>
+    </section>
 
-<button onclick="comprarWhatsApp()">
-Comprar por WhatsApp
-</button>
+    <div class="separador-seccion"></div>
 
-</div>
+    <section class="catalogo">
+        <h2 style="color:#d4af37">CATÁLOGO</h2>
+        <div id="contenedorCatalogo"></div>
+    </section>
 
-<section class="portada">
+    <div class="separador-seccion"></div>
 
-<div class="templo">🏛️</div>
-<div class="logo">LECTIO</div>
+    <section class="beneficios">
+        <h2>POR QUÉ INVERTIR EN LIBROS DIGITALES</h2>
+        <div class="beneficios-grid">
+            <div class="beneficio-card"><i class="fas fa-bolt"></i><h3>Acceso Inmediato</h3><p>Al conocimiento sin esperas.</p></div>
+            <div class="beneficio-card"><i class="fas fa-infinity"></i><h3>Biblioteca Ilimitada</h3><p>Miles de títulos en tu mano.</p></div>
+            <div class="beneficio-card"><i class="fas fa-piggy-bank"></i><h3>Menor Costo</h3><p>Más valor que los libros físicos.</p></div>
+            <div class="beneficio-card"><i class="fas fa-brain"></i><h3>Aprendizaje Constante</h3><p>Evolución personal diaria.</p></div>
+        </div>
+    </section>
 
-<div class="sub">
-DESCUBRE QUIÉN ERES REALMENTE
-</div>
+    <div id="notificacion" class="notificacion"></div>
 
-<p>Más de 25.000 libros y 13.000 audiolibros</p>
-
-<input id="buscador" placeholder="Buscar libros...">
-
-<div class="redes">
-
-<a href="https://instagram.com/lectio.pedia" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://wa.me/543515101643" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-</div>
-
-</section>
-
-<section class="masVendidos">
-
-<h2>LOS MÁS VENDIDOS</h2>
-
-<div class="libros">
-
-<div class="libro">
-Psicología Oscura
-<button onclick="agregarCarrito('Psicología Oscura',3900)">Agregar al carrito</button>
-</div>
-
-<div class="libro">
-Hábitos Atómicos
-<button onclick="agregarCarrito('Hábitos Atómicos',3900)">Agregar al carrito</button>
-</div>
-
-<div class="libro">
-Padre Rico Padre Pobre
-<button onclick="agregarCarrito('Padre Rico Padre Pobre',3900)">Agregar al carrito</button>
-</div>
-
-</div>
-
-</section>
-
-<section class="catalogo">
-
-<h2 style="color:#d4af37">CATÁLOGO</h2>
-
-<div id="contenedorCatalogo"></div>
-
-</section>
-
-<section class="educacion">
-
-<h2 style="color:#d4af37">POR QUÉ INVERTIR EN LIBROS DIGITALES</h2>
-
-<p>Acceso inmediato al conocimiento</p>
-<p>Biblioteca ilimitada</p>
-<p>Menor costo que libros físicos</p>
-<p>Aprendizaje constante</p>
-
-</section>
-
-<div id="notificacion" class="notificacion"></div>
-
-<script src="scripts.js"></script>
+    <script src="scripts.js"></script>
+    <script src="catalogo.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
