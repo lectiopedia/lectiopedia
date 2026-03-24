@@ -65,6 +65,7 @@ to{transform:translateX(100%)}
 }
 
 
+
 .carritoIcono {
     position: fixed;
     top: 20px;
@@ -225,6 +226,29 @@ to{transform:translateY(-10px)}
     color: white; 
 }
 
+/* RESULTADOS*/
+.seccion-resultados {
+    padding: 60px 20px;
+    min-height: 50vh;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Clase que activaremos con JS cuando haya resultados */
+.seccion-resultados.visible {
+    display: block !important;
+    opacity: 1;
+}
+
+/* Reutiliza tu grid de libros para que las tarjetas se vean iguales */
+.grid-libros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 /* CATALOGO */
 
 .catalogo {

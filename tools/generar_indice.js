@@ -1,33 +1,39 @@
-const fs = require("fs");
-const path = require("path");
+buscador.addEventListener("keypress", async function(e) {
+    if (e.key === "Enter") {
+        let termino = this.value.toLowerCase().trim();
+        if (termino === "") return;
 
-const carpetaCategorias = "./categorias";
-let todosLosLibros = [];
+        // Definimos las categorías que tienes (Nombres de tus archivos .json)
+        const categorias = ["dinero.json", "mente.json", "productividad.json"]; 
+        let resultadosEncontrados = [];
 
-const archivos = fs.readdirSync(carpetaCategorias);
+        try {
+            // El navegador descarga todos los archivos al mismo tiempo
+            const promesas = categorias.map(archivo => 
+                fetch(`data/categorias/${archivo}`).then(res => res.json())
+            );
+            
+            const todosLosDatos = await Promise.all(promesas);
 
-archivos.forEach(archivo => {
+            todosLosDatos.forEach(data => {
+                const nombreCat = data.categoria;
+                const matchCategoria = nombreCat.toLowerCase().includes(termino);
 
-if(archivo.endsWith(".json")){
+                data.libros.forEach(titulo => {
+                    // Si coincide la categoría O el título del libro, lo guardamos
+                    if (matchCategoria || titulo.toLowerCase().includes(termino)) {
+                        resultadosEncontrados.push({
+                            titulo: titulo,
+                            categoria: nombreCat
+                        });
+                    }
+                });
+            });
 
-const ruta = path.join(carpetaCategorias, archivo);
+            mostrarResultados(resultadosEncontrados);
 
-const data = JSON.parse(fs.readFileSync(ruta, "utf8"));
-
-if(data.libros){
-
-todosLosLibros = todosLosLibros.concat(data.libros);
-
-}
-
-}
-
+        } catch (err) {
+            console.error("Error: Asegúrate de que los nombres en el array 'categorias' coincidan con tus archivos .json", err);
+        }
+    }
 });
-
-const resultado = {
-libros: todosLosLibros
-};
-
-fs.writeFileSync("libros.json", JSON.stringify(resultado, null, 2));
-
-console.log("Indice creado con", todosLosLibros.length, "libros");
