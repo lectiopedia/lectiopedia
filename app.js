@@ -23,7 +23,56 @@ if (inputBuscador) {
             const termino = inputBuscador.value.toLowerCase().trim();
             if (!termino) return;
 
-            const archivos = ["adolescentes.json", "ciencia.json", "filosofia.json"];
+            const archivos = [
+    "adolescentes.json",
+    "anthony_robbins.json",
+    "aprende_sobre_dinero.json",
+    "autoayuda_liderazgo.json",
+    "best_sellers_modernos.json",
+    "brian_tracy.json",
+    "ciencia.json",
+    "clasicos.json",
+    "conviertete_en_el_mejor_fotografo.json",
+    "crea_habitos_inquebrantables.json",
+    "cuentos_disney.json",
+    "desarrollo_personal.json",
+    "divulgacion_cientifica.json",
+    "domina_el_ingles.json",
+    "dummies_domina_tu_materia.json",
+    "esenciales_clasicos.json",
+    "exito_y_negocio.json",
+    "filosofia.json",
+    "genera_clientes_de_por_vida.json",
+    "grafologia.json",
+    "habitos_productividad.json",
+    "historia_america_latina.json",
+    "historia_griega_clasica.json",
+    "historia.json",
+    "historietas.json",
+    "inteligencia_emocional.json",
+    "jacobo_grinberg.json",
+    "lectura_super_rapida.json",
+    "libros_biblicos.json",
+    "literatura.json",
+    "marketing_y_multinivel.json",
+    "metabolismo.json",
+    "nutricion_y_deporte.json",
+    "poesias.json",
+    "primeros_auxilios.json",
+    "psicologia.json",
+    "recetas_diabetes.json",
+    "recetas_veganas.json",
+    "recetas_y_dietas.json",
+    "redes_sociales.json",
+    "robert_kiyosaki.json",
+    "seduccion.json",
+    "supera_tu_duelo.json",
+    "tdah.json",
+    "terapia_de_pareja.json",
+    "terror_suspenso_y_mas.json",
+    "trading_forex_mercado.json",
+    "yooga.json"
+];
             let encontrados = [];
 
             try {
