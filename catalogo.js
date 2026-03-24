@@ -1,7 +1,8 @@
 let catalogo = {
     "Psicología": ["Psicología Oscura", "Hábitos Atómicos", "Inteligencia Emocional"],
     "Negocios": ["Padre Rico Padre Pobre", "Piense y Hágase Rico"],
-    "Seducción": ["El Arte de la Seducción"]
+    "Seducción": ["El Arte de la Seducción"],
+    "Desarrollo Personal": ["kkkkk"]
 };
 
 function renderizarCatalogo() {
