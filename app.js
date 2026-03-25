@@ -134,9 +134,18 @@ function ejecutarCambioDeSeccion(libros) {
 
     // RENDERIZAR
     grillaResultados.innerHTML = "";
-    if (libros.length === 0) {
-        grillaResultados.innerHTML = `<p style="color:white; padding:40px; text-align:center;">No se hallaron pergaminos con ese nombre...</p>`;
-    } else {
+   if (libros.length === 0) {
+    grillaResultados.innerHTML = `
+        <div class="busqueda-vacia">
+            <i class="fas fa-scroll"></i> <p>No se hallaron pergaminos con ese nombre en nuestra biblioteca...</p>
+            <span>Intenta con otros escritos</span>
+        </div>
+    `;
+    grillaResultados.style.display = "block";
+} else {
+    grillaResultados.style.display = "grid";
+   
+
         libros.forEach(libro => {
             const tarjeta = document.createElement("div");
             tarjeta.className = "tarjeta-resultado";
@@ -151,6 +160,8 @@ function ejecutarCambioDeSeccion(libros) {
                     AGREGAR AL CARRITO
                 </button>
             `;
+
+            
             grillaResultados.appendChild(tarjeta);
         });
     }

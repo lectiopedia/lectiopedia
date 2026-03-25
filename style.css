@@ -73,29 +73,41 @@ to{transform:translateX(100%)}
 
 .carritoIcono {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: clamp(10px, 4vw, 20px); 
+    right: clamp(10px, 4vw, 20px);
     z-index: 2000;
 
     background: #111827;
     color: #d4af37;
-    padding: 12px 20px;
-    border-radius: 25px;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
+    border-radius: 50px;
     border: 2px solid #d4af37;
     font-weight: bold;
-    font-size: 16px;
+    font-size: clamp(14px, 2.5vw, 16px); 
     
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 
     animation: pulsoDorado 3s infinite ease-in-out;
-    
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: visible; 
+    overflow: visible;
 }
 
+
+@media (max-width: 400px) {
+    .carritoIcono span {
+        display: none; 
+    }
+    .carritoIcono {
+        padding: 10px;
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+        justify-content: center;
+    }
+}
 .carritoIcono:hover {
     background: #1f2937;
     color: white;
@@ -136,9 +148,13 @@ to{transform:translateX(100%)}
 }
 
 @media (max-width: 480px) {
-    .carritoPanel { width: 100%; }
+    .carritoPanel { 
+        width: 85%; 
+        max-width: 320px; 
+        border-left: 2px solid #d4af37;
+        padding: 15px 10px; 
+    }
 }
-
 .carritoPanel.activo {
     right: 0;
     visibility: visible;
@@ -395,50 +411,172 @@ to{transform:translateY(-10px)}
 
 #buscador {
     margin-top: 30px;
-    padding: 15px;
+    padding: 15px 25px; 
     width: 85%;
-    max-width: 400px;
-    border-radius: 30px; 
+    max-width: 450px;
+    border-radius: 50px;
     background: #111827; 
-    border: 2px solid #d4af37;
+    border: 1px solid rgba(212, 175, 55, 0.4); 
     color: white; 
     font-size: 16px;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); 
+    font-family: 'Cinzel', serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
     outline: none; 
+    transition: all 0.3s ease;
+    text-align: center; 
+}
+
+
+#buscador:-webkit-autofill,
+#buscador:-webkit-autofill:hover, 
+#buscador:-webkit-autofill:focus {
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px #111827 inset !important; 
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+#buscador:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    background: #161d2f;
+    transform: scale(1.02);
 }
 
 #buscador::placeholder {
-    color: rgba(255, 255, 255, 0.205);
+    color: rgba(212, 175, 55, 0.3); 
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+
+#resultadosBusqueda {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 50px 35px; 
+    padding: 60px 20px;
+    align-items: stretch;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .tarjeta-resultado {
-    background-color: #1a1e29;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: #161a23;
+    border: 1px solid rgba(212, 175, 55, 0.15);
     border-radius: 12px;
-    padding: 25px;
-    width: 100%;
-    max-width: 280px;
-    min-height: 250px;
+    padding: 35px 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+    height: 100%;
+    box-sizing: border-box;
+    
+    justify-content: space-between; 
+    min-height: 380px; 
+    padding: 30px 20px;
+    position: relative; 
+    overflow: hidden; 
+}
+
+.tarjeta-resultado::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: -150%;
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(212, 175, 55, 0.1), 
+        transparent
+    );
+    transition: 0.6s;
+    pointer-events: none; 
+}
+
+.tarjeta-resultado:hover::before {
+    left: 150%;
 }
 
 .tarjeta-resultado:hover {
-    transform: translateY(-5px);
-    border-color: #d4af37;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transform: translateY(-12px); 
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
 
-/* El precio dentro del buscador */
+/* Contenido interno centrado */
+.tarjeta-info-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.tarjeta-resultado h4 {
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
+    min-height: 3.5em;
+    font-size: 1.05rem;
+    margin: 15px 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .tarjeta-resultado .precio-busqueda {
-    color: #fff;
+    margin: 15px 0 25px 0;
+    color: #d4af37;
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-family: 'Cinzel', serif;
+}
+
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tarjeta-resultado {
+    animation: fadeInCard 0.5s ease-out forwards;
+}
+
+.busqueda-vacia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    width: 100%;
+    animation: fadeIn 0.8s ease;
+}
+
+.busqueda-vacia i {
+    font-size: 3rem;
+    color: rgba(212, 175, 55, 0.2); /* Dorado muy tenue */
+    margin-bottom: 20px;
+}
+
+.busqueda-vacia p {
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
     font-size: 1.2rem;
-    font-weight: bold;
-    margin: 10px 0;
+    letter-spacing: 2px;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+.busqueda-vacia span {
+    display: block;
+    margin-top: 15px;
+    color: #d4af37;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    opacity: 0.7;
 }
 
 /* REDES */
@@ -462,29 +600,7 @@ to{transform:translateY(-10px)}
     color: white; 
 }
 
-/* RESULTADOS*/
-.seccion-resultados {
-    padding: 60px 20px;
-    min-height: 50vh;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
 
-/* Clase que activaremos con JS cuando haya resultados */
-.seccion-resultados.visible {
-    display: block !important;
-    opacity: 1;
-}
-
-/* Reutiliza tu grid de libros para que las tarjetas se vean iguales */
-.grid-libros {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-    justify-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 /* CATALOGO */
 
 .catalogo {
@@ -709,6 +825,3 @@ to{transform:translateY(-10px)}
     z-index: 1500;
     animation: slideInUp 0.5s ease-out; 
 }
-
-
-

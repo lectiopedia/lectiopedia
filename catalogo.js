@@ -1,8 +1,8 @@
 let catalogo = {
-    "Psicología": ["Psicología Oscura", "Hábitos Atómicos", "Inteligencia Emocional"],
-    "Negocios": ["Padre Rico Padre Pobre", "Piense y Hágase Rico"],
-    "Seducción": ["El Arte de la Seducción"],
-    "Desarrollo Personal": ["kkkkk"]
+    "Finanzas y Trading": ["Padre Rico, Padre Pobre", "El Hombre más Rico de Babilonia.", "Psicología del Dinero.", "Piense y Hágase Rico"],
+    "Desarrollo Personal y Hábitos": ["Hábitos Atómicos", "Piense y Hágase Rico","El Club de las 5 de la mañana","Despertando al Gigante Interior"],
+    "Psicología": ["El Arte de la Seducción","Psicología Oscura","Cómo hacer que te pasen cosas buenas","El poder de las palabras"],
+    "Éxito y Negocios": ["Los 7 hábitos de la gente altamente efectiva","Psicología de Ventas","Influencia"]
 };
 
 function renderizarCatalogo() {
