@@ -411,6 +411,36 @@ to{transform:translateY(-10px)}
     color: rgba(255, 255, 255, 0.205);
 }
 
+.tarjeta-resultado {
+    background-color: #1a1e29;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 25px;
+    width: 100%;
+    max-width: 280px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tarjeta-resultado:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* El precio dentro del buscador */
+.tarjeta-resultado .precio-busqueda {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
 /* REDES */
 
 .redes {

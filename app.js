@@ -139,11 +139,17 @@ function ejecutarCambioDeSeccion(libros) {
     } else {
         libros.forEach(libro => {
             const tarjeta = document.createElement("div");
-            tarjeta.className = "item-carrito-estilo";
+            tarjeta.className = "tarjeta-resultado";
+            const precioDefecto = 3500;
             tarjeta.innerHTML = `
-                <small style="color:#d4af37; text-transform:uppercase;">${libro.categoria}</small>
-                <h4 style="color:white; margin:10px 0;">${libro.titulo}</h4>
-                <button class="btnWhatsApp" onclick="agregarAlCarrito('${libro.titulo}')">Añadir</button>
+               <div class="tarjeta-info">
+                    <small>${libro.categoria}</small>
+                    <h4>${libro.titulo}</h4>
+                    <p class="precio-tarjeta">$${precioDefecto}</p>
+                </div>
+                <button class="btnWhatsApp" onclick="agregarCarrito('${libro.titulo}', ${precioDefecto}, this)">
+                    AGREGAR AL CARRITO
+                </button>
             `;
             grillaResultados.appendChild(tarjeta);
         });

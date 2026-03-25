@@ -1,4 +1,5 @@
 // Recuperar datos inmediatamente
+window.carrito = window.carrito || [];
 let carrito = JSON.parse(localStorage.getItem('carrito-lectio')) || [];
 
 function abrirCarrito() {
