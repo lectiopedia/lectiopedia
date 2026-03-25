@@ -229,15 +229,39 @@ let nombres = ["Juan", "María", "Carlos", "Lucía", "Ana", "Marcelo"];
 
     function cargarMasVendidos() {
     const contenedor = document.getElementById("contenedorMasVendidos");
+    if (!contenedor) return;
 
-    const destacados = ["Hábitos Atómicos", "Padre Rico Padre Pobre", "Psicología Oscura", "El Poder de las Palabras"];
+    const destacados = ["Hábitos Atómicos", "Padre Rico Padre Pobre", "El Futuro de Nuestra Mente", "El Poder de las Palabras"];
     
+    contenedor.innerHTML = ""; // Limpiamos antes de cargar
+
     destacados.forEach(libro => {
+        // 1. Limpiar el nombre para la ruta de la imagen
+        const nombreArchivo = libro.toLowerCase()
+                                   .replace(/ /g, "-")        
+                                   .replace(/[.,]/g, "")      
+                                   .normalize("NFD")          
+                                   .replace(/[\u0300-\u036f]/g, "");
+
+        const rutaImagen = `./assets/${nombreArchivo}.webp`;
+
+        // 2. Crear la tarjeta con la estructura de "Lectio"
         let div = document.createElement("div");
-        div.className = "libro";
+        div.className = "libro"; // O "tarjeta-resultado" si quieres que sean identicas
+        
         div.innerHTML = `
-            ${libro}
-            <button onclick="agregarCarrito('${libro}', 3900, this)">Agregar al carrito</button>
+            <div class="libro-portada">
+                <img src="${rutaImagen}" 
+                     alt="${libro}" 
+                     loading="lazy" 
+                     onerror="this.style.display='none'">
+            </div>
+            <div class="tarjeta-info-container">
+                <h3>${libro}</h3>
+            </div>
+            <button onclick="agregarCarrito('${libro}', 3900, this)">
+                AGREGAR AL CARRITO
+            </button>
         `;
         contenedor.appendChild(div);
     });

@@ -699,20 +699,41 @@ to{transform:translateY(-10px)}
     overflow: visible; 
 }
 
-.libro::before {
-    content: "LECTIO";
+/* Este reemplaza a tu .libro::before */
+.libro-portada {
     display: flex; 
     height: 200px;
-    background: rgba(212, 175, 55, 0.05);
+    background: rgba(212, 175, 55, 0.05); /* El fondo que ya tenías */
     border: 1px dashed rgba(212, 175, 55, 0.2);
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
     border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* El texto LECTIO que aparezca solo si está vacío */
+.libro-portada:empty::before {
+    content: "LECTIO";
     font-size: 10px;
     letter-spacing: 4px;
     color: rgba(212, 175, 55, 0.4);
-    flex-shrink: 0; 
+}
+
+/* La imagen dentro del contenedor */
+.libro-portada img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la portada sin deformarla */
+    padding: 10px; /* Espacio para que no toque los bordes punteados */
+    box-sizing: border-box;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta-resultado:hover .libro-portada img {
+    transform: scale(1.1);
 }
 
 .libro:hover {
