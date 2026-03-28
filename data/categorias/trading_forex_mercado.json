@@ -1,4 +1,5 @@
-{
+
+  {
   "categoria": "Trading Forex Mercado",
   "libros": [
     "Prácticas de análisis técnico de los mercados financieros — John J. Murphy",
@@ -21,9 +22,11 @@
     "Econometría — Damodar N. Gujarati y Dawn C. Porter",
     "El arte de especular — José Luis Cava",
     "El camino del lobo — Jordan Belfort",
+    "El inversor inteligente — Warren Buffett",
     "El libro blanco del trading — Javier Peña",
     "El lobo de Wall Street — Jordan Belfort",
     "El Tao de Warren Buffett: la sabiduría de un genio",
+    "Escuela de bolsa Manual de trading — Francisca Serrano",
     "Estrategia bursátil — André Kostolany",
     "Forex para principiantes — Markets",
     "Forex trading for beginners and intermediates",
@@ -38,6 +41,9 @@
     "Manual de instrumentos de gestión",
     "Proyectos de inversión — Nassir Sapag Chain",
     "Un paso por delante de Wall Street — Peter Lynch",
-    "Introducción a la econometría — Jeffrey Wooldridge"
+    "Introducción a la econometría — Jeffrey Wooldridge",
+    "Wyckoff 2.0 estructuras volume profile y order flow — Rubén Villahermosa",
+    "La realidad del método Smart Money Concepts",
+    "Análisis técnico de los mercados financieros — John J. Murphy"
   ]
 }

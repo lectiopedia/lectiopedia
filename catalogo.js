@@ -27,7 +27,7 @@ function renderizarCatalogo() {
                            .normalize("NFD")
                            .replace(/[\u0300-\u036f]/g, "");
 
-// Cambiamos a ruta relativa explícita
+// Cambio a ruta relativa explícita
             const rutaImagen = `./assets/${nombreArchivo}.webp`;
 
             let div = document.createElement("div");
